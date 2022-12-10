@@ -5,9 +5,6 @@ const Home = () => {
   return (
     <div className={`${styles.demo} container`}>
     <p>This Is Home Page</p>
-    <p>This Is Home Page</p>
-    <p>This Is Home Page</p>
-    <p>This Is Home Page</p>
 
     </div>
   )

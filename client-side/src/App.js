@@ -1,12 +1,21 @@
-import './App.scss';
-import Home from './pages/Home';
+import "./App.scss";
+import Navbar from "./pages/Navbar";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 import "./styles/globals/globals.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <h1 className='container'>E-Commerce Website</h1>
-      <Home/>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            {/* <Route path="*" element={<NoPage />} /> */}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

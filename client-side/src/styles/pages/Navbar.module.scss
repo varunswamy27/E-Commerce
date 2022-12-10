@@ -1,0 +1,13 @@
+nav {
+  background-color: lightgray;
+  .navbar {
+    padding: 20px 0px;
+    .link_wrap {
+      display: flex;
+      justify-content: flex-end;
+      p {
+        margin: 0% 15px;
+      }
+    }
+  }
+}
