@@ -1,0 +1,15 @@
+$colors: "primary" "white", "secondary" "brown", "brown" "white",
+  "yellow" "brown", "purple" "white", "blue" "brown", "blue1" "brown",
+  "pink" "brown", "orange" "brown";
+
+@each $color, $color_text in $colors {
+  //classes for bg colors
+  .bg_#{$color} {
+    background-color: var(--color_#{$color});
+    color: var(--color_#{$color_text});
+  }
+  //classes for text colors
+  .color_#{$color} {
+    color: var(--color_#{$color});
+  }
+}
