@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import styles from "../styles/pages/AboutUs.module.scss";
 
 const AboutUs = () => {
   return (
-    <div>AboutUs</div>
-  )
-}
+    <div className={`${styles.demo} container`}>
+      <p>This Is About Us Page</p>
+    </div>
+  );
+};
 
-export default AboutUs
+export default AboutUs;
