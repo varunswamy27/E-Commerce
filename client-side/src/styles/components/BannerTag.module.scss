@@ -1,0 +1,37 @@
+.banner_section {
+  background-color: var(--color_primary);
+  .banner_wrap {
+    display: flex;
+    .banner_box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      color: white;
+      padding: 40px 20px;
+      &:nth-child(2) {
+        background-color: #ab4227;
+      }
+      &:last-child {
+        background-color: #a23f25;
+      }
+      .icon {
+      }
+      .info {
+        padding-left: 20px;
+        .title {
+          font-size: 18px;
+          font-family: Spectral_Bold;
+          margin-bottom: 10px;
+          line-height: 1.6;
+        }
+        .desp {
+          font-size: 16px;
+          font-family: Spectral_Light;
+          line-height: 1.8;
+          font-weight: 300;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
