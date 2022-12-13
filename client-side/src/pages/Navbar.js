@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className={`${styles.navbar} container`}>
         <div className={styles.link_wrap}>
 
-          <Link to="/home"><p>Home</p></Link>
+          <Link to="/"><p>Home</p></Link>
           <Link to="/about-us"><p>About</p></Link>
           <Link to="/product"><p>Product</p></Link>
           <Link to="/blog"><p>Blog</p></Link>

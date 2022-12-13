@@ -13,7 +13,7 @@ function RouterComponent() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/product" />
                     <Route path="/blog" element={<Blog />} />
