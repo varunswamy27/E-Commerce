@@ -140,3 +140,33 @@
 //   font-display: swap;
 //   src: url(../../public/fonts/panther_hunter.otf);
 // }
+
+@font-face {
+  font-family: "Spectral_Bold";
+  font-display: swap;
+  src: url(../../../public/fonts/Spectral/Spectral-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Spectral_Semibold";
+  font-display: swap;
+  src: url(../../../public/fonts/Spectral/Spectral-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "Spectral_Medium";
+  font-display: swap;
+  src: url(../../../public/fonts/Spectral/Spectral-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Spectral_Light";
+  font-display: swap;
+  src: url(../../../public/fonts/Spectral/Spectral-Light.ttf);
+}
+
+@font-face {
+    font-family: "Spectral_Italic";
+    font-display: swap;
+    src: url(../../../public/fonts/Spectral/Spectral-Italic.ttf);
+  }
