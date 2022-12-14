@@ -3,7 +3,7 @@ import "./styles/globals/globals.scss";
 import Navbar from "./pages/Navbar";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
-// import NoPage from "./pages/NoPage";
+import NoPage from "./pages/NoPage";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
