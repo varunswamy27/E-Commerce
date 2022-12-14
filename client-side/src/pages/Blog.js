@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../styles/pages/Blog.module.scss";
 const Blog = () => {
     return (
-<<<<<<< HEAD
+
         
         <section className={styles.blog_section}>
      
@@ -15,12 +15,12 @@ const Blog = () => {
                     <div style={{border:"2px solid black" , width:"50%"}}>
 
                     </div>
-=======
+
         <div className={styles.demo}>
             <div className='container'>
 
                 <div className={styles.demo2}>
->>>>>>> development
+
                 </div>
 
             </div>
