@@ -1,8 +1,24 @@
-.demo{
-    color: red
-}
-.blog_flex{
-    border: 2px solid black;
-    height: 500px;
-    display: flex;
+// .demo{
+//     color: red
+// }
+// .blog_flex{
+//     border: 2px solid black;
+//     height: 500px;
+//     display: flex;
+// }
+.blog_section{
+    background-color: white;
+    .blog_flex{
+            border: 2px solid black;
+            height: 500px;
+            display: flex;
+            justify-content: space-around;
+            
+        }
+    .grids{
+        background-color: yellow;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+    }
 }
