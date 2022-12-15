@@ -5,11 +5,10 @@
     .main_nopage{
         width: 100%;
         height: 100vh;
-        display: flex;
         align-items: center;
         justify-content: center;
         font-size: 40px;
-        @extend %relative_box;
+        @extend %d_flex;
         @include sm-down{
         }
     }

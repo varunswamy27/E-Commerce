@@ -7,22 +7,16 @@ const ProductCircle = () => {
       <div className="container">
         <div className={styles.product_wrap}>
           <div className={styles.product_box}>
-            <div className={styles.product_outside}></div>
           </div>
           <div className={styles.product_box}>
-            <div className={styles.product_outside}></div>
           </div>
           <div className={styles.product_box}>
-            <div className={styles.product_outside}></div>
           </div>
           <div className={styles.product_box}>
-            <div className={styles.product_outside}></div>
           </div>
           <div className={styles.product_box}>
-            <div className={styles.product_outside}></div>
           </div>
           <div className={styles.product_box}>
-            <div className={styles.product_outside}></div>
           </div>
         </div>
       </div>
