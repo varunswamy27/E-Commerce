@@ -1,3 +1,5 @@
+@import "../helpers/helpers.scss";
+
 .NoPage_section{
     background-color: lightsalmon;
     .main_nopage{
@@ -7,5 +9,8 @@
         align-items: center;
         justify-content: center;
         font-size: 40px;
+        @extend %relative_box;
+        @include sm-down{
+        }
     }
 }
