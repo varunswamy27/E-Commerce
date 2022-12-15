@@ -1,34 +1,80 @@
-// .demo{
-//     color: red
-// }
-// .blog_flex{
-//     border: 2px solid black;
-//     height: 500px;
-//     display: flex;
-// }
+
 .blog_section {
     background-color: white;
+    font-family: "Spectral", serif;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: gray;
 
     .blog_flex {
-        border: 2px solid black;
-        // height: 500px;
-        width: 45%;
         display: flex;
         justify-content: space-around;
+        padding: 10px;
+
 
         .grids {
             // background-color: yellow;
-            margin: 10px;
+            margin: 20px;
             display: flex;
             justify-content: center;
-            .grid_sec_two{
-                padding: 10px;
-                background-color:whitesmoke;
+           
+            
 
+           
+            .bg_img_one {
+                background-image: url("../../img/blog/image_1.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-width:50%;
+            }
+            .bg_img_two{
+                background-image: url("../../img/blog/image_2.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-width:50%;
+            }
+            .bg_img_three{
+                background-image: url("../../img/blog/image_3.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-width:50%;
+            }
+            .bg_img_four{
+                background-image: url("../../img/blog/image_4.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-width:50%;
+            }
+            .bg_img_five{
+                background-image: url("../../img/blog/image_5.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-width:50%;
+            }
+            .bg_img_six{
+                background-image: url("../../img/blog/image_6.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-width:50%;
+            }
+
+            .grid_sec_two{
+                padding: 20px;
+                background-color:whitesmoke;
+                text-align: left;
+                min-width:50%;
                 .grid_top_calender {
                     font-size: 16px;
                     color: grey;
-                    margin: 20px 0px;
+                    margin: 10px 0px;
                 }
                 .grid_heading{
                     font-size: 22px;
@@ -42,19 +88,22 @@
                     margin-top: 1rem;
                     color: grey;
                     word-spacing: 5px;
-                    font-family: serif;
+                 
                 }
-                .grid_sec_two button{
+                .blog_grid_button{
                     border: none;
-                    background-color: red;
+                    background:none;
+                    color: #b7472c;
+                    font-style: italic;
+                    font-weight: 700;
+                    // font-family: cursive;
+                    font-size: 20px;
                 }
+               
             }
             
 
         }
 
     }
-
-
-
 }
