@@ -4,24 +4,30 @@
     display: flex;
     justify-content: space-around;
     .product_box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 150px;
-      height: 150px;
-      padding: 10px;
-      border-radius: 120px;
-      border: 1px solid var(--color_primary);
-      cursor: pointer;
-      transition: all 0.2s linear;
-      &:hover{
-        padding: 0%;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 1px solid gray;
+      position: relative;
+      &::after {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        content: "";
+        border: 1px solid #b7472a;
+        z-index: -1;
+        border-radius: 50%;
+        transition: all 0.6s ease;
       }
-      .product_outside {
-        width: 100%;
-        height: 100%;
-        border: 1px solid gray;
-        border-radius: 100px;
+      &:hover::after {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border-color: lightblue;
+        background: lightblue;
       }
     }
   }
