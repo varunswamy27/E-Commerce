@@ -1,11 +1,15 @@
+@import "../helpers/helpers.scss";
+
 .banner_section {
   background-color: var(--color_primary);
   .banner_wrap {
-    display: flex;
+    @extend %d_flex;
+    @include sm-down{
+      flex-direction: column;
+    }
     .banner_box {
       flex: 1;
-      display: flex;
-      align-items: center;
+      @extend %f_r_a_center;
       color: white;
       padding: 40px 20px;
       &:nth-child(2) {
@@ -14,21 +18,26 @@
       &:last-child {
         background-color: #a23f25;
       }
+      @include md-down{
+        flex-direction: column;
+        padding: 20px 15px;
+      }
+      @include sm-down{
+        width: 100%;
+      }
       .icon {
+        @include md-down{
+          margin-bottom: 10px;
+        }
       }
       .info {
         padding-left: 20px;
         .title {
-          font-size: 18px;
-          font-family: Spectral_Bold;
+          font-family: Spectral_Medium;
           margin-bottom: 10px;
-          line-height: 1.6;
         }
         .desp {
-          font-size: 16px;
           font-family: Spectral_Light;
-          line-height: 1.8;
-          font-weight: 300;
           opacity: 0.8;
         }
       }
