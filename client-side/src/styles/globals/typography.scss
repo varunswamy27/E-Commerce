@@ -66,19 +66,13 @@
   }
 }
 .text_xxl {
-  font-size: 70px;
+  font-size: 60px;
   line-height: 1.1;
-  @include xxxl-down {
-    font-size: 56px;
-  }
-  @include lg-down {
-    font-size: 44px;
-  }
   @include md-down {
-    font-size: 36px;
+    font-size: 54px;
   }
   @include sm-down {
-    font-size: 28px;
+    font-size: 48px;
   }
 }
 .text_xxxl {
