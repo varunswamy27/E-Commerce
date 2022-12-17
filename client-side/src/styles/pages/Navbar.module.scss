@@ -1,13 +1,45 @@
 nav {
-  background-color: lightgray;
+  background-color: transparent;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  z-index: 10;
+  transition: 0.4s;
   .navbar {
-    padding: 20px 0px;
+    padding: 35px 0px;
+    transition: 0.4s;
+    color: white;
+    opacity: 0.5;
     .link_wrap {
       display: flex;
       justify-content: flex-end;
-      p {
+      .link_name {
         margin: 0% 15px;
+        font-family: Spectral_Light;
       }
+    }
+  }
+}
+
+// SCROLL EFFECT.........................
+
+.scroll {
+  background-color: white;
+  // box-shadow: 0px 0px 5px 2px lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.shadow {
+  padding: 20px 0px;
+  color: black;
+  transition: 0.4s;
+  .link_wrap {
+    display: flex;
+    justify-content: flex-end;
+    .link_name {
+      margin: 0% 15px;
+      font-family: Spectral_Light;
     }
   }
 }
