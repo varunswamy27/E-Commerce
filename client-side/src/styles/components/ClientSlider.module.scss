@@ -1,0 +1,29 @@
+@import "../helpers/helpers.scss";
+
+.client_slider {
+  background-image: url("../../img/home/slick_banner.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100vh;
+  background-attachment: fixed;
+  @include md-down{
+    background-size: cover;
+    height: 70vh;
+  }
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    .head_wrap {
+      color: white;
+      text-align: center;
+      .small_title {
+        font-family: Spectral_Italic;
+        opacity: 0.8;
+      }
+      .title {
+        font-family: Spectral_Bold;
+      }
+    }
+  }
+}

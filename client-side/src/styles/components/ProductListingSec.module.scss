@@ -29,11 +29,13 @@
         width: 100%;
       }
       .product_img {
+        overflow: hidden;
         img {
           border-radius: 3px;
           width: 100%;
           height: 350px;
           object-fit: cover;
+          transition: all 0.2s linear;
         }
       }
       .product_info {
@@ -67,10 +69,14 @@
         box-shadow: 0px 0px 10px -5px black;
         cursor: pointer;
       }
+      &:hover img {
+        transform: scale(1.1);
+      }
     }
   }
   .btn_wrap {
     text-align: center;
+    margin-top: 30px;
     button{
         width: 30%;
         padding: 5px 0;

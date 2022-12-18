@@ -5,6 +5,7 @@ import ProductCircle from "../components/ProductCircle";
 import CommanBanner from "../components/CommanBanner";
 import styles from "../styles/pages/Home.module.scss";
 import ProductListingSec from "../components/ProductListingSec";
+import ClientSlider from "../components/ClientSlider";
 
 const Home = () => {
   return (
@@ -13,6 +14,8 @@ const Home = () => {
       <BannerTag />
       <Desire />
       <ProductCircle />
+      <ProductListingSec />
+      <ClientSlider />
       <ProductListingSec />
     </div>
   );
