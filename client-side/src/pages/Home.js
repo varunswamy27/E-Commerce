@@ -7,6 +7,7 @@ import styles from "../styles/pages/Home.module.scss";
 import ProductListingSec from "../components/ProductListingSec";
 import ClientSlider from "../components/ClientSlider";
 
+
 const Home = () => {
   return (
     <div className={styles.home_page}>

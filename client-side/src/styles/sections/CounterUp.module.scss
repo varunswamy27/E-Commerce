@@ -1,0 +1,30 @@
+@import "../helpers/helpers.scss";
+
+.counter_up {
+  background-color: #f5f4f0;
+  .counter_wrap {
+    @extend %d_flex;
+    @include md-down {
+      flex-wrap: wrap;
+    }
+    .counter_box {
+      width: 25%;
+      text-align: center;
+      padding: 30px 20px;
+      @include md-down {
+        width: 50%;
+      }
+      @include sm-down {
+        width: 100%;
+      }
+      .count {
+        font-family: Spectral_Italic;
+        color: var(--color_primary);
+      }
+      .type {
+        font-family: Spectral_Medium;
+        opacity: 0.8;
+      }
+    }
+  }
+}
