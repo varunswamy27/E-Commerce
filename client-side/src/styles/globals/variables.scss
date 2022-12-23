@@ -3,21 +3,16 @@ $browser-prefixes: false !default;
 
 :root {
   //fonts
-  --font_primary: "Paytone One", sans-serif;
+  --font_primary: "Spectral", serif;
   --font_secondary: "Work Sans", sans-serif;
   --font_accent: "panther hunter";
 
   //colors
   --color_primary: #B7472A;
-  --color_secondary: #fff5b0;
-  --color_brown: #6b3d2b;
-  --color_yellow: #fcf761;
-  --color_purple: #bda3ef;
-  --color_blue: #bcebf8;
-  --color_blue1: #77d9f4;
-  --color_pink: #fabebb;
-  --color_orange: #fca081;
+  --color_yellow: #FE9801;
+  --color_blue: #01D28E;
   --color_white: #fff;
+  --color_matte_black: #1A1A1A;
   --color_black: #000000;
 
   //extras

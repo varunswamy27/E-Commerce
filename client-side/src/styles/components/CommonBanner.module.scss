@@ -1,0 +1,42 @@
+@import "../helpers/helpers.scss";
+
+.comman_banner {
+  background-image: url("../../img/home/comman_banner.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  transition: all 0.5s linear;
+  position: relative;
+  @include sm-down{
+    background-size: 100% 100%;
+  }
+  .overlay{
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0.3;
+  }
+  .banner_box{
+      width: 100%;
+      height: 70vh;
+      color: white;
+      @extend %f_r_aj_center;
+      flex-direction: column;
+      text-align: center;
+      @include lg-down{
+        height: 40vh;
+      }
+      @include md-down{
+        height: 35vh;
+      }
+      @include sm-down{
+        height: 50vh;
+      }
+      .title{
+        font-family: Spectral_Medium;
+      }
+  }
+}

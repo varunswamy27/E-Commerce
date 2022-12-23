@@ -1,0 +1,97 @@
+@import "../helpers/helpers.scss";
+
+.product_listing {
+  .product_head {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    .redtext {
+      font-family: Spectral_Italic;
+      color: var(--color_primary);
+    }
+    .title {
+      font-family: Spectral_Bold;
+    }
+  }
+  .product_wrap {
+    @extend %d_flex;
+    justify-content: space-between;
+    @extend %flex_wrap;
+    .product_box {
+      width: 23%;
+      margin-bottom: 40px;
+      border-radius: 3px;
+      transition: all 0.2s linear;
+      @include md-down {
+        width: 46%;
+      }
+      @include sm-down {
+        width: 100%;
+      }
+      .product_img {
+        overflow: hidden;
+        img {
+          border-radius: 3px;
+          width: 100%;
+          height: 350px;
+          object-fit: cover;
+          transition: all 0.2s linear;
+        }
+      }
+      .product_info {
+        position: relative;
+        @extend %f_r_aj_center;
+        @extend %f_d_column;
+        padding: 25px 0;
+        .tag {
+          position: absolute;
+          font-size: 12px;
+          top: 0;
+          left: 5px;
+          background-color: var(--color_primary);
+          padding: 2px 8px;
+          color: white;
+        }
+        .brand {
+          font-family: Spectral_Italic;
+          color: var(--color_primary);
+        }
+        .title {
+          font-family: Spectral_Light;
+        }
+        .price {
+          font-family: Spectral_Italic;
+          color: black;
+          opacity: 0.6;
+        }
+      }
+      &:hover {
+        box-shadow: 0px 0px 10px -5px black;
+        cursor: pointer;
+      }
+      &:hover img {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .btn_wrap {
+    text-align: center;
+    margin-top: 30px;
+    button{
+        width: 30%;
+        padding: 5px 0;
+        color: white;
+        background-color: var(--color_primary);
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+        font-family: Spectral_Medium;
+        @include md-down{
+            width: 50%;
+        }
+        @include sm-down{
+            width: 100%;
+        }
+    }
+  }
+}

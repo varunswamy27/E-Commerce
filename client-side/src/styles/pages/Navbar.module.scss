@@ -1,12 +1,71 @@
 nav {
-  background-color: lightgray;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  z-index: 10;
+  transition: 0.6s ease;
   .navbar {
-    padding: 20px 0px;
+    padding: 30px 0px;
+    transition: 0.6s ease;
     .link_wrap {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
+      .logo_box {
+        font-size: 24px;
+        font-family: Spectral_Semibold;
+        p {
+          color: white;
+          span {
+            opacity: 0.5;
+          }
+        }
+      }
+      .links {
+        display: flex;
+        color: white;
+        opacity: 0.6;
+        .link_name {
+          margin: 0% 15px;
+          font-family: Spectral_Light;
+        }
+      }
+    }
+  }
+}
+
+// SCROLL EFFECT.........................
+
+.scroll {
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+.shadow {
+  padding: 15px 0px;
+  transition: 0.6s ease;
+  .link_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo_box {
+      font-size: 24px;
+      font-family: Spectral_Semibold;
       p {
+        color: black;
+        span {
+          color: var(--color_primary);
+        }
+      }
+    }
+    .links {
+      display: flex;
+      color: black;
+      opacity: 0.9;
+      .link_name {
         margin: 0% 15px;
+        font-family: Spectral_Light;
       }
     }
   }

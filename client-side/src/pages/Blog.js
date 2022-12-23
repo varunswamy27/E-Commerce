@@ -7,7 +7,6 @@ import { BiRightArrowAlt } from "react-icons/bi";
 const Blog = () => {
     return (
 
-
         <section className={styles.blog_section}>
 
             <div className={`${styles.container_sec} container`} >

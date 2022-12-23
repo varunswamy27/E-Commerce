@@ -1,43 +1,64 @@
-.desire_section{
-    // background-color: wheat;
-    .desire_wrap{
-        display: flex;
-        align-items: center;
-        .desire_img{
-            width: 50%;
-        }
-        .desire_info{
-            width: 50%;
-            padding: 0 40px;
-            .year{
-                color: var(--color_primary);
-                font-family: Spectral_Italic;
-                font-size: 22px;
-                margin-bottom: 10px;
-            }
-            .title{
-                font-family: Spectral_Bold;
-                font-size: 45px;
-                color: var(--color_black);
-                margin-bottom: 25px;
-            }
-            .desp{
-                font-family: Spectral_Light;
-                font-size: 20px;
-                color: var(--color_black);
-                opacity: 0.8;
-                margin-bottom: 20px;
-                line-height: 1.6;
-            }
-            .exp{
-                font-family: Spectral_Light;
-                font-size: 35px;
-                color: var(--color_black);
-            }
-            .red_text{
-                color: var(--color_primary);
-                font-family: Spectral_Italic;
-            }
-        }
+@import "../helpers/helpers.scss";
+
+.desire_section {
+  // background-color: wheat;
+  .desire_wrap {
+    @extend %f_r_a_center;
+    @include md-down {
+      flex-direction: column;
+      align-items: flex-start;
     }
+    .desire_img {
+      width: 50%;
+      @include md-down {
+        width: 100%;
+      }
+      @include sm-down {
+        width: 100%;
+      }
+    }
+    .desire_info {
+      width: 50%;
+      padding: 0 40px;
+      @include md-down {
+        width: 100%;
+        padding: 20px 0;
+      }
+      @include sm-down {
+        width: 100%;
+      }
+      .year {
+        color: var(--color_primary);
+        font-family: Spectral_Italic;
+      }
+      .title {
+        font-family: Spectral_Bold;
+        color: var(--color_black);
+        margin-bottom: 20px;
+        @include sm-down{
+            line-height: 1.3;
+        }
+      }
+      .desp {
+        font-family: Spectral_Light;
+        color: var(--color_black);
+        opacity: 0.8;
+        margin-bottom: 15px;
+      }
+      .exp {
+        font-family: Spectral_Light;
+        color: var(--color_black);
+        @include sm-down{
+            line-height: 1.3;
+        }
+      }
+      .red_text {
+        color: var(--color_primary);
+        font-family: Spectral_Italic;
+        @include sm-down{
+            line-height: 1.3;
+        }
+      }
+    }
+  }
 }

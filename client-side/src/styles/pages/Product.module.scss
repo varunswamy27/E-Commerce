@@ -1,0 +1,98 @@
+@import "../helpers/helpers.scss";
+
+.product_page {
+  .product_main {
+    .product_box_main {
+      @extend %d_flex;
+      width: 100%;
+      .category_wrap {
+        width: 30%;
+        .category_fixed {
+          position: sticky;
+          width: 100%;
+          height: 400px;
+          top: 66px;
+          left: 0%;
+          .cat_hed{
+            font-family: Spectral_Medium;
+            margin-bottom: 15px;
+            padding-top: 10px;
+          }
+          .cat_title{
+            width: 90%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid gray;
+            outline: none;
+            font-family: Spectral_Light;
+          }
+        }
+      }
+      .product_list {
+        width: 70%;
+        .product_wrap {
+            @extend %d_flex;
+            @extend %flex_wrap;
+            justify-content: space-between;
+            .product_box {
+              width: 31%;
+              margin-bottom: 40px;
+              border-radius: 3px;
+              flex-direction: column;
+              transition: all 0.2s linear;
+              @include md-down {
+                width: 48%;
+              }
+              @include sm-down {
+                width: 100%;
+              }
+              .product_img {
+                overflow: hidden;
+                img {
+                  border-radius: 3px;
+                  width: 100%;
+                  height: 350px;
+                  object-fit: cover;
+                  transition: all 0.2s linear;
+                }
+              }
+              .product_info {
+                position: relative;
+                @extend %f_r_aj_center;
+                @extend %f_d_column;
+                padding: 25px 0;
+                .tag {
+                  position: absolute;
+                  font-size: 12px;
+                  top: 0;
+                  left: 5px;
+                  background-color: var(--color_primary);
+                  padding: 2px 8px;
+                  color: white;
+                }
+                .brand {
+                  font-family: Spectral_Italic;
+                  color: var(--color_primary);
+                }
+                .title {
+                  font-family: Spectral_Light;
+                }
+                .price {
+                  font-family: Spectral_Italic;
+                  color: black;
+                  opacity: 0.6;
+                }
+              }
+              &:hover {
+                box-shadow: 0px 0px 10px -5px black;
+                cursor: pointer;
+              }
+              &:hover img {
+                transform: scale(1.1);
+              }
+            }
+          }
+      }
+    }
+  }
+}
