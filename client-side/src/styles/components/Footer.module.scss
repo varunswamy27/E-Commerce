@@ -1,66 +1,100 @@
 @import "../helpers/helpers.scss";
 
-.footer_main{
-    background-color: var(--color_matte_black);
-    .footer_wrap{
-        width: 100%;
-        border: 1px solid black;
-        @extend %d_flex;
-        @include md-down{
-            flex-wrap: wrap;
-        }
-        .foot_box{
-            width: 20%;
-            border: 1px solid black;
-            @include md-down{
-                &:first-child, &:last-child{
-                    width: 100%;
-                }
-                width: 33.33%;
-            }
-            @include sm-down{
-                width: 100%;
-            }
-            .foot_logo{
-                font-family: Spectral_Medium;
-                color: white;
-                margin-bottom: 20px;
-                span{
-                    color: white;
-                    opacity: 0.5;
-                }
-            }
-            .foot_desp{
-                color: white;
-                font-family: Spectral_Medium;
-                margin-bottom: 15px;
-            }
-            .icon_wrap{
-                @extend %d_flex;
-                justify-content: space-between;
-                .social_icon{
-                    width: 60px;
-                    height: 60px;
-                    background-color: var(--color_primary);
-                    border-radius: 50%;
-                }
-            }
-            .foot_title{
-                font-family: Spectral_Medium;
-                color: white;
-                margin-bottom: 20px;
-            }
-            .foot_links{
-                color: white;
-                font-family: Spectral_Light;
-                display: flex;
-                align-items: center;
-                opacity: 0.6;
-                margin-bottom: 12px;
-                .icon{
-                    margin-right: 8px;
-                }
-                }
-        }
+.footer_main {
+  background-color: var(--color_matte_black);
+  .footer_wrap {
+    width: 100%;
+    // border: 1px solid black;
+    @extend %d_flex;
+    @include md-down {
+      flex-wrap: wrap;
     }
+    .foot_box {
+      width: 20%;
+      //   border: 1px solid black;
+      padding-left: 20px;
+      &:first-child,
+      &:last-child {
+        padding: 0%;
+      }
+      @include md-down {
+        &:first-child,
+        &:last-child {
+          width: 100%;
+          padding-top: 20px;
+        }
+        width: 33.33%;
+        padding: 0%;
+        padding-top: 20px;
+      }
+      @include sm-down {
+        width: 100%;
+      }
+      .foot_logo {
+        font-family: Spectral_Medium;
+        color: white;
+        margin-bottom: 20px;
+        transition: 0.2s linear;
+        &:hover {
+          cursor: pointer;
+          color: var(--color_primary);
+        }
+        span {
+          color: white;
+          opacity: 0.5;
+        }
+      }
+      .foot_desp {
+        color: white;
+        font-family: Spectral_Light;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+      .icon_wrap {
+        @extend %d_flex;
+        @include md-down {
+          justify-content: flex-start;
+        }
+        .social_icon {
+          width: 55px;
+          height: 55px;
+          margin-right: 12px;
+          background-color: var(--color_primary);
+          border-radius: 50%;
+          @extend %f_r_aj_center;
+          color: white;
+          font-size: 18px;
+          transition: all 0.2s linear;
+          &:hover{
+            cursor: pointer;
+            transform: translateY(-10px);
+          }
+          @include md-down {
+            margin-right: 20px;
+          }
+        }
+      }
+      .foot_title {
+        font-family: Spectral_Light;
+        color: white;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+      .foot_links {
+        color: white;
+        font-family: Spectral_Light;
+        display: flex;
+        align-items: center;
+        opacity: 0.6;
+        margin-bottom: 12px;
+        .icon {
+          margin-right: 8px;
+        }
+        .icon2 {
+          margin-right: 8px;
+          width: 30px;
+        }
+      }
+    }
+  }
 }
