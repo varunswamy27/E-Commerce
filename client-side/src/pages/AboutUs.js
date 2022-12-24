@@ -6,6 +6,7 @@ import Desire from "../components/Desire";
 import ProductCircle from "../components/ProductCircle";
 import ClientSlider from "../components/ClientSlider";
 import CounterUp from "../sections/CounterUp";
+import Footer from "../components/Footer";
 
 const AboutUs = () => {
   return (
@@ -18,6 +19,7 @@ const AboutUs = () => {
       </div>
       <ClientSlider />
       <CounterUp />
+      <Footer />
     </div>
   );
 };

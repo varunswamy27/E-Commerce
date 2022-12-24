@@ -11,8 +11,8 @@ import { AiOutlineInstagram } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <footer className={`${styles.footer_main} section_spacing`}>
-      <div className="container">
+    <footer className={`${styles.footer_main}`}>
+      <div className="container  section_spacing">
         <div className={styles.footer_wrap}>
           <div className={styles.foot_box}>
             <p className={`${styles.foot_logo} text_sm`}>
@@ -106,6 +106,9 @@ const Footer = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className={`${styles.copywrite} text_xxs`}>
+      <p>Copyright ©2022 All rights reserved | This template is made by Varun Swamy</p>
       </div>
     </footer>
   );

@@ -65,7 +65,7 @@
           color: white;
           font-size: 18px;
           transition: all 0.2s linear;
-          &:hover{
+          &:hover {
             cursor: pointer;
             transform: translateY(-10px);
           }
@@ -95,6 +95,17 @@
           width: 30px;
         }
       }
+    }
+  }
+  .copywrite {
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 20px 10px;
+    p {
+      opacity: 0.5;
+      font-family: Spectral_Light;
     }
   }
 }
