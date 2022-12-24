@@ -1,0 +1,66 @@
+@import "../helpers/helpers.scss";
+
+.footer_main{
+    background-color: var(--color_matte_black);
+    .footer_wrap{
+        width: 100%;
+        border: 1px solid black;
+        @extend %d_flex;
+        @include md-down{
+            flex-wrap: wrap;
+        }
+        .foot_box{
+            width: 20%;
+            border: 1px solid black;
+            @include md-down{
+                &:first-child, &:last-child{
+                    width: 100%;
+                }
+                width: 33.33%;
+            }
+            @include sm-down{
+                width: 100%;
+            }
+            .foot_logo{
+                font-family: Spectral_Medium;
+                color: white;
+                margin-bottom: 20px;
+                span{
+                    color: white;
+                    opacity: 0.5;
+                }
+            }
+            .foot_desp{
+                color: white;
+                font-family: Spectral_Medium;
+                margin-bottom: 15px;
+            }
+            .icon_wrap{
+                @extend %d_flex;
+                justify-content: space-between;
+                .social_icon{
+                    width: 60px;
+                    height: 60px;
+                    background-color: var(--color_primary);
+                    border-radius: 50%;
+                }
+            }
+            .foot_title{
+                font-family: Spectral_Medium;
+                color: white;
+                margin-bottom: 20px;
+            }
+            .foot_links{
+                color: white;
+                font-family: Spectral_Light;
+                display: flex;
+                align-items: center;
+                opacity: 0.6;
+                margin-bottom: 12px;
+                .icon{
+                    margin-right: 8px;
+                }
+                }
+        }
+    }
+}

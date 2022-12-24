@@ -6,6 +6,7 @@ import CommanBanner from "../components/CommanBanner";
 import styles from "../styles/pages/Home.module.scss";
 import ProductListingSec from "../components/ProductListingSec";
 import ClientSlider from "../components/ClientSlider";
+import Footer from "../components/Footer";
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
       <ProductListingSec />
       <ClientSlider />
       <ProductListingSec />
+      <Footer />
     </div>
   );
 };
