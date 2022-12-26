@@ -9,6 +9,7 @@ import prod5 from "../img/product/prod-5.jpg";
 import prod6 from "../img/product/prod-6.jpg";
 import prod7 from "../img/product/prod-7.jpg";
 import prod8 from "../img/product/prod-8.jpg";
+import Footer from "../components/Footer";
 
 const Product = () => {
   return (
@@ -137,6 +138,7 @@ const Product = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

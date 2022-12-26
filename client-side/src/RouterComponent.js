@@ -8,6 +8,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProductSingle from './pages/ProductSingle';
 function RouterComponent() {
     return (
         <div>
@@ -17,6 +18,7 @@ function RouterComponent() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about-us" element={<AboutUs />} />
                     <Route path="/product" element={<Product />} />
+                    <Route path="/product-single" element={<ProductSingle />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="*" element={<NoPage />} />

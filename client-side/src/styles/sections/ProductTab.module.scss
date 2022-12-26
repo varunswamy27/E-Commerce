@@ -1,0 +1,51 @@
+@import "../helpers/helpers.scss";
+
+.product_tab {
+  .tab_wrap {
+    @extend %d_flex;
+    margin-bottom: 20px;
+    .product_btn {
+      @extend %f_r_aj_center;
+      background-color: #f5f4f0;
+      padding: 15px 30px;
+      color: black;
+      font-family: Spectral_Semibold;
+      margin-right: 10px;
+      border: 2px solid #f5f4f0;
+      transition: all 0.2s linear;
+      &:hover {
+        background-color: transparent;
+        border: 2px solid var(--color_primary);
+        color: var(--color_primary);
+      }
+    }
+    .active {
+      @extend %f_r_aj_center;
+      background-color: var(--color_primary);
+      padding: 15px 30px;
+      color: white;
+      font-family: Spectral_Semibold;
+      margin-right: 10px;
+      border: 2px solid var(--color_primary);
+      transition: all 0.2s linear;
+    }
+  }
+  .product_info {
+    display: block;
+    .product_info_wrap {
+      background-color: #f5f4f0;
+      padding: 20px 20px;
+      .title {
+        font-family: Spectral_Medium;
+        margin-bottom: 20px;
+      }
+      .desp {
+        font-family: Spectral_Light;
+        opacity: 0.8;
+      }
+    }
+  }
+  .product_none{
+    display: none;
+  }
+}
