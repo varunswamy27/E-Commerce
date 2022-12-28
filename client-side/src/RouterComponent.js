@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductSingle from './pages/ProductSingle';
+import LoginSignup from './pages/LoginSignup';
 function RouterComponent() {
     return (
         <div>
@@ -21,6 +22,7 @@ function RouterComponent() {
                     <Route path="/product-single" element={<ProductSingle />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/auth" element={<LoginSignup />} />
                     <Route path="*" element={<NoPage />} />
 
                 </Routes>
