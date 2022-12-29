@@ -11,6 +11,8 @@ const LoginSignup = () => {
         <div className={styles.login_form}>
           <div className={styles.login_box}>
             {isSignUp ? <p>Login</p> : <p>Sign Up</p>}
+            <input type="text" />
+            <input type="text" />
           </div>
         </div>
       </div>
