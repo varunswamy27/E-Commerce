@@ -35,6 +35,9 @@ a {
   margin: 0 auto;
   width: var(--container_width);
 }
+.active{
+  transform: translateX(0);
+}
 
 .row {
   margin: 0 -15px;

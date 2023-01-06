@@ -1,3 +1,5 @@
+@import "../helpers/helpers.scss";
+
 nav {
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
@@ -6,31 +8,104 @@ nav {
   width: 100%;
   z-index: 10;
   transition: 0.6s ease;
+
   .navbar {
     padding: 30px 0px;
+
+    @include md-down {
+      padding: 30px 10px;
+    }
+
     transition: 0.6s ease;
+
     .link_wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .logo_box {
         font-size: 24px;
         font-family: Spectral_Semibold;
+
         p {
           color: white;
+
           span {
             opacity: 0.5;
           }
         }
       }
+
       .links {
         display: flex;
         color: white;
         opacity: 0.6;
+
         .link_name {
           margin: 0% 15px;
           font-family: Spectral_Light;
         }
+
+        .hamburger {
+          display: none;
+        }
+
+        @include md-down {
+          .hamburger {
+            display: block;
+            padding: 2px 8px;
+            background-color: transparent;
+            border: 1px solid white;
+            color: aliceblue;
+          }
+
+          .link_name {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .side_bar {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 70%;
+    transform: translateX(-100%);
+    background-color: white;
+    height: 100vh;
+    z-index: 10;
+    transition: all 0.2s linear;
+
+    .side_nav {
+      padding-left: 30px;
+      padding-top: 50px;
+
+      .link_name {
+        margin-bottom: 20px;
+        font-family: Spectral_Semibold;
+      }
+    }
+  }
+
+  .active_hamburger {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 70%;
+    background-color: white;
+    height: 100vh;
+    z-index: 10;
+    transition: all 0.2s linear;
+
+    .side_nav {
+      padding-left: 30px;
+      padding-top: 50px;
+
+      .link_name {
+        margin-bottom: 20px;
+        font-family: Spectral_Semibold;
       }
     }
   }
@@ -42,30 +117,59 @@ nav {
   background-color: white;
   border-bottom: 1px solid lightgray;
 }
+
 .shadow {
-  padding: 15px 0px;
   transition: 0.6s ease;
+  padding: 15px 0px;
+
+  @include md-down {
+    padding: 15px 10px;
+  }
+
   .link_wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .logo_box {
       font-size: 24px;
       font-family: Spectral_Semibold;
+
       p {
         color: black;
+
         span {
           color: var(--color_primary);
         }
       }
     }
+
     .links {
       display: flex;
       color: black;
       opacity: 0.9;
+
       .link_name {
         margin: 0% 15px;
         font-family: Spectral_Light;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      @include md-down {
+        .hamburger {
+          display: block;
+          padding: 2px 8px;
+          background-color: transparent;
+          border: 1px solid gray;
+          color: black;
+        }
+
+        .link_name {
+          display: none;
+        }
       }
     }
   }

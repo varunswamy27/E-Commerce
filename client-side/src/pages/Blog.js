@@ -3,13 +3,16 @@ import styles from "../styles/pages/Blog.module.scss";
 import img1 from "../img/blog/image_1.jpg"
 import { BiCalendar } from "react-icons/bi";
 import { BiRightArrowAlt } from "react-icons/bi";
+import CommanBanner from '../components/CommanBanner';
+import Footer from '../components/Footer';
 
 const Blog = () => {
     return (
 
         <section className={styles.blog_section}>
+            <CommanBanner title="Blog"/>
 
-            <div className={`${styles.container_sec} container`} >
+            <div className={`${styles.container_sec} container section_spacing`} >
                 <div className={styles.blog_flex}>
                     <div className={styles.grids}>
                         <div  className={styles.bg_img_one}>
@@ -95,6 +98,7 @@ const Blog = () => {
                     </div>
                 </div>  
             </div>
+            <Footer/>
         </section>
     );
 };
