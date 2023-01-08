@@ -14,7 +14,7 @@ function Contact() {
         <div className="container">
           <div className={styles.contact_wrap}>
             <div className={styles.map_box}>
-              <iframe title="Beer Cafe" width="100%" height="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.513725598569!2d72.83355721421431!3d19.172751653907948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b6589c407ef1%3A0xe93d015f26a2d490!2sThe%20Beer%20Cafe!5e0!3m2!1sen!2sin!4v1673189134159!5m2!1sen!2sin"></iframe>           
+              <iframe frameBorder="none" title="Beer Cafe" width="100%" height="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.513725598569!2d72.83355721421431!3d19.172751653907948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b6589c407ef1%3A0xe93d015f26a2d490!2sThe%20Beer%20Cafe!5e0!3m2!1sen!2sin!4v1673189134159!5m2!1sen!2sin"></iframe>           
               </div>
             <div className={styles.contact_form}>
             <p className="text_reg">Contact Us</p>
