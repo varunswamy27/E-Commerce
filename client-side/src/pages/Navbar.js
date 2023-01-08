@@ -40,7 +40,9 @@ const Navbar = () => {
       >
         <div className={styles.link_wrap}>
           <div className={styles.logo_box}>
+          <Link to="/">
             <p>LIQUOR <span>STORE</span></p>
+            </Link>
           </div>
           <div className={styles.links}>
             <Link to="/">
