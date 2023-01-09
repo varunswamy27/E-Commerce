@@ -1,11 +1,16 @@
 @import "../helpers/helpers.scss";
 
 .client_slider {
-  background-image: url("../../img/home/slick_banner.jpg");
+  // background-image: url("../../img/home/slick_banner.jpg");
+  background-image: url("../../img/home/slick-banner2.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   // height: 100vh;
   background-attachment: fixed;
+  @include lg-down{
+    background-size: cover;
+    // height: 70vh;
+  }
   @include md-down{
     background-size: cover;
     // height: 70vh;
