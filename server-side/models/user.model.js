@@ -29,16 +29,4 @@ const UserInfo = mongoose.model("UserInfo", userSchema);
 
 export default UserInfo;
 
-/*
-Product Categories-
 
-Mobile Phones
-Smart Watches
-Headphones
-Laptop
-TVs
-Fridges
-Oven
-Camera
-Speakers
-*/
