@@ -2,9 +2,12 @@ import express from "express";
 import { createUser, getUser } from "../controllers/user.controller";
 import { createCategory, deleteCategory, getCategory, updateCategory } from "../controllers/category.controller";
 import { createSubCategory, fetchSubCategory } from "../controllers/subCategory.controller";
+import { createProduct, deleteProduct, filterPriceProduct, getProduct, sortProduct, updateProduct } from "../controllers/product.controller";
 
 
 const router = express.Router();
+
+// User API
 
 router.get("/user", getUser);
 router.post("/user", createUser);
@@ -20,6 +23,15 @@ router.put('/update-category/:id', updateCategory);
 
 router.get('/sub-category', fetchSubCategory);
 router.post('/add-sub-category', createSubCategory);
+
+// Product API
+
+router.get('/product', getProduct);
+router.post('/add-product', createProduct);
+router.put('/update-product/:id', updateProduct);
+router.delete('/delete-product/:id', deleteProduct);
+router.get('/filter-product', filterPriceProduct);
+router.get('/sort-product', sortProduct);
 
 
 export default router;

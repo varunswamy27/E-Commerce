@@ -39,7 +39,7 @@ export const createSubCategory = async (req, res) => {
         subCategoryDescription: subCategoryDescription,
         categoryId: categoryId,
     }
-    const duplicateCategory = await SubCategory.find({
+    const duplicateSubCategory = await SubCategory.find({
         subCategoryName: subCategoryName
     })
         .then(resp => {
