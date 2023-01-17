@@ -3,12 +3,14 @@ import CommanBanner from "../components/CommanBanner";
 import styles from "../styles/pages/ProductSingle.module.scss";
 import productimg from "../img/product/prod-1.jpg";
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { useState } from "react";
 import ProductTab from "../sections/ProductTab";
 import Footer from "../components/Footer";
+import { useSelector, useDispatch } from "react-redux";
+import { incNumber, decNumber } from "../action/counterAction";
 
 const ProductSingle = () => {
-  const [quantity, setQuntity] = useState(1);
+  const myState = useSelector((state) => state.changeTheNumber)
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.product_single_main}>
@@ -48,9 +50,7 @@ const ProductSingle = () => {
               <div className={styles.counter_wrap}>
                 <div
                   className={styles.counter}
-                  onClick={() =>
-                    quantity > 1 ? setQuntity(quantity - 1) : setQuntity(1)
-                  }
+                  onClick={() => dispatch(decNumber())}
                 >
                   <AiOutlineMinus />
                 </div>
@@ -58,12 +58,12 @@ const ProductSingle = () => {
                   type="text"
                   name=""
                   id=""
-                  value={quantity}
+                  value={myState}
                   className={styles.incre}
                 />
                 <div
                   className={styles.counter}
-                  onClick={() => setQuntity(quantity + 1)}
+                  onClick={() => dispatch(incNumber(5))}
                 >
                   <AiOutlinePlus />
                 </div>
