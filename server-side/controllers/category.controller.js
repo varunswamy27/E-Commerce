@@ -1,4 +1,6 @@
 import Category from "../models/category.model";
+import Product from "../models/product.model";
+import SubCategory from "../models/subCategory.model";
 
 
 // Find Category
@@ -72,33 +74,77 @@ export const createCategory = async (req, res) => {
 
 // Delete Category
 export const deleteCategory = async (req, res) => {
-    const removeCategory = await Category.findByIdAndDelete(req.params.id)
-        .then(function (err, data) {
-            if (!req.params.id) {
-                return res.status(400).json({
-                    message: "Enter Category ID",
-                    status: false,
-                })
-            }
-            if (err) {
-                return res.status(422).json({
-                    message: "Cannot Delete Category",
-                    status: false,
-                })
-            }
-            return res.status(200).json({
-                message: "Category Successfully Deleted",
-                status: true,
-                data: removeCategory,
-            })
+    try {
+        const removeCategory = await Category.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            message: "Enter Category Deleted",
+            status: true,
+            data: removeCategory
         })
-        .catch(err => {
-            return res.status(422).json({
-                message: "Some Error",
-                status: false,
-                data: data,
-            })
+    } catch (error) {
+        return res.status(400).json({
+            message: "Cannot Category Deleted",
+            status: false,
+            data: error
         })
+    }
+    try {
+        const removeSubCategory = await SubCategory.deleteMany({ "categoryId": req.params.id })
+        res.status(200).json({
+            message: "Enter SubCategory Deleted",
+            status: true,
+            data: removeSubCategory
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: "Cannot SubCategory Deleted",
+            status: false,
+            data: error
+        })
+    }
+
+
+
+
+    // const removeCategory = await Category.findByIdAndDelete(req.params.id, function (err, data) {
+    //     if (err) {
+    //         return res.status(400).json({
+    //             message: "Cannot Delete Category",
+    //             status: false,
+    //         })
+    //     }
+    //     res.status(200).json({
+    //         message: "Category Successfully Deleted",
+    //         status: true,
+    //         data: data
+    //     })
+    //     SubCategory.deleteMany({ "categoryId": req.params.id }, function (err, data) {
+    //         if (err) {
+    //             return res.status(400).json({
+    //                 message: "Cannot Delete SubCategory",
+    //                 status: false,
+    //             })
+    //         }
+    //         res.status(200).json({
+    //             message: "SubCategory Successfully Deleted",
+    //             status: true,
+    //             data: data
+    //         })
+    //     })
+    //     Product.deleteMany({ "categoryId": req.params.id }, function (err, data) {
+    //         if (err) {
+    //             return res.status(400).json({
+    //                 message: "Cannot Delete Product",
+    //                 status: false,
+    //             })
+    //         }
+    //         res.status(200).json({
+    //             message: "Product Successfully Deleted",
+    //             status: true,
+    //             data: data
+    //         })
+    //     })
+    // })
 }
 
 
@@ -106,7 +152,7 @@ export const deleteCategory = async (req, res) => {
 // Update Category
 export const updateCategory = (req, res) => {
     Category.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data) => {
-        if(!req.body){
+        if (!req.body) {
             return res.status(400).json({
                 message: "Enter Category To Be Updated",
                 status: false,

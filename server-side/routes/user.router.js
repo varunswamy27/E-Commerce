@@ -16,7 +16,7 @@ router.post("/user", createUser);
 
 router.get('/category', getCategory);
 router.post('/add-category', createCategory);
-router.delete('/delete-category/:_id', deleteCategory);
+router.delete('/delete-category/:id', deleteCategory);
 router.put('/update-category/:id', updateCategory);
 
 // SubCategory API
