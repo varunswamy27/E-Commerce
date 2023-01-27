@@ -39,7 +39,7 @@ export const createSubCategory = async (req, res) => {
         subCategoryDescription: subCategoryDescription,
         categoryId: categoryId,
     }
-    const duplicateCategory = await SubCategory.find({
+    const duplicateSubCategory = await SubCategory.find({
         subCategoryName: subCategoryName
     })
         .then(resp => {
@@ -66,4 +66,29 @@ export const createSubCategory = async (req, res) => {
                 data: data,
             })
         })
+}
+
+
+
+// Update Category
+export const updateSubCategory = (req, res) => {
+    SubCategory.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data) => {
+        if (!req.body) {
+            return res.status(400).json({
+                message: "Enter SubCategory To Be Updated",
+                status: false,
+            })
+        }
+        if (err) {
+            return res.status(400).json({
+                message: "Problem Updating",
+                status: false,
+            })
+        }
+        return res.status(200).json({
+            message: "Updated SubCategory",
+            status: true,
+            data: data,
+        })
+    })
 }

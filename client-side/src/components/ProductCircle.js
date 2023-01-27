@@ -6,8 +6,20 @@ import kind3 from "../img/home/kind-3.jpg";
 import kind4 from "../img/home/kind-4.jpg";
 import kind5 from "../img/home/kind-5.jpg";
 import kind6 from "../img/home/kind-6.jpg";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCategoryData } from "../action/categoryAction";
 
 const ProductCircle = () => {
+
+  // const myCategory = useSelector((state) => state.fetchAllCategory)
+  // console.log(myCategory)
+  // const dispatch = useDispatch();
+
+  // useEffect(()=>{
+  //   dispatch(getCategoryData())
+  // },[dispatch])
+
   return (
     <section className={styles.product_circle}>
       <div className="container">

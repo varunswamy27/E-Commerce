@@ -1,4 +1,6 @@
 import Category from "../models/category.model";
+import Product from "../models/product.model";
+import SubCategory from "../models/subCategory.model";
 
 
 // Find Category
@@ -72,41 +74,32 @@ export const createCategory = async (req, res) => {
 
 // Delete Category
 export const deleteCategory = async (req, res) => {
-    const removeCategory = await Category.findByIdAndDelete(req.params.id)
-        .then(function (err, data) {
-            if (!req.params.id) {
-                return res.status(400).json({
-                    message: "Enter Category ID",
-                    status: false,
-                })
-            }
-            if (err) {
-                return res.status(422).json({
-                    message: "Cannot Delete Category",
-                    status: false,
-                })
-            }
-            return res.status(200).json({
-                message: "Category Successfully Deleted",
-                status: true,
-                data: removeCategory,
-            })
+    try {
+        const removeCategory = await Category.findByIdAndDelete(req.params.id);
+        const removeSubCategory = await SubCategory.deleteMany({ "categoryId": req.params.id });
+        const removeProduct = await Product.deleteMany({ "categoryId": req.params.id })
+        res.status(200).json({
+            message: "Category Deleted",
+            status: true,
+            data: { removeCategory, removeSubCategory, removeProduct }
         })
-        .catch(err => {
-            return res.status(422).json({
-                message: "Some Error",
-                status: false,
-                data: data,
-            })
+    } catch (error) {
+        return res.status(400).json({
+            message: "Cannot Delete Category",
+            status: false,
+            data: error
         })
+    }
 }
+
+
 
 
 
 // Update Category
 export const updateCategory = (req, res) => {
     Category.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data) => {
-        if(!req.body){
+        if (!req.body) {
             return res.status(400).json({
                 message: "Enter Category To Be Updated",
                 status: false,
