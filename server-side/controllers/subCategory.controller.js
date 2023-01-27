@@ -67,3 +67,28 @@ export const createSubCategory = async (req, res) => {
             })
         })
 }
+
+
+
+// Update Category
+export const updateSubCategory = (req, res) => {
+    SubCategory.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data) => {
+        if (!req.body) {
+            return res.status(400).json({
+                message: "Enter SubCategory To Be Updated",
+                status: false,
+            })
+        }
+        if (err) {
+            return res.status(400).json({
+                message: "Problem Updating",
+                status: false,
+            })
+        }
+        return res.status(200).json({
+            message: "Updated SubCategory",
+            status: true,
+            data: data,
+        })
+    })
+}

@@ -75,77 +75,24 @@ export const createCategory = async (req, res) => {
 // Delete Category
 export const deleteCategory = async (req, res) => {
     try {
-        const removeCategory = await Category.findByIdAndDelete(req.params.id)
+        const removeCategory = await Category.findByIdAndDelete(req.params.id);
+        const removeSubCategory = await SubCategory.deleteMany({ "categoryId": req.params.id });
+        const removeProduct = await Product.deleteMany({ "categoryId": req.params.id })
         res.status(200).json({
-            message: "Enter Category Deleted",
+            message: "Category Deleted",
             status: true,
-            data: removeCategory
+            data: { removeCategory, removeSubCategory, removeProduct }
         })
     } catch (error) {
         return res.status(400).json({
-            message: "Cannot Category Deleted",
+            message: "Cannot Delete Category",
             status: false,
             data: error
         })
     }
-    try {
-        const removeSubCategory = await SubCategory.deleteMany({ "categoryId": req.params.id })
-        res.status(200).json({
-            message: "Enter SubCategory Deleted",
-            status: true,
-            data: removeSubCategory
-        })
-    } catch (error) {
-        return res.status(400).json({
-            message: "Cannot SubCategory Deleted",
-            status: false,
-            data: error
-        })
-    }
-
-
-
-
-    // const removeCategory = await Category.findByIdAndDelete(req.params.id, function (err, data) {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             message: "Cannot Delete Category",
-    //             status: false,
-    //         })
-    //     }
-    //     res.status(200).json({
-    //         message: "Category Successfully Deleted",
-    //         status: true,
-    //         data: data
-    //     })
-    //     SubCategory.deleteMany({ "categoryId": req.params.id }, function (err, data) {
-    //         if (err) {
-    //             return res.status(400).json({
-    //                 message: "Cannot Delete SubCategory",
-    //                 status: false,
-    //             })
-    //         }
-    //         res.status(200).json({
-    //             message: "SubCategory Successfully Deleted",
-    //             status: true,
-    //             data: data
-    //         })
-    //     })
-    //     Product.deleteMany({ "categoryId": req.params.id }, function (err, data) {
-    //         if (err) {
-    //             return res.status(400).json({
-    //                 message: "Cannot Delete Product",
-    //                 status: false,
-    //             })
-    //         }
-    //         res.status(200).json({
-    //             message: "Product Successfully Deleted",
-    //             status: true,
-    //             data: data
-    //         })
-    //     })
-    // })
 }
+
+
 
 
 
