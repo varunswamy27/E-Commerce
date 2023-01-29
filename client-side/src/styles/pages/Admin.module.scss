@@ -1,0 +1,19 @@
+@import "../helpers/helpers.scss";
+
+.admin_main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    .side_nav {
+        width: 20%;
+        height: 100vh;
+        position: sticky;
+        top: 66px;
+    }
+
+    .admin_content {
+        width: 80%;
+        height: 100%;
+    }
+}

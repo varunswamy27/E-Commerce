@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductSingle from "./pages/ProductSingle";
 import LoginSignup from "./pages/LoginSignup";
 import { useState, useEffect } from "react";
+import Admin from "./pages/Admin";
 
 function RouterComponent() {
   const pathLocation = window.location.pathname;
@@ -32,6 +33,7 @@ function RouterComponent() {
           <Route path="/product/product-single" element={<ProductSingle />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />}/>
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
