@@ -15,5 +15,23 @@
     .admin_content {
         width: 80%;
         height: 100%;
+        background-color: #F5F7FA;
+
+        .container {
+            width: 95%;
+            // border: 1px solid black;
+            height: 300px;
+            margin: 0% auto;
+
+            .hidden {
+                display: none;
+            }
+
+            .admin_tab_content {
+                display: block;
+            }
+
+        }
     }
+
 }
