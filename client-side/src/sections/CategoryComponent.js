@@ -2,16 +2,33 @@ import React from 'react';
 import styles from '../styles/sections/CommanModel.module.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCategoryData } from '../action/categoryAction';
 
 const CategoryComponent = () => {
 
     const [categoryName, setCategoryName] = useState({});
     const [categoryDescription, setCategoryDescription] = useState({});
     const [Message, setMessaage] = useState({ error: "", success: "" });
-    const [empty, setEmpty] = useState(false);
 
+    const category = useSelector((state) => state.fetchAllCategory)
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        axios.get('http://localhost:3000/category')
+            .then(function (response) {
+                // handle success
+                console.log(response.data.data);
+                dispatch(getCategoryData(response.data.data))
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
 
+    }, [])
+
+    console.log(category)
     const addCategory = () => {
         axios.post('http://localhost:3000/add-category', { categoryName, categoryDescription })
             .then(function (response) {

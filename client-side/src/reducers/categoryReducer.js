@@ -1,9 +1,12 @@
 
+const initialState = {
+    categories: [],
+}
 
-export const fetchAllCategory = (state = [], action) => {
+export const fetchAllCategory = (state = initialState, action) => {
     switch (action.type) {
         case "FETCH_CATEGORY":
-            return [action.payload.data, ...state];
+            return { ...state, categories: action.payload };
 
         default:
             return state;
