@@ -1,11 +1,26 @@
-import axios from "axios";
+import * as api from '../api/index';
 
-// const ROOT_URL = "http://localhost:3000/category";
 
-export const getCategoryData = async (categories) => {
+export const getCategoryData = () => async (dispatch) => {
+    try {
+        const { data } = await api.fetchCategory();
+        dispatch({
+            type: 'FETCH_CATEGORY',
+            payload: data
+        });
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
-    return {
-        type: "FETCH_CATEGORY",
-        payload: categories
+export const createCategory = (categories) => async (dispatch) => {
+    try {
+        const { data } = await api.addCategory(categories)
+        dispatch({
+            type: 'CREATE_CATEGORY',
+            payload: data
+        })
+    } catch (error) {
+        console.log(error);
     }
 }
