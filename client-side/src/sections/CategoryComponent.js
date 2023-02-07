@@ -20,7 +20,6 @@ const CategoryComponent = () => {
         dispatch(getCategoryData())
     }, [dispatch])
 
-    console.log(fetchedCategory, "Redux")
 
     // const addCategory = () => {
     //     axios.post('http://localhost:3000/add-category', { categoryName, categoryDescription })
@@ -65,7 +64,9 @@ const CategoryComponent = () => {
                 <p className={styles.error}>{Message.error}</p>
                 <button onClick={addCategory} className={styles.add_btn}>Add Category</button>
             </div>
+
             <p className={`${styles.title} text_md`}>Category List</p>
+
             <div className={styles.add_card}>
                 <input className={styles.search_inp} placeholder='Start typing to search for categories' type="text" name="" id="" />
 
@@ -77,33 +78,19 @@ const CategoryComponent = () => {
                             <th>Price</th>
                             <th>Actions</th>
                         </tr>
-                        <tr>
-                            <td>Demo1</td>
-                            <td>Demo2</td>
-                            <td>Demo3</td>
-                            <td>
-                                <button className={styles.delete_btn}>Delete</button>
-                                <button className={styles.edit_btn}>Edit</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Demo1</td>
-                            <td>Demo2</td>
-                            <td>Demo3</td>
-                            <td>
-                                <button className={styles.delete_btn}>Delete</button>
-                                <button className={styles.edit_btn}>Edit</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Demo1</td>
-                            <td>Demo2</td>
-                            <td>Demo3</td>
-                            <td>
-                                <button className={styles.delete_btn}>Delete</button>
-                                <button className={styles.edit_btn}>Edit</button>
-                            </td>
-                        </tr>
+                        {fetchedCategory.data?.map((item, id) => {
+                            return (
+                                <tr key={id}>
+                                    <td>{item.categoryName}</td>
+                                    <td>{item._id}</td>
+                                    <td>-</td>
+                                    <td>
+                                        <button className={styles.delete_btn}>Delete</button>
+                                        <button className={styles.edit_btn}>Edit</button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

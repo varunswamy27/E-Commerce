@@ -5,7 +5,7 @@ export const fetchAllCategory = (state = [], action) => {
         case "FETCH_CATEGORY":
             return action.payload;
         case "CREATE_CATEGORY":
-            return [...state, action.payload];
+            return [...state, action.payload]
         default:
             return state;
     }

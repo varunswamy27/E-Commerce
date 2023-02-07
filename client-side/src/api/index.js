@@ -6,4 +6,4 @@ const createCategoryUrl = "http://localhost:3000/add-category"
 
 
 export const fetchCategory = () => axios.get(fetchCategoryUrl);
-export const addCategory = (newCategory) => axios.post(createCategoryUrl, newCategory)
+export const addCategory = (categories) => axios.post(createCategoryUrl, categories)

@@ -16,6 +16,7 @@ export const getCategoryData = () => async (dispatch) => {
 export const createCategory = (categories) => async (dispatch) => {
     try {
         const { data } = await api.addCategory(categories)
+        console.log(data);
         dispatch({
             type: 'CREATE_CATEGORY',
             payload: data
