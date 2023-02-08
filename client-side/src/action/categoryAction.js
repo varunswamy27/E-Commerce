@@ -22,6 +22,10 @@ export const createCategory = (categories) => async (dispatch) => {
             payload: data
         })
     } catch (error) {
-        console.log(error);
+        dispatch({
+            type: 'ERROR_CATEGORY',
+            payload: error.response.data.message
+        })
+        console.log(error.response.data.message);
     }
 }
