@@ -10,7 +10,8 @@ const CategoryComponent = () => {
     // const [categoryName, setCategoryName] = useState({});
     // const [categoryDescription, setCategoryDescription] = useState({});
     const [categoryData, setCategoryData] = useState({ categoryName: "", categoryDescription: "" })
-    const [Message, setMessaage] = useState({ error: "", success: "" });
+    // const [message, setMessaage] = useState({ error: "", success: "" });
+
 
     const fetchedCategory = useSelector((state) => state.fetchAllCategory);
     const createdCategory = useSelector((state) => state.createNewCategory)
@@ -40,7 +41,9 @@ const CategoryComponent = () => {
         e.preventDefault();
         dispatch(createCategory(categoryData))
     }
-    
+
+
+
     return (
         <section className={styles.comman_model_main_section}>
             <p className={`${styles.title} text_md`}>Add Category</p>
@@ -63,8 +66,8 @@ const CategoryComponent = () => {
                         null
                     }
                 </div>
-                {/* <p className={styles.success}>{createdCategory}</p> */}
-                {/* <p className={styles.error}>{createdCategory}</p> */}
+                {/* {createdCategory.length !== 0 ? <p className={styles.success}>{createdCategory[0].message}</p> : null} */}
+                {/* {createdCategory.length === 0 ? null : <p className={styles.error}>{createdCategory.response.data.message}</p> || <p className={styles.success}>{createdCategory[0].message}</p>} */}
                 <button onClick={addCategory} className={styles.add_btn}>Add Category</button>
             </div>
 
