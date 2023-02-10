@@ -20,10 +20,14 @@ export const createCategory = (categories) => async (dispatch) => {
             type: 'CREATE_CATEGORY',
             payload: data
         })
+        dispatch({
+            type: 'SUCCESS_CATEGORY',
+            payload: data.message
+        })
     } catch (error) {
         dispatch({
             type: 'ERROR_CATEGORY',
-            payload: error
+            payload: error.response.data.message
         })
     }
 }

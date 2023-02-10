@@ -7,22 +7,18 @@ import { getCategoryData, createCategory } from '../action/categoryAction';
 
 const CategoryComponent = () => {
 
-    // const [categoryName, setCategoryName] = useState({});
-    // const [categoryDescription, setCategoryDescription] = useState({});
     const [categoryData, setCategoryData] = useState({ categoryName: "", categoryDescription: "" })
-    // const [message, setMessaage] = useState({ error: "", success: "" });
 
 
     const fetchedCategory = useSelector((state) => state.fetchAllCategory);
     const createdCategory = useSelector((state) => state.createNewCategory)
-    console.log(createdCategory);
 
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCategoryData())
-    }, [dispatch])
+    }, [createdCategory])
 
 
     // const addCategory = () => {
@@ -66,8 +62,7 @@ const CategoryComponent = () => {
                         null
                     }
                 </div>
-                {/* {createdCategory.length !== 0 ? <p className={styles.success}>{createdCategory[0].message}</p> : null} */}
-                {/* {createdCategory.length === 0 ? null : <p className={styles.error}>{createdCategory.response.data.message}</p> || <p className={styles.success}>{createdCategory[0].message}</p>} */}
+                {createdCategory === "Category Successfully Created" ? <p className={styles.success}>{createdCategory}</p> : <p className={styles.error}>{createdCategory}</p>}
                 <button onClick={addCategory} className={styles.add_btn}>Add Category</button>
             </div>
 
