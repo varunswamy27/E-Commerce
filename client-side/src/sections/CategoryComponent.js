@@ -1,24 +1,28 @@
 import React from 'react';
 import styles from '../styles/sections/CommanModel.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCategoryData, createCategory } from '../action/categoryAction';
+import { getCategoryData, createCategory, removeCategory } from '../action/categoryAction';
 
 const CategoryComponent = () => {
 
     const [categoryData, setCategoryData] = useState({ categoryName: "", categoryDescription: "" })
+    const [currentId, setCurrentId] = useState('63d39f355b4b181ac4a8b53d');
+    console.log(currentId)
 
 
     const fetchedCategory = useSelector((state) => state.fetchAllCategory);
+    const fetchedCategoryInput = useSelector((state) => state.fetchAllCategory);
     const createdCategory = useSelector((state) => state.createNewCategory)
+    const deletedCategory = useSelector((state) => state.removeSelectedCategory);
 
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCategoryData())
-    }, [createdCategory])
+    }, [createdCategory, deletedCategory])
 
 
     // const addCategory = () => {
@@ -86,12 +90,13 @@ const CategoryComponent = () => {
                                     <td>{item._id}</td>
                                     <td>-</td>
                                     <td>
-                                        <button className={styles.delete_btn}>Delete</button>
-                                        <button className={styles.edit_btn}>Edit</button>
+                                        <button onClick={() => dispatch(removeCategory(item._id))} className={styles.delete_btn}>Delete</button>
+                                        <button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button>
                                     </td>
                                 </tr>
                             )
                         })}
+                        {fetchedCategoryInput.data?.find((p) => console.log(p._id === currentId))}
                     </tbody>
                 </table>
             </div>

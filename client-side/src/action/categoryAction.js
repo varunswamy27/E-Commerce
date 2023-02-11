@@ -31,3 +31,31 @@ export const createCategory = (categories) => async (dispatch) => {
         })
     }
 }
+
+export const removeCategory = (id) => async (dispatch) => {
+    try {
+        await api.deleteCategory(id);
+        dispatch({
+            type:'DELETE_CATEGORY',
+            payload: id,
+        })
+        dispatch({
+            type:'DELETE_CATEGORY_SUCCESS',
+            payload: "Category has been deleted"
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const modifyCategory = (id, updatedCat) => async (dispatch) => {
+    try {
+        const { data } = await api.updateCategory(id, updatedCat);
+        dispatch({
+            type: 'UPDATE_CATEGORY',
+            payload: data
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
