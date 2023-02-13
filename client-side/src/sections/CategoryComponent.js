@@ -1,28 +1,29 @@
 import React from 'react';
 import styles from '../styles/sections/CommanModel.module.scss';
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCategoryData, createCategory, removeCategory } from '../action/categoryAction';
+import { getCategoryData, createCategory, removeCategory, modifyCategory } from '../action/categoryAction';
 
 const CategoryComponent = () => {
 
     const [categoryData, setCategoryData] = useState({ categoryName: "", categoryDescription: "" })
-    const [currentId, setCurrentId] = useState('63d39f355b4b181ac4a8b53d');
-    console.log(currentId)
+    const [currentId, setCurrentId] = useState(null);
 
 
     const fetchedCategory = useSelector((state) => state.fetchAllCategory);
     const fetchedCategoryInput = useSelector((state) => state.fetchAllCategory);
     const createdCategory = useSelector((state) => state.createNewCategory)
     const deletedCategory = useSelector((state) => state.removeSelectedCategory);
+    const updatedCategory = useSelector((state) => state.modifySelectedCategory);
+    const populatedCategory = currentId ? fetchedCategoryInput.data?.find((p) => p._id === currentId) : null
+    console.log(updatedCategory);
 
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCategoryData())
-    }, [createdCategory, deletedCategory])
+    }, [createdCategory, deletedCategory, currentId, dispatch])
 
 
     // const addCategory = () => {
@@ -37,16 +38,31 @@ const CategoryComponent = () => {
     //         })
     // }
 
-    const addCategory = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createCategory(categoryData))
+        if (currentId) {
+            dispatch(modifyCategory(currentId, categoryData));
+        }
+        else {
+            dispatch(createCategory(categoryData))
+        }
     }
+
+
+    useEffect(() => {
+        if (populatedCategory) {
+            setCategoryData({ categoryName: populatedCategory.categoryName, categoryDescription: populatedCategory.categoryDescription })
+        }
+        else {
+            return;
+        }
+    }, [populatedCategory])
 
 
 
     return (
         <section className={styles.comman_model_main_section}>
-            <p className={`${styles.title} text_md`}>Add Category</p>
+            <p id='catBox' className={`${styles.title} text_md`}>{currentId ? "Edit Category" : "Add Category"}</p>
             <div className={styles.add_card}>
                 <div className={styles.input_box}>
                     <label htmlFor="">Category Name:</label>
@@ -66,8 +82,8 @@ const CategoryComponent = () => {
                         null
                     }
                 </div>
-                {createdCategory === "Category Successfully Created" ? <p className={styles.success}>{createdCategory}</p> : <p className={styles.error}>{createdCategory}</p>}
-                <button onClick={addCategory} className={styles.add_btn}>Add Category</button>
+                {createdCategory === "Category Successfully Created" || updatedCategory ? <p className={styles.success}>{createdCategory}{updatedCategory}</p> : <p className={styles.error}>{createdCategory}</p>}
+                <button onClick={handleSubmit} className={styles.add_btn}>{currentId ? "Update Category" : "Add Category"}</button>
             </div>
 
             <p className={`${styles.title} text_md`}>Category List</p>
@@ -91,12 +107,11 @@ const CategoryComponent = () => {
                                     <td>-</td>
                                     <td>
                                         <button onClick={() => dispatch(removeCategory(item._id))} className={styles.delete_btn}>Delete</button>
-                                        <button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button>
+                                        <a href='#catBox'><button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button></a>
                                     </td>
                                 </tr>
                             )
                         })}
-                        {fetchedCategoryInput.data?.find((p) => console.log(p._id === currentId))}
                     </tbody>
                 </table>
             </div>

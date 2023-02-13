@@ -4,6 +4,9 @@ import CommanBanner from '../components/CommanBanner';
 import AdminSideBar from '../sections/AdminSideBar';
 import { useState } from 'react';
 import CategoryComponent from '../sections/CategoryComponent';
+import UserComponent from '../sections/UserComponent';
+import SubCategoryComponent from '../sections/SubCategoryComponent';
+import ProductComponent from '../sections/ProductComponent';
 
 const Admin = () => {
 
@@ -20,16 +23,16 @@ const Admin = () => {
                 <div className={styles.admin_content}>
                     <div className={`${styles.container} section_spacing`}>
                         <div className={tabId === 1 ? styles.admin_tab_content : styles.hidden}>
-                            <CategoryComponent />
+                            <UserComponent />
                         </div>
                         <div className={tabId === 2 ? styles.admin_tab_content : styles.hidden}>
-                            <p>Tab Content 2</p>
+                            <CategoryComponent />
                         </div>
                         <div className={tabId === 3 ? styles.admin_tab_content : styles.hidden}>
-                            <p>Tab Content 3</p>
+                            <SubCategoryComponent />
                         </div>
                         <div className={tabId === 4 ? styles.admin_tab_content : styles.hidden}>
-                            <p>Tab Content 4</p>
+                            <ProductComponent />
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,9 @@ export const removeSelectedCategory = (state = [], action) => {
 export const modifySelectedCategory = (state = [], action) => {
     switch (action.type) {
         case "UPDATE_CATEGORY":
-            return state.map((cat) => cat._id === action.payload._id ? action.payload : cat)
+            return state.map((cat) => cat._id === action.payload._id ? action.payload : cat);
+        case "UPDATE_CATEGORY_SUCCESS":
+            return action.payload;
         default:
             return state;
     }

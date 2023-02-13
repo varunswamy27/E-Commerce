@@ -55,6 +55,10 @@ export const modifyCategory = (id, updatedCat) => async (dispatch) => {
             type: 'UPDATE_CATEGORY',
             payload: data
         })
+        dispatch({
+            type: 'UPDATE_CATEGORY_SUCCESS',
+            payload: "Category has been updated"
+        })
     } catch (error) {
         console.log(error)
     }

@@ -4,7 +4,7 @@ import axios from "axios";
 const fetchCategoryUrl = "http://localhost:3000/category";
 const createCategoryUrl = "http://localhost:3000/add-category"
 const deleteCategoryUrl = "http://localhost:3000/delete-category";
-const updateCategoryUrl = "http://localhost:3000/delete-category"
+const updateCategoryUrl = "http://localhost:3000/update-category"
 
 
 
