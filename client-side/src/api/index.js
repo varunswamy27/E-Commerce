@@ -1,14 +1,38 @@
 import axios from "axios";
 
 // URL 
+// CATEGORY URL
 const fetchCategoryUrl = "http://localhost:3000/category";
 const createCategoryUrl = "http://localhost:3000/add-category"
 const deleteCategoryUrl = "http://localhost:3000/delete-category";
-const updateCategoryUrl = "http://localhost:3000/update-category"
+const updateCategoryUrl = "http://localhost:3000/update-category";
+
+// SUBCATEGORY URL
+const fetchSubCategoryUrl = "http://localhost:3000/sub-category";
+const createSubCategoryUrl = "http://localhost:3000/add-sub-category"
+const deleteSubCategoryUrl = "http://localhost:3000/delete-category";
+const updateSubCategoryUrl = "http://localhost:3000/update-subcategory";
+
+// PRODUCT URL
+const fetchProductUrl = "http://localhost:3000/product";
+const createProductUrl = "http://localhost:3000/add-product"
+const deleteProductUrl = "http://localhost:3000/delete-product";
+const updateProductUrl = "http://localhost:3000/update-product";
 
 
-
+// CATEGORY API
 export const fetchCategory = () => axios.get(fetchCategoryUrl);
 export const addCategory = (categories) => axios.post(createCategoryUrl, categories);
 export const deleteCategory = (id) => axios.delete(`${deleteCategoryUrl}/${id}`);
 export const updateCategory = (id, updatedCat) => axios.patch(`${updateCategoryUrl}/${id}`, updatedCat);
+
+// SUBCATEGORY API
+export const fetchSubCategory = () => axios.get(fetchSubCategoryUrl);
+export const addSubCategory = (subcategories) => axios.post(createSubCategoryUrl, subcategories);
+export const updateSubCategory = (id, updatedSubCat) => axios.patch(`${updateSubCategoryUrl}/${id}`, updatedSubCat);
+
+// PRODUCT API
+export const fetchProduct = () => axios.get(fetchProductUrl);
+export const addProduct = (product) => axios.post(createProductUrl, product);
+
+

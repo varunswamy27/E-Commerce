@@ -34,34 +34,34 @@ export const createProduct = async (req, res) => {
     const { productName, productDescription, productShortDescription, productPrice, productPicture, categoryId, subCategoryId } = req.body;
     if (!productName) {
         return res.status(422).json({
-            message: "Enter SubCategory",
+            message: "Enter Product Name",
             status: false,
         })
     }
     if (!productDescription) {
         return res.status(422).json({
-            message: "Enter SubCategory Description",
+            message: "Enter Product Description",
             status: false,
         })
     }
     if (!productShortDescription) {
         return res.status(422).json({
-            message: "Enter SubCategory Description",
+            message: "Enter Product Short-Description",
             status: false,
         })
     }
     if (!productPrice) {
         return res.status(422).json({
-            message: "Enter SubCategory Description",
+            message: "Enter Product Price",
             status: false,
         })
     }
-    if (!productPicture) {
-        return res.status(422).json({
-            message: "Enter SubCategory Description",
-            status: false,
-        })
-    }
+    // if (!productPicture) {
+    //     return res.status(422).json({
+    //         message: "Enter SubCategory Description",
+    //         status: false,
+    //     })
+    // }
     const productData = {
         productName: productName,
         productDescription: productDescription,

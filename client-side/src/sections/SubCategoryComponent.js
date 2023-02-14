@@ -3,57 +3,56 @@ import styles from '../styles/sections/CommanModel.module.scss';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoryData, createCategory, removeCategory, modifyCategory } from '../action/categoryAction';
-
+import { getSubCategoryData, createSubCategory, modifySubCategory } from '../action/subCategoryAction';
 
 const SubCategoryComponent = () => {
-    const [categoryData, setCategoryData] = useState({ categoryName: "", categoryDescription: "" })
+    const [subCategoryData, setSubCategoryData] = useState({ subCategoryName: "", subCategoryDescription: "", categoryId: "" })
     const [currentId, setCurrentId] = useState(null);
 
 
-    const fetchedCategory = useSelector((state) => state.fetchAllCategory);
-    const fetchedCategoryInput = useSelector((state) => state.fetchAllCategory);
-    const createdCategory = useSelector((state) => state.createNewCategory)
-    const deletedCategory = useSelector((state) => state.removeSelectedCategory);
-    const updatedCategory = useSelector((state) => state.modifySelectedCategory);
-    const populatedCategory = currentId ? fetchedCategoryInput.data?.find((p) => p._id === currentId) : null
-    console.log(updatedCategory);
+    const fetchedSubCategory = useSelector((state) => state.fetchAllSubCategory);
+    const fetchedSubCategoryInput = useSelector((state) => state.fetchAllSubCategory);
+    const createdSubCategory = useSelector((state) => state.createNewSubCategory)
+    const deletedSubCategory = useSelector((state) => state.removeSelectedCategory);
+    const updatedSubCategory = useSelector((state) => state.modifySelectedSubCategory);
+    const populatedSubCategory = currentId ? fetchedSubCategoryInput.data?.find((p) => p._id === currentId) : null
 
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCategoryData())
-    }, [createdCategory, deletedCategory, currentId, dispatch])
+        dispatch(getSubCategoryData())
+    }, [createdSubCategory, deletedSubCategory, currentId, dispatch])
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (currentId) {
-            dispatch(modifyCategory(currentId, categoryData));
+            dispatch(modifySubCategory(currentId, subCategoryData));
         }
         else {
-            dispatch(createCategory(categoryData))
+            dispatch(createSubCategory(subCategoryData))
         }
     }
 
 
     useEffect(() => {
-        if (populatedCategory) {
-            setCategoryData({ categoryName: populatedCategory.categoryName, categoryDescription: populatedCategory.categoryDescription })
+        if (populatedSubCategory) {
+            setSubCategoryData({ subCategoryName: populatedSubCategory.subCategoryName, subCategoryDescription: populatedSubCategory.subCategoryDescription, categoryId: populatedSubCategory.categoryId._id })
         }
         else {
             return;
         }
-    }, [populatedCategory])
+    }, [populatedSubCategory])
 
-  return (
-<section className={styles.comman_model_main_section}>
-            <p id='catBox' className={`${styles.title} text_md`}>{currentId ? "Edit Category" : "Add Sub-Category"}</p>
+    return (
+        <section className={styles.comman_model_main_section}>
+            <p id='subcatBox' className={`${styles.title} text_md`}>{currentId ? "Edit Category" : "Add Sub-Category"}</p>
             <div className={styles.add_card}>
                 <div className={styles.input_box}>
                     <label htmlFor="">SubCategory Name:</label>
-                    <input onChange={(e) => setCategoryData({ ...categoryData, categoryName: e.target.value })} value={categoryData.categoryName} type="text" name='categoryName' placeholder='Enter Category' />
-                    {categoryData.categoryName === " " ?
+                    <input onChange={(e) => setSubCategoryData({ ...subCategoryData, subCategoryName: e.target.value })} value={subCategoryData.subCategoryName} type="text" name='categoryName' placeholder='Enter SubCategory' />
+                    {subCategoryData.categoryName === " " ?
                         <p className={styles.fielderror}>Enter Category Field</p>
                         :
                         null
@@ -61,8 +60,8 @@ const SubCategoryComponent = () => {
                 </div>
                 <div className={styles.input_box}>
                     <label htmlFor="">SubCategory Description:</label>
-                    <input onChange={(e) => setCategoryData({ ...categoryData, categoryDescription: e.target.value })} value={categoryData.categoryDescription} type="text" name='categoryDescription' placeholder='Enter Category Description' />
-                    {categoryData.categoryDescription === " " ?
+                    <input onChange={(e) => setSubCategoryData({ ...subCategoryData, subCategoryDescription: e.target.value })} value={subCategoryData.subCategoryDescription} type="text" name='categoryDescription' placeholder='Enter SubCategory Description' />
+                    {subCategoryData.subCategoryDescription === " " ?
                         <p className={styles.fielderror}>Enter Category Description Field</p>
                         :
                         null
@@ -70,14 +69,14 @@ const SubCategoryComponent = () => {
                 </div>
                 <div className={styles.input_box}>
                     <label htmlFor="">Category Id:</label>
-                    <input onChange={(e) => setCategoryData({ ...categoryData, categoryDescription: e.target.value })} value={categoryData.categoryDescription} type="text" name='categoryDescription' placeholder='Enter Category Description' />
-                    {categoryData.categoryDescription === " " ?
+                    <input onChange={(e) => setSubCategoryData({ ...subCategoryData, categoryId: e.target.value })} value={subCategoryData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' />
+                    {subCategoryData.categoryId === " " ?
                         <p className={styles.fielderror}>Enter Category Description Field</p>
                         :
                         null
                     }
                 </div>
-                {createdCategory === "Category Successfully Created" || updatedCategory ? <p className={styles.success}>{createdCategory}{updatedCategory}</p> : <p className={styles.error}>{createdCategory}</p>}
+                {createdSubCategory === "SubCategory Successfully Created" || updatedSubCategory ? <p className={styles.success}>{createdSubCategory}{updatedSubCategory}</p> : <p className={styles.error}>{createdSubCategory}</p>}
                 <button onClick={handleSubmit} className={styles.add_btn}>{currentId ? "Update SubCategory" : "Add SubCategory"}</button>
             </div>
 
@@ -94,15 +93,15 @@ const SubCategoryComponent = () => {
                             <th>Category Id</th>
                             <th>Actions</th>
                         </tr>
-                        {fetchedCategory.data?.map((item, id) => {
+                        {fetchedSubCategory.data?.map((item, id) => {
                             return (
                                 <tr key={id}>
-                                    <td>{item.categoryName}</td>
+                                    <td>{item.subCategoryName}</td>
                                     <td>{item._id}</td>
-                                    <td>-</td>
+                                    <td>{item.categoryId._id}</td>
                                     <td>
                                         <button onClick={() => dispatch(removeCategory(item._id))} className={styles.delete_btn}>Delete</button>
-                                        <a href='#catBox'><button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button></a>
+                                        <a href='#subcatBox'><button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button></a>
                                     </td>
                                 </tr>
                             )
@@ -110,7 +109,7 @@ const SubCategoryComponent = () => {
                     </tbody>
                 </table>
             </div>
-        </section>  )
+        </section>)
 }
 
 export default SubCategoryComponent

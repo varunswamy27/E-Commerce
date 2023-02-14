@@ -23,7 +23,7 @@ router.patch('/update-category/:id', updateCategory);
 
 router.get('/sub-category', fetchSubCategory);
 router.post('/add-sub-category', createSubCategory);
-router.put('/update-subcategory/:id', updateSubCategory);
+router.patch('/update-subcategory/:id', updateSubCategory);
 
 // Product API
 

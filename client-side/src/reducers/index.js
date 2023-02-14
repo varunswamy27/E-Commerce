@@ -1,13 +1,21 @@
 import { combineReducers } from "redux";
 import changeTheNumber from "./counterReducer";
 import { createNewCategory, fetchAllCategory, removeSelectedCategory, modifySelectedCategory } from "./categoryReducer";
+import { fetchAllSubCategory, createNewSubCategory, modifySelectedSubCategory } from "./subCategoryReducer";
+import { fetchAllProduct, createNewProduct } from "./productReducer";
 
 const rootReducer = combineReducers({
     changeTheNumber,
     fetchAllCategory,
     createNewCategory,
     removeSelectedCategory,
-    modifySelectedCategory
+    modifySelectedCategory,
+    fetchAllSubCategory,
+    createNewSubCategory,
+    modifySelectedSubCategory,
+    fetchAllProduct,
+    createNewProduct
+
 })
 
 export default rootReducer;
