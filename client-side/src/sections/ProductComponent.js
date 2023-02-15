@@ -2,8 +2,7 @@ import React from 'react';
 import styles from '../styles/sections/CommanModel.module.scss';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCategoryData, createCategory, removeCategory, modifyCategory } from '../action/categoryAction';
-import { getProductData, createProduct } from '../action/productAction';
+import { getProductData, createProduct, removeProduct, modifyProduct } from '../action/productAction';
 
 const ProductComponent = () => {
 
@@ -12,25 +11,25 @@ const ProductComponent = () => {
 
 
   const fetchedProduct = useSelector((state) => state.fetchAllProduct);
-  const fetchedCategoryInput = useSelector((state) => state.fetchAllCategory);
-  const createdProduct = useSelector((state) => state.createNewProduct)
-  const deletedCategory = useSelector((state) => state.removeSelectedCategory);
-  const updatedCategory = useSelector((state) => state.modifySelectedCategory);
-  const populatedCategory = currentId ? fetchedCategoryInput.data?.find((p) => p._id === currentId) : null
+  const fetchedProductInput = useSelector((state) => state.fetchAllProduct);
+  const createdProduct = useSelector((state) => state.createNewProduct);
+  const deletedProduct = useSelector((state) => state.removeSelectedProduct);
+  const updatedProduct = useSelector((state) => state.modifySelectedProduct);
+  const populatedProduct = currentId ? fetchedProductInput.data?.find((p) => p._id === currentId) : null
 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductData())
-  }, [createdProduct, deletedCategory, currentId, dispatch])
+  }, [createdProduct, deletedProduct, currentId, dispatch])
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId) {
-      dispatch(modifyCategory(currentId, productData));
+      dispatch(modifyProduct(currentId, productData));
     }
     else {
       dispatch(createProduct(productData))
@@ -39,19 +38,26 @@ const ProductComponent = () => {
 
 
   useEffect(() => {
-    if (populatedCategory) {
-      setProductData({ categoryName: populatedCategory.categoryName, categoryDescription: populatedCategory.categoryDescription })
+    if (populatedProduct) {
+      setProductData({
+        productName: populatedProduct.productName,
+        productShortDescription: populatedProduct.productShortDescription,
+        productDescription: populatedProduct.productDescription,
+        productPrice: populatedProduct.productPrice,
+        categoryId: populatedProduct.categoryId._id,
+        subCategoryId: populatedProduct.subCategoryId._id
+      })
     }
     else {
       return;
     }
-  }, [populatedCategory])
+  }, [populatedProduct])
 
 
 
   return (
     <section className={styles.comman_model_main_section}>
-      <p id='catBox' className={`${styles.title} text_md`}>{currentId ? "Edit Product" : "Add Product"}</p>
+      <p id='proBox' className={`${styles.title} text_md`}>{currentId ? "Edit Product" : "Add Product"}</p>
       <div className={styles.add_card}>
         <div className={styles.input_box}>
           <label htmlFor="">Product Name:</label>
@@ -108,7 +114,7 @@ const ProductComponent = () => {
           }
         </div>
 
-        {createdProduct === "Product Successfully Created" ? <p className={styles.success}>{createdProduct}{updatedCategory}</p> : <p className={styles.error}>{createdProduct}</p>}
+        {createdProduct === "Product Successfully Created" || updatedProduct ? <p className={styles.success}>{createdProduct}{updatedProduct}</p> : <p className={styles.error}>{createdProduct}</p>}
         <button onClick={handleSubmit} className={styles.add_btn}>{currentId ? "Update Product" : "Add Product"}</button>
       </div>
 
@@ -132,8 +138,8 @@ const ProductComponent = () => {
                   <td>{item._id}</td>
                   <td>{item.productPrice}</td>
                   <td>
-                    <button onClick={() => dispatch(removeCategory(item._id))} className={styles.delete_btn}>Delete</button>
-                    <a href='#catBox'><button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button></a>
+                    <button onClick={() => dispatch(removeProduct(item._id))} className={styles.delete_btn}>Delete</button>
+                    <a href='#proBox'><button onClick={() => setCurrentId(item._id)} className={styles.edit_btn}>Edit</button></a>
                   </td>
                 </tr>
               )

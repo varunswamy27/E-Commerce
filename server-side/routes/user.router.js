@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, getUser } from "../controllers/user.controller";
+import { createUser, getUser, loginUser } from "../controllers/user.controller";
 import { createCategory, deleteCategory, getCategory, updateCategory } from "../controllers/category.controller";
 import { createSubCategory, fetchSubCategory, updateSubCategory } from "../controllers/subCategory.controller";
 import { createProduct, deleteProduct, filterPriceProduct, getProduct, sortProduct, updateProduct } from "../controllers/product.controller";
@@ -10,7 +10,8 @@ const router = express.Router();
 // User API
 
 router.get("/user", getUser);
-router.post("/user", createUser);
+router.post('/signin', createUser);
+router.get('/login', loginUser)
 
 // Category API
 
@@ -29,7 +30,7 @@ router.patch('/update-subcategory/:id', updateSubCategory);
 
 router.get('/product', getProduct);
 router.post('/add-product', createProduct);
-router.put('/update-product/:id', updateProduct);
+router.patch('/update-product/:id', updateProduct);
 router.delete('/delete-product/:id', deleteProduct);
 router.get('/filter-product', filterPriceProduct);
 router.get('/sort-product', sortProduct);

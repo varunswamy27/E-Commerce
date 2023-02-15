@@ -22,22 +22,22 @@ export const createNewProduct = (state = [], action) => {
     }
 }
 
-export const removeSelectedCategory = (state = [], action) => {
+export const removeSelectedProduct = (state = [], action) => {
     switch (action.type) {
-        case "DELETE_CATEGORY":
-            return state.filter((cat) => cat._id !== action.payload);
-        case "DELETE_CATEGORY_SUCCESS":
+        case "DELETE_PRODUCT":
+            return state.filter((pro) => pro._id !== action.payload);
+        case "DELETE_PRODUCT_SUCCESS":
             return action.payload;
         default:
             return state;
     }
 }
 
-export const modifySelectedCategory = (state = [], action) => {
+export const modifySelectedProduct = (state = [], action) => {
     switch (action.type) {
-        case "UPDATE_CATEGORY":
-            return state.map((cat) => cat._id === action.payload._id ? action.payload : cat);
-        case "UPDATE_CATEGORY_SUCCESS":
+        case "UPDATE_PRODUCT":
+            return state.map((pro) => pro._id === action.payload._id ? action.payload : pro);
+        case "UPDATE_PRODUCT_SUCCESS":
             return action.payload;
         default:
             return state;

@@ -34,5 +34,9 @@ export const updateSubCategory = (id, updatedSubCat) => axios.patch(`${updateSub
 // PRODUCT API
 export const fetchProduct = () => axios.get(fetchProductUrl);
 export const addProduct = (product) => axios.post(createProductUrl, product);
+export const deleteProduct = (id) => axios.delete(`${deleteProductUrl}/${id}`);
+export const updateProduct = (id, updatedPro) => axios.patch(`${updateProductUrl}/${id}`, updatedPro);
+
+
 
 

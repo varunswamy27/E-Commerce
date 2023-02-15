@@ -1,10 +1,36 @@
 import React, { useState } from "react";
 import styles from "../styles/pages/LoginSignup.module.scss";
 import { FcGoogle } from "react-icons/fc";
-import authImg from "../img/home/comman_banner.jpg"
+import authImg from "../img/home/comman_banner.jpg";
+import { GoogleLogin } from 'react-google-login';
+
+const initialState = { firstName: "", lastName: "", email: "", password: "", phoneNumber: "" }
 
 const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [formData, setFormData] = useState(initialState)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(isSignUp){
+      
+    }
+    else{
+
+    }
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value})
+  }
+
+  const googleSuccess = (res) => {
+    console.log(res)
+  }
+  const googleFailure = (error) => {
+    console.log(error)
+    console.log("Google Sign In was unsuccessful. Try Again Later")
+  }
 
   return (
     <div className={styles.login_signup}>
@@ -35,9 +61,18 @@ const LoginSignup = () => {
                   <button>LOGIN</button>
                 </div>
                 <div className={`${styles.btn_google}`}>
-                  <button>
-                    Continue with Google <FcGoogle className={styles.google} />
-                  </button>
+                  <GoogleLogin
+                    clientId="76840538025-kupdrmc2l69mqvkd2616ctctvsl418dq.apps.googleusercontent.com"
+                    render={(renderProps) => (
+                      <button>
+                        Continue with Google
+                        <FcGoogle className={styles.google} />
+                      </button>
+                    )}
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                    cookiePolicy="single_host_origin"
+                  />
                 </div>
                 <div className={`${styles.account}`}>
                   <p className="text_xs">
@@ -56,28 +91,36 @@ const LoginSignup = () => {
             ) : (
               <>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input type="text" placeholder="Enter Your First Name" />
+                  <input onChange={handleChange} name="firstName" type="text" placeholder="Enter Your First Name" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input type="text" placeholder="Enter Your Last Name" />
+                  <input onChange={handleChange} name="lastName" type="text" placeholder="Enter Your Last Name" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input type="text" placeholder="Enter Your Email" />
+                  <input onChange={handleChange} name="email" type="text" placeholder="Enter Your Email" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input type="text" placeholder="Enter Your Password" />
+                  <input onChange={handleChange} name="password" type="text" placeholder="Enter Your Password" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input type="text" placeholder="Enter Your Number" />
+                  <input onChange={handleChange} name="phoneNumber" type="text" placeholder="Enter Your Number" />
                 </div>
                 <div className={`${styles.btn_sign_up}`}>
-                  <button>SIGN UP</button>
+                  <button onClick={handleSubmit}>SIGN UP</button>
                 </div>
                 <div className={`${styles.btn_google}`}>
-                  <button>
-                    Continue with Google
-                    <FcGoogle className={styles.google} />
-                  </button>
+                  <GoogleLogin
+                    clientId="76840538025-kupdrmc2l69mqvkd2616ctctvsl418dq.apps.googleusercontent.com"
+                    render={(renderProps) => (
+                      <button>
+                        Continue with Google
+                        <FcGoogle className={styles.google} />
+                      </button>
+                    )}
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                    cookiePolicy="single_host_origin"
+                  />
                 </div>
                 <div className={`${styles.account}`}>
                   <p className="text_xs">
