@@ -3,26 +3,43 @@ import styles from "../styles/pages/LoginSignup.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import authImg from "../img/home/comman_banner.jpg";
 import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { signin, signup } from "../action/auth";
+import { useNavigate } from "react-router-dom";
+
 
 const initialState = { firstName: "", lastName: "", email: "", password: "", phoneNumber: "" }
 
 const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [formData, setFormData] = useState(initialState)
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if(isSignUp){
-      
-    }
-    else{
 
-    }
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   if (isSignUp) {
+  //     dispatch(signup(formData, navigate))
+  //   }
+  //   else {
+  //     dispatch(signin(formData, navigate))
 
+  //   }
+  // }
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
+  const handleSubmitIn = (e) => {
+    e.preventDefault()
+      dispatch(signin(formData, navigate))
+  }
+  const handleSubmitUp = (e) => {
+    e.preventDefault()
+      dispatch(signup(formData, navigate))
+  }
+
 
   const googleSuccess = (res) => {
     console.log(res)
@@ -52,13 +69,13 @@ const LoginSignup = () => {
             {isSignUp ? (
               <>
                 <div className={`${styles.inp_box_log}`}>
-                  <input type="text" placeholder="Enter Your Email" />
+                  <input onChange={handleChange} name="email" type="text" placeholder="Enter Your Email" />
                 </div>
                 <div className={`${styles.inp_box_log}`}>
-                  <input type="text" placeholder="Enter Your Password" />
+                  <input onChange={handleChange} name="password" type="text" placeholder="Enter Your Password" />
                 </div>
                 <div className={`${styles.btn_log_in}`}>
-                  <button>LOGIN</button>
+                  <button onClick={handleSubmitIn}>LOGIN</button>
                 </div>
                 <div className={`${styles.btn_google}`}>
                   <GoogleLogin
@@ -106,7 +123,7 @@ const LoginSignup = () => {
                   <input onChange={handleChange} name="phoneNumber" type="text" placeholder="Enter Your Number" />
                 </div>
                 <div className={`${styles.btn_sign_up}`}>
-                  <button onClick={handleSubmit}>SIGN UP</button>
+                  <button onClick={handleSubmitUp}>SIGN UP</button>
                 </div>
                 <div className={`${styles.btn_google}`}>
                   <GoogleLogin

@@ -5,6 +5,7 @@ import SubCategory from "../models/subCategory.model";
 
 // Find Category
 export const getCategory = (req, res) => {
+    // if(!req.userId) return res.json({ message: "Unauthenticated"})
     Category.find({}, (error, data) => {
         if (error) {
             return res.status(422).json({

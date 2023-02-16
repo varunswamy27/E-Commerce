@@ -1,6 +1,11 @@
 import axios from "axios";
 
-// URL 
+// URL
+
+// USER URL
+const signInUrl = "http://localhost:3000/login";
+const signUpUrl = "http://localhost:3000/signin";
+
 // CATEGORY URL
 const fetchCategoryUrl = "http://localhost:3000/category";
 const createCategoryUrl = "http://localhost:3000/add-category"
@@ -37,6 +42,9 @@ export const addProduct = (product) => axios.post(createProductUrl, product);
 export const deleteProduct = (id) => axios.delete(`${deleteProductUrl}/${id}`);
 export const updateProduct = (id, updatedPro) => axios.patch(`${updateProductUrl}/${id}`, updatedPro);
 
+// USER API
+export const signIn = (formData) => axios.post(signInUrl, formData);
+export const signUp = (formData) => axios.post(signUpUrl, formData);
 
 
 

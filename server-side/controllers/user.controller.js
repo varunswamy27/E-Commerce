@@ -24,8 +24,14 @@ export const getUser = async (req, res) => {
 // CREATE A NEW USER/SIGNUP
 export const createUser = async (req, res) => {
   const { firstName, lastName, email, password, phoneNumber } = req.body;
+  if(!firstName || !lastName || !email || !password || !phoneNumber){
+    return res.status(400).json({
+      message: "Enter Fields",
+      status: false,
+    })
+  }
   try {
-    const existingUser = await UserInfo.findOne({ email }).select("+password")
+    const existingUser = await UserInfo.findOne({ email })
     if (existingUser) {
       return res.status(400).json({
         message: "User Already Exist",
@@ -77,7 +83,7 @@ export const loginUser = async (req, res) => {
         status: false,
       })
     }
-    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', { expiresIn: "5h" })
+    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', {})
     return res.status(200).json({
       message: "User Details",
       data: existingUser,
