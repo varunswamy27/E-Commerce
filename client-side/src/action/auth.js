@@ -1,6 +1,6 @@
 import * as api from '../api/index';
 
-export const signin = (formData, navigate ) => async (dispatch) => {
+export const signin = (formData, navigate) => async (dispatch) => {
     try {
         const { data } = await api.signIn(formData);
         console.log(data)
@@ -14,16 +14,27 @@ export const signin = (formData, navigate ) => async (dispatch) => {
     }
 }
 
-export const signup = (formData, navigate ) => async (dispatch) => {
+export const signup = (formData) => async (dispatch) => {
     try {
         const { data } = await api.signUp(formData);
-        console.log(data)
         dispatch({
             type: "SIGN_IN",
-            payload: data
+            data,
         })
-        // navigate('/')
+        dispatch({
+            type: "SIGN_UP_SUCCESS",
+            data,
+        })
     } catch (error) {
-        console.log(error)
+        dispatch({
+            type: "SIGN_UP_ERROR",
+            payload: error,
+        })
+    }
+}
+
+export const logout = () => {
+    return {
+        type: 'LOG_OUT',
     }
 }

@@ -35,7 +35,8 @@ a {
   margin: 0 auto;
   width: var(--container_width);
 }
-.active{
+
+.active {
   transform: translateX(0);
 }
 
@@ -43,6 +44,20 @@ a {
   margin: 0 -15px;
   display: flex;
   flex-wrap: wrap;
+}
+
+.success {
+  font-family: Spectral_Light;
+  font-size: 20px;
+  color: var(--color_blue);
+  margin-bottom: 15px;
+}
+
+.error {
+  font-family: Spectral_Light;
+  font-size: 20px;
+  color: tomato;
+  margin-bottom: 15px;
 }
 
 .text_center {
@@ -54,13 +69,16 @@ img {
   display: block;
   height: auto;
 }
+
 picture {
   display: block !important;
 }
+
 .section_spacing {
   padding-top: 10vmin;
   padding-bottom: 10vmin;
 }
+
 .section_spacing_bottom {
   padding-bottom: 10vmin;
 }
@@ -70,9 +88,11 @@ picture {
   font-family: var(--font_primary);
   font-weight: normal;
 }
+
 .font_secondary {
   font-family: var(--font_secondary);
 }
+
 .font_accent {
   font-family: var(--font_accent);
 }
@@ -92,26 +112,33 @@ picture {
     width: 85%;
     margin: 0 auto;
   }
+
   .banner_img {
     margin-top: 50px;
     border-radius: 36px;
+
     .banner {
       border-radius: 36px;
     }
   }
+
   .marquee_sec {
     margin-top: 25px;
+
     .marquee-container {
       height: 120px;
+
       h2 {
         margin: 0 30px;
       }
     }
   }
+
   .desc {
     padding: 0px 50px;
     margin-top: 30px;
     text-align: center;
+
     @include sm-down {
       padding: 0px;
     }
@@ -123,6 +150,7 @@ picture {
     &:nth-child(2) {
       transform: translate(-5px, -5px);
     }
+
     &:nth-child(3) {
       transform: translate(-10px, -10px);
     }
@@ -131,25 +159,30 @@ picture {
 
 .wrapper {
   opacity: 0;
+
   &.history_wrapper_animate {
     opacity: 1;
     transition: all 0.5s ease-in;
+
     .item_wrapper {
       .item {
         .icon {
           transform: scale(1) !important;
           transition: all 0.5s ease-in;
         }
+
         .content {
           .year {
             transform: translateY(0px) !important;
             transition: all 0.5s ease-in;
           }
+
           .title {
             transform: translateY(0px) !important;
 
             transition: all 0.7s ease-in;
           }
+
           .desc {
             transform: translateY(0px) !important;
             transition: all 0.9s ease-in;
@@ -188,10 +221,12 @@ picture {
   &[data-scroll] {
     transition: all 0.5s ease-out;
   }
+
   &[data-scroll="in"] {
     opacity: 1;
     transform: translateY(0px);
   }
+
   &[data-scroll="out"] {
     opacity: 0;
     transform: translateY(100px);
@@ -202,10 +237,12 @@ picture {
   &[data-scroll] {
     transition: all 1s ease-out;
   }
+
   &[data-scroll="in"] {
     opacity: 1;
     transform: translateX(0px);
   }
+
   &[data-scroll="out"] {
     opacity: 0;
     transform: translateX(-300px);
@@ -214,6 +251,7 @@ picture {
 
 .select_wrap {
   @extend %relative_box;
+
   &:after {
     content: "";
     @extend %rel_y_center;
@@ -227,6 +265,7 @@ picture {
     border-left-color: transparent;
     border-top-color: transparent;
   }
+
   select {
     width: 100%;
     padding: 10px 20px;

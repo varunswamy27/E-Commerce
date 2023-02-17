@@ -3,7 +3,7 @@ import axios from "axios";
 // URL
 
 // USER URL
-const signInUrl = "http://localhost:3000/login";
+const signInUrl = "http://localhost:3000/signup";
 const signUpUrl = "http://localhost:3000/signin";
 
 // CATEGORY URL

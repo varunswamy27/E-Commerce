@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/pages/LoginSignup.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import authImg from "../img/home/comman_banner.jpg";
 import { GoogleLogin } from 'react-google-login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signin, signup } from "../action/auth";
 import { useNavigate } from "react-router-dom";
 
 
-const initialState = { firstName: "", lastName: "", email: "", password: "", phoneNumber: "" }
+// const initialState = { firstName: "", lastName: "", email: "", password: "", phoneNumber: "" }
 
 const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const signUpMessage = useSelector((state) => state.authReducer)
 
   // const handleSubmit = (e) => {
   //   e.preventDefault()
@@ -33,20 +33,29 @@ const LoginSignup = () => {
 
   const handleSubmitIn = (e) => {
     e.preventDefault()
-      dispatch(signin(formData, navigate))
+    dispatch(signin(formData, navigate))
   }
   const handleSubmitUp = (e) => {
     e.preventDefault()
-      dispatch(signup(formData, navigate))
+    dispatch(signup(formData, navigate));
   }
+
+  useEffect(()=>{
+    if(signUpMessage?.message === 'SignUp Successful'){
+      setFormData({ ...formData, firstName: "", lastName: "", email: "", password: "", phoneNumber: "" })
+      setTimeout(()=>{
+        setIsSignUp(true)
+      },2000)
+    }
+  },[signUpMessage])
 
 
   const googleSuccess = (res) => {
-    console.log(res)
+    // console.log(res)
   }
   const googleFailure = (error) => {
-    console.log(error)
-    console.log("Google Sign In was unsuccessful. Try Again Later")
+    // console.log(error)
+    // console.log("Google Sign In was unsuccessful. Try Again Later")
   }
 
   return (
@@ -121,6 +130,10 @@ const LoginSignup = () => {
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
                   <input onChange={handleChange} name="phoneNumber" type="text" placeholder="Enter Your Number" />
+                </div>
+                <div className={`${styles.inp_box_sign}`}>
+                  <p className="error">{signUpMessage?.response?.data?.message}</p>
+                  <p className="success">{signUpMessage?.message === "SignUp Successful" ? signUpMessage?.message : null}</p>
                 </div>
                 <div className={`${styles.btn_sign_up}`}>
                   <button onClick={handleSubmitUp}>SIGN UP</button>

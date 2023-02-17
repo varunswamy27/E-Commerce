@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/user", getUser);
 router.post('/signin', createUser);
-router.post('/login', loginUser)
+router.post('/signup', loginUser)
 
 // Category API
 

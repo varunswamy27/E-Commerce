@@ -26,7 +26,7 @@ export const createUser = async (req, res) => {
   const { firstName, lastName, email, password, phoneNumber } = req.body;
   if(!firstName || !lastName || !email || !password || !phoneNumber){
     return res.status(400).json({
-      message: "Enter Fields",
+      message: "Enter all fields",
       status: false,
     })
   }
@@ -34,7 +34,7 @@ export const createUser = async (req, res) => {
     const existingUser = await UserInfo.findOne({ email })
     if (existingUser) {
       return res.status(400).json({
-        message: "User Already Exist",
+        message: "User Email Already Exist",
         status: false,
       })
     }
@@ -85,7 +85,7 @@ export const loginUser = async (req, res) => {
     }
     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', {})
     return res.status(200).json({
-      message: "User Details",
+      message: "Login Successful",
       data: existingUser,
       status: true,
       token: token

@@ -5,6 +5,8 @@ import ScrollPosition from "../Hooks/ScrollPosition";
 import { useState, useRef, useEffect } from "react";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useDispatch } from "react-redux";
+import { logout } from "../action/auth";
 
 
 
@@ -14,6 +16,10 @@ const Navbar = () => {
   const [isActive, setActive] = useState(false);
   const navRef = useRef();
   const btnRef = useRef();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const dispatch = useDispatch();
+
+  console.log(user.result.firstName)
 
   useEffect(() => {
     let handler = (event) => {
@@ -60,6 +66,10 @@ const Navbar = () => {
             <Link to="/contact">
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>
+            <Link to="/auth">
+            <p className={`${styles.link_name} text_xs`} onClick={()=>dispatch(logout())}>Logout</p>
+            </Link>
+            {/* <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0) : null}</p> */}
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
               :
@@ -85,6 +95,7 @@ const Navbar = () => {
           <Link to="/contact">
             <p onClick={()=>{setActive(false)}} className={`${styles.link_name} text_sm`}>Contact</p>
           </Link>
+          <p className={`${styles.link_name} text_xs`}>Logout</p>
         </div>
       </div>
     </nav>
