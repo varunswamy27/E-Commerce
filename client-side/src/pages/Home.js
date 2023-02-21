@@ -10,6 +10,10 @@ import Footer from "../components/Footer";
 
 
 const Home = () => {
+
+  let user = JSON.parse(localStorage.getItem('profile'))
+  console.log(user.result.isAdmin)
+
   return (
     <div className={styles.home_page}>
       <CommanBanner title="Home" />

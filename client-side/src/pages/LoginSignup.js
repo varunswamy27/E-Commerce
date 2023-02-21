@@ -6,6 +6,8 @@ import { GoogleLogin } from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin, signup } from "../action/auth";
 import { useNavigate } from "react-router-dom";
+import { ProgressBar } from 'react-loader-spinner'
+
 
 
 // const initialState = { firstName: "", lastName: "", email: "", password: "", phoneNumber: "" }
@@ -13,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signUpMessage = useSelector((state) => state.authReducer)
@@ -40,19 +43,22 @@ const LoginSignup = () => {
     dispatch(signup(formData, navigate));
   }
 
-  useEffect(()=>{
-    if(signUpMessage?.message === 'SignUp Successful'){
-      setFormData({ ...formData, firstName: "", lastName: "", email: "", password: "", phoneNumber: "" })
-      setTimeout(()=>{
+  useEffect(() => {
+    if (signUpMessage?.message === 'SignUp Successful') {
+      setFormData({ ...formData, firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
+      setIsLoading(true)
+      setTimeout(() => {
         setIsSignUp(true)
-      },2000)
+        setIsLoading(false)
+      }, 2000)
     }
-  },[signUpMessage])
+  }, [signUpMessage])
 
 
   const googleSuccess = (res) => {
     // console.log(res)
   }
+  
   const googleFailure = (error) => {
     // console.log(error)
     // console.log("Google Sign In was unsuccessful. Try Again Later")
@@ -134,6 +140,18 @@ const LoginSignup = () => {
                 <div className={`${styles.inp_box_sign}`}>
                   <p className="error">{signUpMessage?.response?.data?.message}</p>
                   <p className="success">{signUpMessage?.message === "SignUp Successful" ? signUpMessage?.message : null}</p>
+                  {isLoading ?
+                    <ProgressBar
+                    height="60"
+                    width="80"
+                    ariaLabel="progress-bar-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="progress-bar-wrapper"
+                    borderColor = '#B7472A'
+                    barColor = '#B7472A'
+                  />
+                    : null
+                  }
                 </div>
                 <div className={`${styles.btn_sign_up}`}>
                   <button onClick={handleSubmitUp}>SIGN UP</button>

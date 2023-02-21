@@ -3,7 +3,7 @@ import { createUser, getUser, loginUser } from "../controllers/user.controller";
 import { createCategory, deleteCategory, getCategory, updateCategory } from "../controllers/category.controller";
 import { createSubCategory, fetchSubCategory, updateSubCategory } from "../controllers/subCategory.controller";
 import { createProduct, deleteProduct, filterPriceProduct, getProduct, sortProduct, updateProduct } from "../controllers/product.controller";
-import { auth } from "../middleware/auth";
+import { auth, isAdmin } from "../middleware/auth";
 
 
 const router = express.Router();
@@ -17,7 +17,7 @@ router.post('/signup', loginUser)
 // Category API
 
 router.get('/category', getCategory);
-router.post('/add-category', createCategory);
+router.post('/add-category', isAdmin, createCategory);
 router.delete('/delete-category/:id', deleteCategory);
 router.patch('/update-category/:id', updateCategory);
 

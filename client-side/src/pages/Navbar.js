@@ -19,7 +19,6 @@ const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
   const dispatch = useDispatch();
 
-  console.log(user.result.firstName)
 
   useEffect(() => {
     let handler = (event) => {
@@ -35,6 +34,7 @@ const Navbar = () => {
   }, [])
 
 
+
   return (
     <nav className={scrollPosition > 0 ? styles.scroll : null}>
       <div
@@ -46,8 +46,8 @@ const Navbar = () => {
       >
         <div className={styles.link_wrap}>
           <div className={styles.logo_box}>
-          <Link to="/">
-            <p>LIQUOR <span>STORE</span></p>
+            <Link to="/">
+              <p>LIQUOR <span>STORE</span></p>
             </Link>
           </div>
           <div className={styles.links}>
@@ -67,9 +67,9 @@ const Navbar = () => {
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>
             <Link to="/auth">
-            <p className={`${styles.link_name} text_xs`} onClick={()=>dispatch(logout())}>Logout</p>
+              <p className={`${styles.link_name} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
-            {/* <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0) : null}</p> */}
+            <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0).toUpperCase() : null}</p>
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
               :
@@ -81,19 +81,19 @@ const Navbar = () => {
       <div ref={navRef} className={isActive ? `${styles.active_hamburger} active` : styles.side_bar}>
         <div className={styles.side_nav}>
           <Link to="/">
-            <p onClick={()=>{setActive(false)}} className={`${styles.link_name} text_sm`}>Home</p>
+            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Home</p>
           </Link>
           <Link to="/about-us">
-            <p onClick={()=>{setActive(false)}} className={`${styles.link_name} text_sm`}>About</p>
+            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>About</p>
           </Link>
           <Link to="/product">
-            <p onClick={()=>{setActive(false)}} className={`${styles.link_name} text_sm`}>Product</p>
+            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Product</p>
           </Link>
           <Link to="/blog">
-            <p onClick={()=>{setActive(false)}} className={`${styles.link_name} text_sm`}>Blog</p>
+            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Blog</p>
           </Link>
           <Link to="/contact">
-            <p onClick={()=>{setActive(false)}} className={`${styles.link_name} text_sm`}>Contact</p>
+            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Contact</p>
           </Link>
           <p className={`${styles.link_name} text_xs`}>Logout</p>
         </div>
