@@ -15,7 +15,6 @@ import Admin from "./pages/Admin";
 
 function RouterComponent() {
   const pathLocation = window.location.pathname;
-  console.log(pathLocation)
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(false);

@@ -12,7 +12,6 @@ import { logout } from "../action/auth";
 
 const Navbar = () => {
   const scrollPosition = ScrollPosition();
-  // console.log(scrollPosition);
   const [isActive, setActive] = useState(false);
   const navRef = useRef();
   const btnRef = useRef();
@@ -47,7 +46,7 @@ const Navbar = () => {
         <div className={styles.link_wrap}>
           <div className={styles.logo_box}>
             <Link to="/">
-              <p>LIQUOR <span>STORE</span></p>
+              <p>SMART <span>STORE</span></p>
             </Link>
           </div>
           <div className={styles.links}>
@@ -69,7 +68,7 @@ const Navbar = () => {
             <Link to="/auth">
               <p className={`${styles.link_name} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
-            <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0).toUpperCase() : null}</p>
+            {/* <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0).toUpperCase() : null}</p> */}
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
               :
