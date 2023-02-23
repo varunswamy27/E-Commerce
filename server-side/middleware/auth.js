@@ -19,7 +19,7 @@ export const isAuthorized = (req, res, next) => {
 				return res.json(401, { err: "Invalid token" });
 			}
 		} else {
-			return res.json(401, { err: "Format is Authorization: Bearer [token]" });
+			return res.json(401, { err: "Format is Authorization: Bearer [token]"});
 		}
 	} else {
 		return res.status(401).json({

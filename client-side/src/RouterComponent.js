@@ -16,25 +16,44 @@ import Admin from "./pages/Admin";
 function RouterComponent() {
   const pathLocation = window.location.pathname;
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [isLogin, setIsLogin] = useState(false);
+
   useEffect(() => {
     setLoading(false);
   }, [pathLocation]);
+
+  useEffect(() => {
+    if (!localStorage.getItem('profile') && window.location.href.indexOf('auth') === -1) {
+      setIsLogin(false)
+      window.location.href = '/auth';
+    }
+    else {
+      setIsLogin(true)
+    }
+  }, [isLogin])
+
+
 
   return (
     <div>
       {loading ? <p>Loading.......</p> : null}
       <BrowserRouter>
-        {pathLocation === "/auth" ? null : <Navbar />}
+            {pathLocation === "/auth" ? null : <Navbar />}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/product/product-single" element={<ProductSingle />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />}/>
-          <Route path="*" element={<NoPage />} />
+          {isLogin &&
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/product/product-single" element={<ProductSingle />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="*" element={<NoPage />} />
+            </>
+          }
         </Routes>
       </BrowserRouter>
     </div>
