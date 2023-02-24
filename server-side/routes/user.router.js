@@ -17,7 +17,7 @@ router.post('/signup', loginUser)
 // Category API
 
 router.get('/category', getCategory);
-router.post('/add-category', isAuthorized, createCategory);
+router.post('/add-category', createCategory);
 router.delete('/delete-category/:id', deleteCategory);
 router.patch('/update-category/:id', updateCategory);
 

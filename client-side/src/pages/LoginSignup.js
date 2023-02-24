@@ -36,11 +36,11 @@ const LoginSignup = () => {
 
   const handleSubmitIn = (e) => {
     e.preventDefault()
-    dispatch(signin(formData, navigate))
+    dispatch(signin(formData))
   }
   const handleSubmitUp = (e) => {
     e.preventDefault()
-    dispatch(signup(formData, navigate));
+    dispatch(signup(formData));
   }
 
   useEffect(() => {

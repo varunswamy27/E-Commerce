@@ -1,14 +1,12 @@
 import * as api from '../api/index';
 
-export const signin = (formData, navigate) => async (dispatch) => {
+export const signin = (formData) => async (dispatch) => {
     try {
         const { data } = await api.signIn(formData);
-        console.log(data)
         dispatch({
             type: "SIGN_IN",
             data
         })
-        // navigate('/')
     } catch (error) {
         console.log(error)
     }

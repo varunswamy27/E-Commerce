@@ -39,7 +39,7 @@ function RouterComponent() {
     <div>
       {loading ? <p>Loading.......</p> : null}
       <BrowserRouter>
-            {pathLocation === "/auth" ? null : <Navbar />}
+        {pathLocation === "/auth" ? null : <Navbar />}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
           {isLogin &&

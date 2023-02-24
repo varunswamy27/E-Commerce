@@ -7,6 +7,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch } from "react-redux";
 import { logout } from "../action/auth";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,6 +16,7 @@ const Navbar = () => {
   const [isActive, setActive] = useState(false);
   const navRef = useRef();
   const btnRef = useRef();
+  const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
   const dispatch = useDispatch();
 
