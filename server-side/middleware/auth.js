@@ -19,7 +19,7 @@ export const isAuthorized = (req, res, next) => {
 				return res.json(401, { err: "Invalid token" });
 			}
 		} else {
-			return res.json(401, { err: "Format is Authorization: Bearer [token]"});
+			return res.json(401, { err: "Format is Authorization: Bearer [token]" });
 		}
 	} else {
 		return res.status(401).json({
@@ -28,6 +28,19 @@ export const isAuthorized = (req, res, next) => {
 		})
 	}
 }
+
+export const verifyToken = async (req, res, next) => {
+	try {
+		const token = req.headers.Authorization.split(" ")[1];
+		const decoded = jwt.verify(token, 'test');
+		req.userData = decoded;
+		next();
+	} catch (error) {
+		const message =
+			error.name == "TokenExpiredError" ? "Token Expired" : "Token Invalid";
+		res.status(401).json({ message: message });
+	}
+};
 
 
 // export const auth = async (req, res, next) => {

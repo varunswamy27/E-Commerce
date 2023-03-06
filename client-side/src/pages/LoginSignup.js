@@ -45,7 +45,7 @@ const LoginSignup = () => {
 
   useEffect(() => {
     if (signUpMessage?.message === 'SignUp Successful') {
-      setFormData({ ...formData, firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
+      setFormData({firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
       setIsLoading(true)
       setTimeout(() => {
         setIsSignUp(true)
@@ -84,10 +84,10 @@ const LoginSignup = () => {
             {isSignUp ? (
               <>
                 <div className={`${styles.inp_box_log}`}>
-                  <input onChange={handleChange} name="email" type="text" placeholder="Enter Your Email" />
+                  <input onChange={handleChange} value={formData.email} name="email" type="text" placeholder="Enter Your Email" />
                 </div>
                 <div className={`${styles.inp_box_log}`}>
-                  <input onChange={handleChange} name="password" type="text" placeholder="Enter Your Password" />
+                  <input onChange={handleChange} value={formData.password} name="password" type="text" placeholder="Enter Your Password" />
                 </div>
                 <div className={`${styles.btn_log_in}`}>
                   <button onClick={handleSubmitIn}>LOGIN</button>
@@ -123,19 +123,19 @@ const LoginSignup = () => {
             ) : (
               <>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input onChange={handleChange} name="firstName" type="text" placeholder="Enter Your First Name" />
+                  <input onChange={handleChange} name="firstName" value={formData.firstName} type="text" placeholder="Enter Your First Name" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input onChange={handleChange} name="lastName" type="text" placeholder="Enter Your Last Name" />
+                  <input onChange={handleChange} name="lastName" value={formData.lastName} type="text" placeholder="Enter Your Last Name" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input onChange={handleChange} name="email" type="text" placeholder="Enter Your Email" />
+                  <input onChange={handleChange} name="email" value={formData.email} type="text" placeholder="Enter Your Email" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input onChange={handleChange} name="password" type="text" placeholder="Enter Your Password" />
+                  <input onChange={handleChange} name="password" value={formData.password} type="text" placeholder="Enter Your Password" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
-                  <input onChange={handleChange} name="phoneNumber" type="text" placeholder="Enter Your Number" />
+                  <input onChange={handleChange} name="phoneNumber" value={formData.phoneNumber} type="text" placeholder="Enter Your Number" />
                 </div>
                 <div className={`${styles.inp_box_sign}`}>
                   <p className="error">{signUpMessage?.response?.data?.message}</p>
