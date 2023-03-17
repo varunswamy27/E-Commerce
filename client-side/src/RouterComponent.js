@@ -23,15 +23,31 @@ function RouterComponent() {
     setLoading(false);
   }, [pathLocation]);
 
+  // useEffect(() => {
+  //   if (!localStorage.getItem('profile') && window.location.href.indexOf('auth') === -1) {
+  //     setIsLogin(false)
+  //     window.location.href = '/auth';
+  //   }
+  //   else {
+  //     setIsLogin(true)
+  //   }
+  // }, [isLogin])
+
   useEffect(() => {
-    if (!localStorage.getItem('profile') && window.location.href.indexOf('auth') === -1) {
-      setIsLogin(false)
+    if (!user && window.location.href.indexOf('auth') === -1) {
+      setLoading(true)
       window.location.href = '/auth';
     }
-    else {
-      setIsLogin(true)
+    if (user && pathLocation === '/auth') {
+      setLoading(true);
+      window.location.href = '/';
     }
-  }, [isLogin])
+    if (user?.data?.isAdmin === "false" && pathLocation === '/admin') {
+      window.location.href = '/';
+    }
+  }, [])
+
+  console.log(user?.data?.isAdmin);
 
 
 
@@ -42,18 +58,18 @@ function RouterComponent() {
         {pathLocation === "/auth" ? null : <Navbar />}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
-          {isLogin &&
-            <>
-              <Route path="/" element={<Home />} />
-              <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/product" element={<Product />} />
-              <Route path="/product/product-single" element={<ProductSingle />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="*" element={<NoPage />} />
-            </>
-          }
+          {/* {isLogin &&
+            <> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/product/product-single" element={<ProductSingle />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<NoPage />} />
+          {/* </>
+          } */}
         </Routes>
       </BrowserRouter>
     </div>
