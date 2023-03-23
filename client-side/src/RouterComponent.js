@@ -42,12 +42,18 @@ function RouterComponent() {
       setLoading(true);
       window.location.href = '/';
     }
-    if (user?.data?.isAdmin === "false" && pathLocation === '/admin') {
-      window.location.href = '/';
-    }
-  }, [])
+  }, []);
 
-  console.log(user?.data?.isAdmin);
+  useEffect(()=>{
+    if (user?.data?.isAdmin === false && pathLocation === '/admin') {
+      window.location.href = '/';
+      console.log('Error')
+    }
+    else{
+      console.log("You Are An Admin")
+    }
+  },[pathLocation])
+
 
 
 
