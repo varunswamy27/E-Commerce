@@ -1,30 +1,41 @@
 import UserInfo from "../models/user.model";
+import UserRole from "../models/userRole.model";
 import bycrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 
 // FETCH ALL USERS
 export const getUser = async (req, res) => {
-  const userDetails = await UserInfo.find({}, function (error, data) {
-    if (error) {
+  const userDetails = await UserInfo.find({}).populate("userRole")
+    .then((data) => {
+      if (data) {
+        return res.status(200).json({
+          message: "Your User List",
+          status: true,
+          data: data,
+        })
+      }
+      else {
+        return res.status(422).json({
+          message: "Cannot Find User",
+          status: false,
+        })
+      }
+
+    })
+    .catch(error => {
       return res.status(422).json({
-        message: "User Not Found",
+        message: "Problem Finding User",
         status: false,
-      });
-    }
-    return res.status(200).json({
-      message: "Your User Info",
-      data: data,
-      status: true,
-    });
-  });
+      })
+    })
 };
 
 
 // CREATE A NEW USER/SIGNUP
 export const createUser = async (req, res) => {
   const { firstName, lastName, email, password, phoneNumber } = req.body;
-  if(!firstName || !lastName || !email || !password || !phoneNumber){
+  if (!firstName || !lastName || !email || !password || !phoneNumber) {
     return res.status(400).json({
       message: "Enter all fields",
       status: false,
@@ -96,4 +107,50 @@ export const loginUser = async (req, res) => {
       status: false,
     })
   }
+}
+
+
+// USERROLE FETCH
+export const getRoles = async (req, res) => {
+  const userRoleDetails = await UserRole.find({})
+    .then((data) => {
+      if (data) {
+        return res.status(200).json({
+          message: "Your User Role List",
+          status: true,
+          data: data,
+        })
+      }
+      else {
+        return res.status(422).json({
+          message: "Cannot Find UserRole",
+          status: false,
+        })
+      }
+
+    })
+    .catch(error => {
+      return res.status(422).json({
+        message: "Problem Finding User Role",
+        status: false,
+      })
+    })
+}
+
+export const createUserRole = async (req, res) => {
+  const createUserRole = await UserRole.create(req.body)
+    .then(resp => {
+      return res.status(200).json({
+        message: "UserRole Successfully Created",
+        status: true,
+        data: createUserRole,
+      })
+        .catch(err => {
+          return res.status(422).json({
+            message: "Failed To Create UserRole",
+            status: false,
+            data: data,
+          })
+        })
+    })
 }

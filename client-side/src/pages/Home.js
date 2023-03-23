@@ -14,6 +14,8 @@ const Home = () => {
 
   return (
     <div className={styles.home_page}>
+      {/* <IsAuthorized /> */}
+
       <CommanBanner title="Home" />
       <BannerTag />
       <Desire />

@@ -7,26 +7,27 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  lastName:{
+  lastName: {
     type: String,
     required: true,
   },
-  email:{
+  email: {
     type: String,
     required: true,
   },
-  password:{
+  password: {
     type: String,
     required: true,
   },
-  phoneNumber:{
+  phoneNumber: {
     type: Number,
     required: true,
   },
-  isAdmin:{
+  isAdmin: {
     type: Boolean,
     default: false,
-  }
+  },
+  userRole: { type: Schema.Types.ObjectId, ref: "UserRole" }
 });
 
 const UserInfo = mongoose.model("UserInfo", userSchema);
