@@ -23,11 +23,10 @@ const IsAuthorized = ({ pathLocation }) => {
 
     useEffect(() => {
         if (user?.data?.isAdmin === false && pathLocation === '/admin') {
-            // setLoading(true)
             navigate('/');
         }
         else {
-            // console.log("You Are An Admin");
+            console.log("You Are An Admin");
         }
     }, [pathLocation])
 
