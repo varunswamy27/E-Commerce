@@ -119,3 +119,42 @@ export const updateCategory = (req, res) => {
         })
     })
 }
+
+
+export const tripleThreat1 = async (req, res, next) => {
+    try {
+        const createCategory = await Category.create(req.body);
+        res.status(200).json({
+            message: "Category Created",
+            status: true,
+            data: createCategory
+        })
+        next();
+    } catch (error) {
+        return res.status(400).json({
+            message: "Cannot Create Category",
+            status: false,
+            data: error
+        })
+    }
+
+}
+
+
+export const tripleThreat2 = async (req, res, next) => {
+    try {
+        const createSubCategory = await SubCategory.create(req.body);
+        res.status(200).json({
+            message: "SubCategory Created",
+            status: true,
+            data: createSubCategory
+        })
+        next();
+    } catch (error) {
+        return res.status(400).json({
+            message: "Cannot Create SubCategory",
+            status: false,
+            data: error
+        })
+    }
+}

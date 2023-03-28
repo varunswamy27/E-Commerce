@@ -23,7 +23,11 @@ const productSchema = new Schema({
     productPicture: {
         type: String,
     },
-    categoryId: { type: Schema.Types.ObjectId, ref: "Category" },
+    categoryId: {
+        type: Schema.Types.ObjectId,
+        ref: "Category",
+        required: true
+    },
     subCategoryId: { type: Schema.Types.ObjectId, ref: "SubCategory" },
 
 })

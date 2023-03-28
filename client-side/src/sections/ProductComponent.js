@@ -6,9 +6,12 @@ import { getProductData, createProduct, removeProduct, modifyProduct } from '../
 
 const ProductComponent = () => {
 
+  const [cat, setCat] = useState('');
   const [productData, setProductData] = useState({ productName: "", productShortDescription: "", productDescription: "", productPrice: "", categoryId: "", subCategoryId: "" })
   const [currentId, setCurrentId] = useState(null);
 
+
+  const fetchedCategory = useSelector((state) => state.fetchAllCategory);
 
   const fetchedProduct = useSelector((state) => state.fetchAllProduct);
   const fetchedProductInput = useSelector((state) => state.fetchAllProduct);
@@ -54,6 +57,7 @@ const ProductComponent = () => {
   }, [populatedProduct])
 
 
+  console.log(cat)
 
   return (
     <section className={styles.comman_model_main_section}>
@@ -96,8 +100,16 @@ const ProductComponent = () => {
           }
         </div>
         <div className={styles.input_box}>
-          <label htmlFor="">Category Id:</label>
-          <input onChange={(e) => setProductData({ ...productData, categoryId: e.target.value })} value={productData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' />
+          <label htmlFor="">Category</label>
+          {/* <input onChange={(e) => setProductData({ ...productData, categoryId: cat })} value={productData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' /> */}
+          <select onChange={(e) => setProductData({ ...productData, categoryId: e.target.value })}>
+            <option selected="false" disabled="disabled">Select a Category</option>
+            {fetchedCategory?.data?.map((item, id) => {
+              return (
+                <option key={id} value={item._id}>{item.categoryName}</option>
+              )
+            })}
+          </select>
           {productData.categoryId === " " ?
             <p className={styles.fielderror}>Enter Category Id Field</p>
             :

@@ -16,7 +16,7 @@ const CategoryComponent = () => {
     const deletedCategory = useSelector((state) => state.removeSelectedCategory);
     const updatedCategory = useSelector((state) => state.modifySelectedCategory);
     const populatedCategory = currentId ? fetchedCategoryInput.data?.find((p) => p._id === currentId) : null
-    console.log(updatedCategory);
+    // console.log(updatedCategory);
 
 
     const dispatch = useDispatch();
