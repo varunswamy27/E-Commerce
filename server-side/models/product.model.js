@@ -28,8 +28,10 @@ const productSchema = new Schema({
         ref: "Category",
         required: true
     },
-    subCategoryId: { type: Schema.Types.ObjectId, ref: "SubCategory" },
-
+    subCategoryId: { type: Schema.Types.ObjectId, ref: "SubCategory" }
+    ,
+}, {
+    timestamps: true
 })
 
 const Product = mongoose.model("Product", productSchema);
