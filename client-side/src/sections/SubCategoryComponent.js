@@ -9,6 +9,7 @@ const SubCategoryComponent = () => {
     const [subCategoryData, setSubCategoryData] = useState({ subCategoryName: "", subCategoryDescription: "", categoryId: "" })
     const [currentId, setCurrentId] = useState(null);
 
+    const fetchedCategory = useSelector((state) => state.fetchAllCategory);
 
     const fetchedSubCategory = useSelector((state) => state.fetchAllSubCategory);
     const fetchedSubCategoryInput = useSelector((state) => state.fetchAllSubCategory);
@@ -69,7 +70,15 @@ const SubCategoryComponent = () => {
                 </div>
                 <div className={styles.input_box}>
                     <label htmlFor="">Category Id:</label>
-                    <input onChange={(e) => setSubCategoryData({ ...subCategoryData, categoryId: e.target.value })} value={subCategoryData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' />
+                    {/* <input onChange={(e) => setSubCategoryData({ ...subCategoryData, categoryId: e.target.value })} value={subCategoryData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' /> */}
+                    <select onChange={(e) => setSubCategoryData({ ...subCategoryData, categoryId: e.target.value })}>
+                        <option selected={false} disabled="disabled">Select a Category</option>
+                        {fetchedCategory?.data?.map((item, id) => {
+                            return (
+                                <option key={id} value={item._id}>{item.categoryName}</option>
+                            )
+                        })}
+                    </select>
                     {subCategoryData.categoryId === " " ?
                         <p className={styles.fielderror}>Enter Category Description Field</p>
                         :

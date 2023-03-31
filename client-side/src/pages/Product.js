@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/pages/Product.module.scss";
 import CommanBanner from "../components/CommanBanner";
+import { useSelector, useDispatch } from 'react-redux';
+import { getCategoryData } from "../action/categoryAction";
 import prod1 from "../img/product/prod-1.jpg";
 import prod2 from "../img/product/prod-2.jpg";
 import prod3 from "../img/product/prod-3.jpg";
@@ -12,6 +14,16 @@ import prod8 from "../img/product/prod-8.jpg";
 import Footer from "../components/Footer";
 
 const Product = () => {
+
+  const fetchedCategory = useSelector((state) => state.fetchAllCategory);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategoryData())
+  }, [dispatch])
+
+  console.log(fetchedCategory);
+
 
   const productData = [{
     productImg: prod1,
@@ -80,24 +92,9 @@ const Product = () => {
             <div className={styles.category_wrap}>
               <div className={styles.category_fixed}>
                 <p className={`${styles.cat_hed} text_sm`}>Product Types</p>
+                <p className={`${styles.cat_title} text_xxs`}>All</p>
                 <select className={`${styles.cat_title} text_xxs`} name="" id="">
                   <option className={`${styles.cat_title} text_xxs`} value="">Brandy</option>
-                  <option className={`${styles.cat_title} text_xxs`} value="">Demo</option>
-                </select>
-                <select className={`${styles.cat_title} text_xxs`} name="" id="">
-                  <option className={`${styles.cat_title} text_xxs`} value="">Rum</option>
-                  <option className={`${styles.cat_title} text_xxs`} value="">Demo</option>
-                </select>
-                <select className={`${styles.cat_title} text_xxs`} name="" id="">
-                  <option className={`${styles.cat_title} text_xxs`} value="">Gin</option>
-                  <option className={`${styles.cat_title} text_xxs`} value="">Demo</option>
-                </select>
-                <select className={`${styles.cat_title} text_xxs`} name="" id="">
-                  <option className={`${styles.cat_title} text_xxs`} value="">Vodka</option>
-                  <option className={`${styles.cat_title} text_xxs`} value="">Demo</option>
-                </select>
-                <select className={`${styles.cat_title} text_xxs`} name="" id="">
-                  <option className={`${styles.cat_title} text_xxs`} value="">Beer</option>
                   <option className={`${styles.cat_title} text_xxs`} value="">Demo</option>
                 </select>
               </div>
@@ -106,7 +103,7 @@ const Product = () => {
               <div className={styles.product_wrap}>
                 {productData.map((el, id) => {
                   return (
-                    <div key={id+Math.random()} className={styles.product_box}>
+                    <div key={id + Math.random()} className={styles.product_box}>
                       <div className={styles.product_img}>
                         <img src={el.productImg} alt="" />
                       </div>

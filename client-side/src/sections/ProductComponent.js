@@ -6,12 +6,12 @@ import { getProductData, createProduct, removeProduct, modifyProduct } from '../
 
 const ProductComponent = () => {
 
-  const [cat, setCat] = useState('');
   const [productData, setProductData] = useState({ productName: "", productShortDescription: "", productDescription: "", productPrice: "", categoryId: "", subCategoryId: "" })
   const [currentId, setCurrentId] = useState(null);
 
 
   const fetchedCategory = useSelector((state) => state.fetchAllCategory);
+  const fetchedSubCategory = useSelector((state) => state.fetchAllSubCategory);
 
   const fetchedProduct = useSelector((state) => state.fetchAllProduct);
   const fetchedProductInput = useSelector((state) => state.fetchAllProduct);
@@ -57,7 +57,7 @@ const ProductComponent = () => {
   }, [populatedProduct])
 
 
-  console.log(cat)
+  console.log(fetchedSubCategory)
 
   return (
     <section className={styles.comman_model_main_section}>
@@ -103,7 +103,7 @@ const ProductComponent = () => {
           <label htmlFor="">Category</label>
           {/* <input onChange={(e) => setProductData({ ...productData, categoryId: cat })} value={productData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' /> */}
           <select onChange={(e) => setProductData({ ...productData, categoryId: e.target.value })}>
-            <option selected="false" disabled="disabled">Select a Category</option>
+            <option selected={false} disabled="disabled">Select a Category</option>
             {fetchedCategory?.data?.map((item, id) => {
               return (
                 <option key={id} value={item._id}>{item.categoryName}</option>
@@ -118,7 +118,15 @@ const ProductComponent = () => {
         </div>
         <div className={styles.input_box}>
           <label htmlFor="">Sub-Category Id:</label>
-          <input onChange={(e) => setProductData({ ...productData, subCategoryId: e.target.value })} value={productData.subCategoryId} type="text" name='subCategoryId' placeholder='Enter Sub-Category Id' />
+          {/* <input onChange={(e) => setProductData({ ...productData, subCategoryId: e.target.value })} value={productData.subCategoryId} type="text" name='subCategoryId' placeholder='Enter Sub-Category Id' /> */}
+          <select onChange={(e) => setProductData({ ...productData, subCategoryId: e.target.value })}>
+            <option selected={false} disabled="disabled">Select a Sub-Category</option>
+            {fetchedSubCategory?.data?.map((item, id) => {
+              return (
+                <option key={id} value={item._id}>{item.subCategoryName}</option>
+              )
+            })}
+          </select>
           {productData.subCategoryId === " " ?
             <p className={styles.fielderror}>Enter Sub-Category Id Field</p>
             :
