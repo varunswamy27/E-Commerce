@@ -22,7 +22,7 @@ const Product = () => {
     dispatch(getCategoryData())
   }, [dispatch])
 
-  console.log(fetchedCategory);
+  console.log(fetchedCategory.data);
 
 
   const productData = [{
@@ -93,10 +93,12 @@ const Product = () => {
               <div className={styles.category_fixed}>
                 <p className={`${styles.cat_hed} text_sm`}>Product Types</p>
                 <p className={`${styles.cat_title} text_xxs`}>All</p>
-                <select className={`${styles.cat_title} text_xxs`} name="" id="">
-                  <option className={`${styles.cat_title} text_xxs`} value="">Brandy</option>
-                  <option className={`${styles.cat_title} text_xxs`} value="">Demo</option>
-                </select>
+                {/* <select className={`${styles.cat_title} text_xxs`} name="" id="">
+                  <option key={id} className={`${styles.cat_title} text_xxs`} value="">{cat.categoryName}</option>
+                </select> */}
+                {fetchedCategory.data?.map((cat, id) => (
+                  <p className={`${styles.cat_title} text_xxs`}>{cat.categoryName}</p>
+                ))}
               </div>
             </div>
             <div className={styles.product_list}>
