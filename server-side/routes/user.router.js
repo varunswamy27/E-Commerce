@@ -1,7 +1,7 @@
 import express from "express";
 import { createUser, createUserRole, getRoles, getUser, loginUser } from "../controllers/user.controller";
 import { createCategory, deleteCategory, getCategory, tripleThreat1, tripleThreat2, updateCategory } from "../controllers/category.controller";
-import { createSubCategory, fetchSubCategory, updateSubCategory } from "../controllers/subCategory.controller";
+import { createSubCategory, fetchSubCategory, fetchSubCategoryByCategory, updateSubCategory } from "../controllers/subCategory.controller";
 import { createProduct, deleteProduct, filterPriceProduct, getProduct, sortProduct, updateProduct } from "../controllers/product.controller";
 import { auth, isAdmin, isAuthorized, verifyToken } from "../middleware/auth";
 
@@ -32,6 +32,7 @@ router.patch('/update-category/:id', updateCategory);
 // SubCategory API
 
 router.get('/sub-category', fetchSubCategory);
+router.get('/filterd-subcategory/:id', fetchSubCategoryByCategory)
 router.post('/add-sub-category', createSubCategory);
 router.patch('/update-subcategory/:id', updateSubCategory);
 

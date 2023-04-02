@@ -28,6 +28,10 @@
             border-bottom: 1px solid gray;
             outline: none;
             font-family: Spectral_Light;
+            &:hover{
+              cursor: pointer;
+              background-color: whitesmoke;
+            }
           }
         }
       }

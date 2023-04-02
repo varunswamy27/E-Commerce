@@ -14,6 +14,7 @@ const updateCategoryUrl = "http://localhost:3000/update-category";
 
 // SUBCATEGORY URL
 const fetchSubCategoryUrl = "http://localhost:3000/sub-category";
+const fetchSubCategoryByCategoryUrl = "http://localhost:3000/filterd-subcategory";
 const createSubCategoryUrl = "http://localhost:3000/add-sub-category"
 const deleteSubCategoryUrl = "http://localhost:3000/delete-category";
 const updateSubCategoryUrl = "http://localhost:3000/update-subcategory";
@@ -33,6 +34,7 @@ export const updateCategory = (id, updatedCat) => axios.patch(`${updateCategoryU
 
 // SUBCATEGORY API
 export const fetchSubCategory = () => axios.get(fetchSubCategoryUrl);
+export const fetchSubCategoryByCategory = (id) => axios.get(`${fetchSubCategoryByCategoryUrl}/${id}`);
 export const addSubCategory = (subcategories) => axios.post(createSubCategoryUrl, subcategories);
 export const updateSubCategory = (id, updatedSubCat) => axios.patch(`${updateSubCategoryUrl}/${id}`, updatedSubCat);
 

@@ -9,6 +9,15 @@ export const fetchAllSubCategory = (state = [], action) => {
     }
 }
 
+export const fetchAllSubCategoryByCategory = (state = [], action) => {
+    switch (action.type) {
+        case "FETCH_SUBCATEGORY":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export const createNewSubCategory = (state = [], action) => {
     switch (action.type) {
         case "CREATE_SUBCATEGORY":

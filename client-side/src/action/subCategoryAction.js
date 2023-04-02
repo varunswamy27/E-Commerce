@@ -13,6 +13,18 @@ export const getSubCategoryData = () => async (dispatch) => {
     }
 }
 
+export const getSubCategoryDataByCategory = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchSubCategoryByCategory(id);
+        dispatch({
+            type: 'FETCH_SUBCATEGORY',
+            payload: data
+        });
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export const createSubCategory = (subcategories) => async (dispatch) => {
     try {
         const { data } = await api.addSubCategory(subcategories)

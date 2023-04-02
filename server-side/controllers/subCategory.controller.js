@@ -4,18 +4,38 @@ import SubCategory from "../models/subCategory.model";
 // Fetch Sub Category
 export const fetchSubCategory = (req, res) => {
     SubCategory.find({}, (err, data) => {
-        if(err){
+        if (err) {
             return res.status(400).json({
                 message: "Cannot Find SubCategories",
                 status: false,
             })
         }
         return res.status(200).json({
-            message:"Your Sub Categories List",
+            message: "Your Sub Categories List",
             status: true,
-            data:data,
+            data: data,
         })
     }).populate("categoryId", "categoryName")
+}
+
+
+// Find by Category Id
+export const fetchSubCategoryByCategory = (req, res) => {
+    SubCategory.find({ "categoryId": req.params.id })
+        .then(resp => {
+            return res.status(200).json({
+                message: "SubCategory List",
+                status: true,
+                data: resp
+            })
+        })
+        .catch(err => {
+            return res.status(422).json({
+                message: "Failed To Find SubCategory",
+                status: false,
+                data: err,
+            })
+        })
 }
 
 
