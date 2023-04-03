@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import styles from "../styles/pages/Product.module.scss";
 import CommanBanner from "../components/CommanBanner";
 import { useSelector, useDispatch } from 'react-redux';
@@ -137,17 +138,19 @@ const Product = () => {
                   <>
                     {fetchedProduct?.data?.map((el, id) => {
                       return (
-                        <div key={id + Math.random()} className={styles.product_box}>
-                          <div className={styles.product_img}>
-                            <img src={el.productPicture} alt="" />
+                        <Link to={`/product/product-single/${el._id}`}>
+                          <div key={id + Math.random()} className={styles.product_box}>
+                            <div className={styles.product_img}>
+                              <img src={el.productPicture} alt="" />
+                            </div>
+                            <div className={styles.product_info}>
+                              <div className={`${styles.tag}`}>Best Seller</div>
+                              <p className={`${styles.brand} text_xxs`}>{el.subCategoryId.subCategoryName}</p>
+                              <p className={`${styles.title} text_sm`}>{el.productName}</p>
+                              <p className={`${styles.price} text_xxs`}>{el.productPrice}</p>
+                            </div>
                           </div>
-                          <div className={styles.product_info}>
-                            <div className={`${styles.tag}`}>Best Seller</div>
-                            <p className={`${styles.brand} text_xxs`}>{el.subCategoryId.subCategoryName}</p>
-                            <p className={`${styles.title} text_sm`}>{el.productName}</p>
-                            <p className={`${styles.price} text_xxs`}>{el.productPrice}</p>
-                          </div>
-                        </div>
+                        </Link>
                       )
                     })}
                   </>
@@ -155,19 +158,24 @@ const Product = () => {
                   <>
                     {filterdProduct?.map((el, id) => {
                       return (
-                        <div key={id + Math.random()} className={styles.product_box}>
-                          <div className={styles.product_img}>
-                            <img src={el.productPicture} alt="" />
+                        <Link to={`/product/product-single/${el._id}`}>
+                          <div key={id + Math.random()} className={styles.product_box}>
+                            <div className={styles.product_img}>
+                              <img src={el.productPicture} alt="" />
+                            </div>
+                            <div className={styles.product_info}>
+                              <div className={`${styles.tag}`}>Best Seller</div>
+                              <p className={`${styles.brand} text_xxs`}>{el.subCategoryId.subCategoryName}</p>
+                              <p className={`${styles.title} text_sm`}>{el.productName}</p>
+                              <p className={`${styles.price} text_xxs`}>{el.productPrice}</p>
+                            </div>
                           </div>
-                          <div className={styles.product_info}>
-                            <div className={`${styles.tag}`}>Best Seller</div>
-                            <p className={`${styles.brand} text_xxs`}>{el.subCategoryId.subCategoryName}</p>
-                            <p className={`${styles.title} text_sm`}>{el.productName}</p>
-                            <p className={`${styles.price} text_xxs`}>{el.productPrice}</p>
-                          </div>
-                        </div>
+                        </Link>
                       )
                     })}
+                    {filterdProduct.length === 0 &&
+                      <p>No Products Avaiable</p>
+                    }
                   </>
                 }
               </div>

@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from 'react-router-dom'
 import CommanBanner from "../components/CommanBanner";
 import styles from "../styles/pages/ProductSingle.module.scss";
 import productimg from "../img/product/prod-1.jpg";
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ProductTab from "../sections/ProductTab";
 import Footer from "../components/Footer";
+import { getOneProductData } from "../action/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { incNumber, decNumber } from "../action/counterAction";
 
 const ProductSingle = () => {
-  const myState = useSelector((state) => state.changeTheNumber)
+  const myState = useSelector((state) => state.changeTheNumber);
+  const fetchedOneProduct = useSelector((state) => state.fetchOnlyOneProduct);
   const dispatch = useDispatch();
+  const router = useLocation();
+
+
+  useEffect(() => {
+    const productId = router.pathname.split('/')[3];
+    dispatch(getOneProductData(productId));
+  }, [])
+
 
   return (
     <div className={styles.product_single_main}>
@@ -20,21 +31,19 @@ const ProductSingle = () => {
         <div className="container">
           <div className={styles.product_single_wrap}>
             <div className={styles.product_img}>
-              <img src={productimg} alt="" />
+              <img src={fetchedOneProduct?.data?.productPicture} alt="" />
             </div>
             <div className={styles.product_info}>
-              <p className={`${styles.title} text_md`}>Bacardi 151 Degree</p>
+              <p className={`${styles.title} text_md`}>{fetchedOneProduct?.data?.productName}</p>
               <p className={styles.rating}>
                 <span>5.0</span>
                 <AiFillStar />
                 <AiFillStar />
                 <AiFillStar />
               </p>
-              <p className={`${styles.price} text_md`}>$120.00</p>
+              <p className={`${styles.price} text_md`}>{`$${fetchedOneProduct?.data?.productPrice}`}</p>
               <p className={`${styles.desp} text_xxs`}>
-                A small river named Duden flows by their place and supplies it
-                with the necessary regelialia. It is a paradisematic country, in
-                which roasted parts of sentences fly into your mouth.
+                {fetchedOneProduct?.data?.productShortDescription}
               </p>
               <p className={`${styles.desp} text_xxs`}>
                 On her way she met a copy. The copy warned the Little Blind

@@ -29,6 +29,34 @@ export const getProduct = async (req, res) => {
 }
 
 
+//Find One Product
+export const getOneProduct = async (req, res) => {
+    const fetchProducts = await Product.findById(req.params.id).populate("categoryId subCategoryId", "categoryName subCategoryName")
+        .then((data) => {
+            if (data) {
+                return res.status(200).json({
+                    message: "Your Product",
+                    status: true,
+                    data: data,
+                })
+            }
+            else {
+                return res.status(422).json({
+                    message: "Cannot Find Product",
+                    status: false,
+                })
+            }
+
+        })
+        .catch(error => {
+            return res.status(422).json({
+                message: "Problem Finding Product",
+                status: false,
+            })
+        })
+} 
+
+
 // Create New Product
 export const createProduct = async (req, res) => {
     const { productName, productDescription, productShortDescription, productPrice, productPicture, categoryId, subCategoryId } = req.body;

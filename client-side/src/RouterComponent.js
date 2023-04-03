@@ -32,7 +32,7 @@ function RouterComponent() {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/product/product-single" element={<ProductSingle />} />
+          <Route path="/product/product-single/:id" element={<ProductSingle />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />

@@ -9,6 +9,15 @@ export const fetchAllProduct = (state = [], action) => {
     }
 }
 
+export const fetchOnlyOneProduct = (state = [], action) => {
+    switch (action.type) {
+        case "FETCH_ONE_PRODUCT":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export const createNewProduct = (state = [], action) => {
     switch (action.type) {
         case "CREATE_PRODUCT":

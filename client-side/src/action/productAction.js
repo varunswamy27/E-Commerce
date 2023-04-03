@@ -13,6 +13,18 @@ export const getProductData = () => async (dispatch) => {
     }
 }
 
+export const getOneProductData = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchOneProduct(id);
+        dispatch({
+            type: 'FETCH_ONE_PRODUCT',
+            payload: data
+        });
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export const createProduct = (categories) => async (dispatch) => {
     try {
         const { data } = await api.addProduct(categories)

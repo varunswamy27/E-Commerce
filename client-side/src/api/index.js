@@ -21,6 +21,7 @@ const updateSubCategoryUrl = "http://localhost:3000/update-subcategory";
 
 // PRODUCT URL
 const fetchProductUrl = "http://localhost:3000/product";
+const fetchOneProductUrl = "http://localhost:3000/single-product";
 const createProductUrl = "http://localhost:3000/add-product"
 const deleteProductUrl = "http://localhost:3000/delete-product";
 const updateProductUrl = "http://localhost:3000/update-product";
@@ -40,6 +41,7 @@ export const updateSubCategory = (id, updatedSubCat) => axios.patch(`${updateSub
 
 // PRODUCT API
 export const fetchProduct = () => axios.get(fetchProductUrl);
+export const fetchOneProduct = (id) => axios.get(`${fetchOneProductUrl}/${id}`);
 export const addProduct = (product) => axios.post(createProductUrl, product);
 export const deleteProduct = (id) => axios.delete(`${deleteProductUrl}/${id}`);
 export const updateProduct = (id, updatedPro) => axios.patch(`${updateProductUrl}/${id}`, updatedPro);
