@@ -6,7 +6,8 @@ import { getProductData, createProduct, removeProduct, modifyProduct } from '../
 
 const ProductComponent = () => {
 
-  const [productData, setProductData] = useState({ productName: "", productShortDescription: "", productDescription: "", productPrice: "", categoryId: "", subCategoryId: "" })
+  const [productData, setProductData] = useState({ productName: "", productShortDescription: "", productDescription: "", productPrice: "",
+  productPicture:"", categoryId: "", subCategoryId: "" })
   const [currentId, setCurrentId] = useState(null);
 
 
@@ -47,6 +48,7 @@ const ProductComponent = () => {
         productShortDescription: populatedProduct.productShortDescription,
         productDescription: populatedProduct.productDescription,
         productPrice: populatedProduct.productPrice,
+        productPicture: populatedProduct.productPicture,
         categoryId: populatedProduct.categoryId._id,
         subCategoryId: populatedProduct.subCategoryId._id
       })
@@ -95,6 +97,15 @@ const ProductComponent = () => {
           <input onChange={(e) => setProductData({ ...productData, productPrice: e.target.value })} value={productData.productPrice} type="text" name='productPrice' placeholder='Enter Product Price' />
           {productData.productPrice === " " ?
             <p className={styles.fielderror}>Enter Product Price Field</p>
+            :
+            null
+          }
+        </div>
+        <div className={styles.input_box}>
+          <label htmlFor="">Product Picture:</label>
+          <input onChange={(e) => setProductData({ ...productData, productPicture: e.target.value })} value={productData.productPicture} type="text" name='productPicture' placeholder='Enter Product Picture' />
+          {productData.productPicture === " " ?
+            <p className={styles.fielderror}>Enter Product Picture Field</p>
             :
             null
           }
