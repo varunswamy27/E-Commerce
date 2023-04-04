@@ -7,6 +7,8 @@ import { getCategoryData } from "../action/categoryAction";
 import { getProductData } from "../action/productAction";
 import { getSubCategoryDataByCategory } from "../action/subCategoryAction";
 import Footer from "../components/Footer";
+import { BiArrowBack } from 'react-icons/bi';
+
 
 const Product = () => {
 
@@ -99,14 +101,16 @@ const Product = () => {
 
   const filterPrice = (e) => {
     setPrice(e.target.value);
-    if (price <= '20000') {
-      setFilteredProductPrice(fetchedProduct?.data?.filter(item => item.productPrice >= e.target.value));
+    if (price > 20000) {
+      setFilteredProductPrice(filterdProduct?.filter(item => item.productPrice >= e.target.value));
     }
     else {
-      setFilteredProductPrice(fetchedProduct?.data?.filter(item => item.productPrice <= e.target.value));
+      setFilteredProductPrice(filterdProduct?.filter(item => item.productPrice <= e.target.value));
     }
   }
   console.log(filterdProductPrice);
+
+  
   return (
     <div className={styles.product_page}>
       <CommanBanner title="Products" />
@@ -116,7 +120,9 @@ const Product = () => {
             <div className={styles.category_wrap}>
               <div className={styles.category_fixed}>
                 <p className={`${styles.cat_hed} text_sm`}>Product Types</p>
-                <p className={`${styles.cat_title} text_xxs`}>All</p>
+                {subCategoryId ? null :
+                  <p onClick={() => { setCategoryId(null); setSubCategoryId(null); setFilterdProduct(null) }} className={`${styles.cat_title} text_xxs`}>All</p>
+                }
                 {subCategoryId ?
                   <select onChange={(e) => filterPrice(e)} className={`${styles.cat_title} text_xxs`} name="" id="he">
                     <option className={`${styles.cat_title} text_xxs`} disabled>Filter By Price</option>
@@ -127,7 +133,7 @@ const Product = () => {
                     <option className={`${styles.cat_title} text_xxs`} value={'30000'}>Over 20000</option>
                   </select>
                   : null}
-                {categoryId ? <p onClick={() => {setCategoryId(null); setSubCategoryId(null)}} className={`${styles.cat_title} text_xxs`}>Go Back</p> : null}
+                {categoryId ? <p onClick={() => { setCategoryId(null); setSubCategoryId(null) }} className={`${styles.cat_title} text_xxs`}><BiArrowBack style={{marginRight: 5}} />Go Back</p> : null}
                 {!categoryId ?
                   <>
                     {fetchedCategory.data?.map((cat, id) => (
@@ -152,6 +158,9 @@ const Product = () => {
                         <Link key={id + Math.random()} to={`/product/product-single/${el._id}`}>
                           <div className={styles.product_box}>
                             <div className={styles.product_img}>
+                              <div className={styles.overlay}>
+                                <p className={styles.view}>View</p>
+                              </div>
                               <img src={el.productPicture} alt="" />
                             </div>
                             <div className={styles.product_info}>

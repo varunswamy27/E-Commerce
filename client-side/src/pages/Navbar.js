@@ -61,9 +61,6 @@ const Navbar = () => {
             <Link to="/product">
               <p className={`${styles.link_name} text_xs`}>Product</p>
             </Link>
-            <Link to="/blog">
-              <p className={`${styles.link_name} text_xs`}>Blog</p>
-            </Link>
             <Link to="/contact">
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>

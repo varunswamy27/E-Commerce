@@ -11,6 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/public', express.static('public'));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/", userRouter);
 

@@ -19,8 +19,9 @@ const Home = () => {
       <CommanBanner title="Home" />
       <BannerTag />
       <Desire />
+      <div className="section_spacing_bottom">
       <ProductCircle />
-      <ProductListingSec />
+      </div>
       <ClientSlider />
       <ProductListingSec />
       <Footer />

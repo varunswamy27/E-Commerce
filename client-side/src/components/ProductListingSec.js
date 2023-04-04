@@ -2,14 +2,7 @@ import React from "react";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import styles from "../styles/components/ProductListingSec.module.scss";
-import prod1 from "../img/product/prod-1.jpg";
-import prod2 from "../img/product/prod-2.jpg";
-import prod3 from "../img/product/prod-3.jpg";
-import prod4 from "../img/product/prod-4.jpg";
-import prod5 from "../img/product/prod-5.jpg";
-import prod6 from "../img/product/prod-6.jpg";
-import prod7 from "../img/product/prod-7.jpg";
-import prod8 from "../img/product/prod-8.jpg";
+import { Link } from "react-router-dom";
 
 
 const ProductListingSec = () => {
@@ -21,7 +14,7 @@ const ProductListingSec = () => {
       .then(function (response) {
         // handle success
         console.log(response.data.data);
-        setProductData(response.data.data);
+        setProductData(response.data.data.slice(0,8));
       })
       .catch(function (error) {
         // handle error
@@ -146,7 +139,9 @@ const ProductListingSec = () => {
         </div>
 
         <div className={`${styles.btn_wrap}`}>
+          <Link to={'/product'}>
           <button className="text_xxs">View All Product</button>
+          </Link>
         </div>
       </div>
     </section>

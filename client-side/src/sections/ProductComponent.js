@@ -6,8 +6,10 @@ import { getProductData, createProduct, removeProduct, modifyProduct } from '../
 
 const ProductComponent = () => {
 
-  const [productData, setProductData] = useState({ productName: "", productShortDescription: "", productDescription: "", productPrice: "",
-  productPicture:"", categoryId: "", subCategoryId: "" })
+  const [productData, setProductData] = useState({
+    productName: "", productShortDescription: "", productDescription: "", productPrice: "", categoryId: "", subCategoryId: ""
+  });
+  const [productImage, setProductImage] = useState('');
   const [currentId, setCurrentId] = useState(null);
 
 
@@ -32,11 +34,20 @@ const ProductComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('public', productImage);
+    formData.append('productName', productData.productName);
+    formData.append('productShortDescription', productData.productShortDescription);
+    formData.append('productDescription', productData.productDescription);
+    formData.append('productPrice', productData.productPrice);
+    formData.append('categoryId', productData.categoryId);
+    formData.append('subCategoryId', productData.subCategoryId);
+
     if (currentId) {
       dispatch(modifyProduct(currentId, productData));
     }
     else {
-      dispatch(createProduct(productData))
+      dispatch(createProduct(formData))
     }
   }
 
@@ -101,9 +112,18 @@ const ProductComponent = () => {
             null
           }
         </div>
-        <div className={styles.input_box}>
+        {/* <div className={styles.input_box}>
           <label htmlFor="">Product Picture:</label>
           <input onChange={(e) => setProductData({ ...productData, productPicture: e.target.value })} value={productData.productPicture} type="text" name='productPicture' placeholder='Enter Product Picture' />
+          {productData.productPicture === " " ?
+            <p className={styles.fielderror}>Enter Product Picture Field</p>
+            :
+            null
+          }
+        </div> */}
+        <div className={styles.input_box}>
+          <label htmlFor="public">Product Picture:</label>
+          <input onChange={(e) => setProductImage(e.target.files[0])} type="file" id='file' name='public' placeholder='Enter Product Picture' />
           {productData.productPicture === " " ?
             <p className={styles.fielderror}>Enter Product Picture Field</p>
             :
