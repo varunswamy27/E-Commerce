@@ -264,9 +264,37 @@ export const updateProduct = (req, res) => {
 }
 
 
-// Sort Ascending Descending Product
-export const sortProduct = async (req, res) => {
-    const orderedProducts = await Product.find({}).sort({ productName: 1 })
+// Sort Ascending Product
+export const sortProductAsc = (req, res) => {
+    Product.find({}).sort('productName')
+        .then((data) => {
+            if (data) {
+                return res.status(200).json({
+                    message: "Sorted Product List",
+                    status: true,
+                    data: data,
+                })
+            }
+            else {
+                return res.status(422).json({
+                    message: "Failed To Sort Product",
+                    status: false,
+                    data: data,
+                })
+            }
+        })
+        .catch(error => {
+            return res.status(422).json({
+                message: "Problem Sorting",
+                status: false,
+                data: data,
+            })
+        })
+}
+
+// Sort Descending Product
+export const sortProductDes = (req, res) => {
+    Product.find({}).sort('productName')
         .then((data) => {
             if (data) {
                 return res.status(200).json({
@@ -295,7 +323,7 @@ export const sortProduct = async (req, res) => {
 
 // Filter Product Price
 export const filterPriceProduct = (req, res) => {
-    Product.find({ productPrice: { $lte: 10000 } }, (err, data) => {
+    Product.find({ productPrice: { $lte: req.params.price } }, (err, data) => {
         if (err) {
             return res.status(422).json({
                 message: "Failed To Filter Product",

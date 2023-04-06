@@ -3,6 +3,7 @@ import UserInfo from "../models/user.model";
 
 
 export const isAuthorized = (req, res, next) => {
+	// console.log(req.headers);
 	if (req.headers && req.headers.authorization) {
 		var parts = req.headers.authorization.split(" ");
 		if (parts.length == 2) {
@@ -29,7 +30,8 @@ export const isAuthorized = (req, res, next) => {
 	}
 }
 
-export const verifyToken = async (req, res, next) => {
+export const verifyToken = (req, res, next) => {
+	console.log(req.headers.authorization,"Works")
 	try {
 		const token = req.headers.authorization.split(" ")[1];
 		const decoded = jwt.verify(token, 'test');

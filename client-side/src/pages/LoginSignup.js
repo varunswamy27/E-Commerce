@@ -45,7 +45,7 @@ const LoginSignup = () => {
 
   useEffect(() => {
     if (signUpMessage?.message === 'SignUp Successful') {
-      setFormData({firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
+      setFormData({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "" });
       setIsLoading(true)
       setTimeout(() => {
         setIsSignUp(true)
@@ -58,7 +58,7 @@ const LoginSignup = () => {
   const googleSuccess = (res) => {
     // console.log(res)
   }
-  
+
   const googleFailure = (error) => {
     // console.log(error)
     // console.log("Google Sign In was unsuccessful. Try Again Later")
@@ -142,14 +142,14 @@ const LoginSignup = () => {
                   <p className="success">{signUpMessage?.message === "SignUp Successful" ? signUpMessage?.message : null}</p>
                   {isLoading ?
                     <ProgressBar
-                    height="60"
-                    width="80"
-                    ariaLabel="progress-bar-loading"
-                    wrapperStyle={{}}
-                    wrapperClass="progress-bar-wrapper"
-                    borderColor = '#B7472A'
-                    barColor = '#B7472A'
-                  />
+                      height="60"
+                      width="80"
+                      ariaLabel="progress-bar-loading"
+                      wrapperStyle={{}}
+                      wrapperClass="progress-bar-wrapper"
+                      borderColor='#B7472A'
+                      barColor='#B7472A'
+                    />
                     : null
                   }
                 </div>

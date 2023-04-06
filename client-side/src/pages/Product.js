@@ -40,65 +40,6 @@ const Product = () => {
   }
 
 
-
-  // const productData = [{
-  //   productImg: prod1,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod2,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod3,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod4,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod5,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod6,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod7,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // {
-  //   productImg: prod8,
-  //   tag: "Best Seller",
-  //   brand: "Brandy",
-  //   title: "Bacardi 151",
-  //   price: "$49.00",
-  // },
-  // ]
-
   const filterPrice = (e) => {
     setPrice(e.target.value);
     if (price > 20000) {
@@ -110,7 +51,7 @@ const Product = () => {
   }
   console.log(filterdProductPrice);
 
-  
+
   return (
     <div className={styles.product_page}>
       <CommanBanner title="Products" />
@@ -133,7 +74,7 @@ const Product = () => {
                     <option className={`${styles.cat_title} text_xxs`} value={'30000'}>Over 20000</option>
                   </select>
                   : null}
-                {categoryId ? <p onClick={() => { setCategoryId(null); setSubCategoryId(null) }} className={`${styles.cat_title} text_xxs`}><BiArrowBack style={{marginRight: 5}} />Go Back</p> : null}
+                {categoryId ? <p onClick={() => { setCategoryId(null); setSubCategoryId(null) }} className={`${styles.cat_title} text_xxs`}><BiArrowBack style={{ marginRight: 5 }} />Go Back</p> : null}
                 {!categoryId ?
                   <>
                     {fetchedCategory.data?.map((cat, id) => (
