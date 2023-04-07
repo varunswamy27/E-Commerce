@@ -18,6 +18,7 @@ import Loader from './Hooks/Loader';
 function RouterComponent() {
 
   const [pathLocation, setPathLocation] = useState(window.location.pathname);
+  const [isLogin, setIsLogin] = useState(JSON.parse(localStorage.getItem('profile')))
 
 
 
@@ -25,7 +26,7 @@ function RouterComponent() {
     <div>
       <BrowserRouter>
         <IsAuthorized pathLocation={pathLocation} />
-        {pathLocation === "/auth" ? null : <Navbar />}
+        {isLogin?.token ? <Navbar /> : null}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
           <Route path="/" element={<Home />} />

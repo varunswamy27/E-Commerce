@@ -52,9 +52,6 @@ const Navbar = () => {
             </Link>
           </div>
           <div className={styles.links}>
-            <Link to="/">
-              <p className={`${styles.link_name} text_xs`}>Home</p>
-            </Link>
             <Link to="/about-us">
               <p className={`${styles.link_name} text_xs`}>About</p>
             </Link>
@@ -65,7 +62,7 @@ const Navbar = () => {
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>
             <Link to="/auth">
-              <p className={`${styles.link_name} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
+              <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
             {/* <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0).toUpperCase() : null}</p> */}
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
@@ -78,17 +75,11 @@ const Navbar = () => {
       </div>
       <div ref={navRef} className={isActive ? `${styles.active_hamburger} active` : styles.side_bar}>
         <div className={styles.side_nav}>
-          <Link to="/">
-            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Home</p>
-          </Link>
           <Link to="/about-us">
             <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>About</p>
           </Link>
           <Link to="/product">
             <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Product</p>
-          </Link>
-          <Link to="/blog">
-            <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Blog</p>
           </Link>
           <Link to="/contact">
             <p onClick={() => { setActive(false) }} className={`${styles.link_name} text_sm`}>Contact</p>

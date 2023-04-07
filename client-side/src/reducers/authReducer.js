@@ -4,7 +4,7 @@ export const authReducer = (state = { authData: null }, action) => {
     switch (action.type) {
         case 'SIGN_IN':
             localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-            // window.location.href = '/'
+            window.location.href = '/'
             return { ...state, authData: action?.data };
         case 'SIGN_UP':
             return action.data

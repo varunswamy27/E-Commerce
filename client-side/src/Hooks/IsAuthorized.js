@@ -25,9 +25,6 @@ const IsAuthorized = ({ pathLocation }) => {
         if (user?.data?.isAdmin === false && pathLocation === '/admin') {
             navigate('/');
         }
-        else {
-            console.log("You Are An Admin");
-        }
     }, [pathLocation])
 
 

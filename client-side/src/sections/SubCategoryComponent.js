@@ -53,7 +53,7 @@ const SubCategoryComponent = () => {
                 <div className={styles.input_box}>
                     <label htmlFor="">SubCategory Name:</label>
                     <input onChange={(e) => setSubCategoryData({ ...subCategoryData, subCategoryName: e.target.value })} value={subCategoryData.subCategoryName} type="text" name='categoryName' placeholder='Enter SubCategory' />
-                    {subCategoryData.categoryName === " " ?
+                    {subCategoryData.subCategoryName === " " ?
                         <p className={styles.fielderror}>Enter Category Field</p>
                         :
                         null
