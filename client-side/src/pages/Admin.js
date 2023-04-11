@@ -18,7 +18,7 @@ const Admin = () => {
             <CommanBanner title="Admin Panel" />
             <div className={styles.admin_main}>
                 <div className={styles.side_nav}>
-                    <AdminSideBar setTabId={setTabId} />
+                    <AdminSideBar setTabId={setTabId} tabId={tabId} />
                 </div>
                 <div className={styles.admin_content}>
                     <div className={`${styles.container} section_spacing`}>
