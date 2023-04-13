@@ -9,7 +9,11 @@ export const signin = (formData) => async (dispatch) => {
             data
         })
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        dispatch({
+            type: "SIGN_IN_ERROR",
+            payload: error
+        })
     }
 }
 

@@ -25,7 +25,7 @@ const IsAuthorized = ({ pathLocation }) => {
         if (user?.data?.isAdmin === false && pathLocation === '/admin') {
             navigate('/');
         }
-    }, [pathLocation])
+    }, [pathLocation]);
 
 
     return (

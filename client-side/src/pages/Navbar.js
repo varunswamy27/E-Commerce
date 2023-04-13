@@ -34,7 +34,7 @@ const Navbar = () => {
     }
   }, [])
 
-
+console.log(user)
 
   return (
     <nav className={scrollPosition > 0 ? styles.scroll : null}>
@@ -61,6 +61,7 @@ const Navbar = () => {
             <Link to="/contact">
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>
+            <p className={`${styles.userChar}`}></p>
             <Link to="/auth">
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>

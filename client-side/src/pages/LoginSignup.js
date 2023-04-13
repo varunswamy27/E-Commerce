@@ -18,7 +18,7 @@ const LoginSignup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const signUpMessage = useSelector((state) => state.authReducer)
+  const signUpMessage = useSelector((state) => state.authReducer);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault()
@@ -64,6 +64,8 @@ const LoginSignup = () => {
     // console.log("Google Sign In was unsuccessful. Try Again Later")
   }
 
+  console.log(signUpMessage);
+
   return (
     <div className={styles.login_signup}>
       <div className={styles.login_wrap}>
@@ -89,6 +91,8 @@ const LoginSignup = () => {
                 <div className={`${styles.inp_box_log}`}>
                   <input onChange={handleChange} value={formData.password} name="password" type="text" placeholder="Enter Your Password" />
                 </div>
+                <p className="error">{signUpMessage?.response?.data?.message}</p>
+                <p className="success">{signUpMessage?.authData?.message === "Login Successful" ? signUpMessage?.authData?.message : null}</p>
                 <div className={`${styles.btn_log_in}`}>
                   <button onClick={handleSubmitIn}>LOGIN</button>
                 </div>
