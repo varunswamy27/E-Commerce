@@ -34,7 +34,7 @@ const Navbar = () => {
     }
   }, [])
 
-console.log(user)
+// console.log(user?.data?.firstName.charAt(0).toUpperCase())
 
   return (
     <nav className={scrollPosition > 0 ? styles.scroll : null}>
@@ -61,7 +61,7 @@ console.log(user)
             <Link to="/contact">
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>
-            <p className={`${styles.userChar}`}></p>
+            <p className={`${styles.userChar} text_xs`}>{`${user?.data?.firstName.charAt(0)}`}</p>
             <Link to="/auth">
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>

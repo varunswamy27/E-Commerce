@@ -52,6 +52,14 @@ nav {
           padding: 5px 10px;
           border-radius: 5px;
         }
+        .userChar{
+          margin: 0% 15px;
+          border: 1px solid white;
+          width: 40px;
+          height: 40px;
+          @extend %f_r_aj_center;
+          border-radius: 50%;
+        }
 
         .hamburger {
           display: none;
@@ -167,6 +175,15 @@ nav {
         padding: 5px 10px;
         border-radius: 5px;
         color: var(--color_primary);
+      }
+      .userChar{
+        margin: 0% 15px;
+        border: 1px solid gray;
+        color: var(--color_yellow);
+        width: 40px;
+        height: 40px;
+        @extend %f_r_aj_center;
+        border-radius: 50%;
       }
 
       .hamburger {

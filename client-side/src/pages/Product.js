@@ -49,7 +49,7 @@ const Product = () => {
       setFilteredProductPrice(filterdProduct?.filter(item => item.productPrice <= e.target.value));
     }
   }
-  console.log(filterdProductPrice);
+  // console.log(filterdProductPrice);
 
 
   return (
