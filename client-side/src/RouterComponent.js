@@ -13,6 +13,7 @@ import { useState } from "react";
 import Admin from "./pages/Admin";
 import IsAuthorized from "./Hooks/IsAuthorized";
 import Loader from './Hooks/Loader';
+import Scroll from "./pages/Scroll";
 
 
 function RouterComponent() {
@@ -26,7 +27,7 @@ function RouterComponent() {
     <div>
       <BrowserRouter>
         <IsAuthorized pathLocation={pathLocation} />
-        {isLogin?.token ? <Navbar /> : null}
+        {/* {isLogin?.token ? <Navbar /> : null} */}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
           <Route path="/" element={<Home />} />
@@ -34,6 +35,7 @@ function RouterComponent() {
           <Route path="/product" element={<Product />} />
           <Route path="/product/product-single/:id" element={<ProductSingle />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/scroll" element={<Scroll/>} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
