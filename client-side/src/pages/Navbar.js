@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const scrollPosition = ScrollPosition();
   const [isActive, setActive] = useState(false);
+  const [height, setHeight] = useState(0)
+  const ref = useRef(null)
   const navRef = useRef();
   const btnRef = useRef();
   const navigate = useNavigate();
@@ -22,6 +24,11 @@ const Navbar = () => {
 
 
   useEffect(() => {
+    // setHeight(ref.current.clientHeight);
+    // document.documentElement.style.setProperty(
+    //   "--nav_height",
+    //   `${height}`
+    // )
     let handler = (event) => {
       if (btnRef.current.contains(event.target)) return;
       if (!navRef.current.contains(event.target)) {
@@ -34,10 +41,10 @@ const Navbar = () => {
     }
   }, [])
 
-// console.log(user?.data?.firstName.charAt(0).toUpperCase())
+  console.log(height);
 
   return (
-    <nav className={scrollPosition > 0 ? styles.scroll : null}>
+    <nav ref={ref} className={scrollPosition > 0 ? styles.scroll : null}>
       <div
         className={
           scrollPosition > 0

@@ -1,4 +1,7 @@
 import axios from "axios";
+ 
+// LIVE URL
+// https://go-gadgets.onrender.com
 
 // URL
 
@@ -20,7 +23,7 @@ const deleteSubCategoryUrl = "http://localhost:3000/delete-category";
 const updateSubCategoryUrl = "http://localhost:3000/update-subcategory";
 
 // PRODUCT URL
-const fetchProductUrl = "https://go-gadgets.onrender.com/product";
+const fetchProductUrl = "http://localhost:3000/product";
 const fetchOneProductUrl = "http://localhost:3000/single-product";
 const createProductUrl = "http://localhost:3000/add-product"
 const deleteProductUrl = "http://localhost:3000/delete-product";
