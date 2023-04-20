@@ -2,6 +2,7 @@ import React from 'react';
 import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from 'gsap';
+import image_1 from "../img/blog/image_1.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const Scroll = () => {
@@ -25,6 +26,8 @@ const Scroll = () => {
         //     })
         // })
 
+        // console.log(window.innerWidth)
+
         const el = pinRef.current;
         const dot = dotRef.current;
         const fix = fixRef.current;
@@ -36,7 +39,6 @@ const Scroll = () => {
                 trigger: el,
                 start: "top top",
                 end: `+=${window.outerHeight}`,
-                // markers: true,
                 pin: true,
             }
         })
@@ -46,31 +48,29 @@ const Scroll = () => {
             scrollTrigger: {
                 trigger: el,
                 start: "top top",
-                // markers: true,
-                scrub: true
-            }
-        })
-        gsap.to(fix, {
-            duration: 2,
-            scrollTrigger: {
-                trigger: fix,
-                start: "top top",
-                end: `+=${window.outerHeight}`,
-                // markers: true,
-                pin: true
-            }
-        })
-        gsap.to(name, {
-            transform: `translateX(-40%)`,
-            color: "red",
-            duration: 4,
-            scrollTrigger: {
-                trigger: fix,
-                start: "top top",
-                // markers: true,
                 scrub: 1
             }
         })
+        gsap.to(name, {
+            transform: `translateX(calc(-100% + ${window.innerWidth}px))`,
+            color: "red",
+            scrollTrigger: {
+                trigger: fix,
+                start: "top top",
+                end: `+=${name.clientWidth - window.innerWidth}`,
+                scrub: true,
+                pin: true,
+            }
+        })
+        let panels = gsap.utils.toArray(".panel");
+        panels.forEach((panel, i) => {
+            ScrollTrigger.create({
+                trigger: panel,
+                start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+                pin: true,
+                pinSpacing: i === 2 ? true : false
+            });
+        });
     }, [])
 
     return (
@@ -82,7 +82,17 @@ const Scroll = () => {
             <div className="helper" ref={fixRef}>
                 <p className='name' ref={nameRef}>varun swamy</p>
             </div>
+            <div className="helper yellow panel">
+                Pin 1
+            </div>
+            <div className="helper tomato panel">
+                Pin 2
+            </div>
+            <div className="helper grey panel">
+                <img className='img' src={image_1} alt="" />
+            </div>
             <div className="helper"></div>
+
         </div>
 
         // <div className='rotate' ref={boxRef}></div>
