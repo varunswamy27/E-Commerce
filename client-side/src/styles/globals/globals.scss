@@ -306,6 +306,7 @@ picture {
     background-color: lightblue;
     border: 1px solid black;
     display: flex;
+
     &.tomato {
       background-color: tomato;
     }
@@ -329,7 +330,35 @@ picture {
       padding-right: 20px;
     }
   }
-  .img{
+
+  .pic {
+    background-color: lightseagreen;
+    @extend %f_r_aj_center;
+    flex-direction: column;
+    height: 100vh;
+    .img2{
+      display: none;
+      opacity: 0;
+    }
+    .img3{
+      display: none;
+      opacity: 0;
+    }
+    .img4{
+      display: none;
+      opacity: 0;
+    }
+    .img5{
+      display: none;
+      opacity: 0;
+    }
+    .img6{
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  img {
     width: 400px;
     height: 300px;
     border-radius: 20px;

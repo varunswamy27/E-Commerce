@@ -3,6 +3,11 @@ import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from 'gsap';
 import image_1 from "../img/blog/image_1.jpg";
+import image_2 from "../img/blog/image_2.jpg";
+import image_3 from "../img/blog/image_3.jpg";
+import image_4 from "../img/blog/image_4.jpg";
+import image_5 from "../img/blog/image_5.jpg";
+import image_6 from "../img/blog/image_6.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const Scroll = () => {
@@ -68,8 +73,58 @@ const Scroll = () => {
                 trigger: panel,
                 start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
                 pin: true,
-                pinSpacing: i === 2 ? true : false
+                pinSpacing: i === 2 ? true : false,
             });
+        });
+
+
+        const imageChange = gsap.timeline({});
+        imageChange.to('.img', {
+            display: "none",
+            opacity: 0
+        })
+            .to('.img2', {
+                display: "block",
+                opacity: 1
+            })
+            .to('.img2', {
+                display: "none",
+                opacity: 0
+            })
+            .to('.img3', {
+                display: "block",
+                opacity: 1
+            })
+            .to('.img3', {
+                display: "none",
+                opacity: 0
+            })
+            .to('.img4', {
+                display: "block",
+                opacity: 1
+            })
+            .to('.img4', {
+                display: "none",
+                opacity: 0
+            })
+            .to('.img5', {
+                display: "block",
+                opacity: 1
+            })
+            .to('.img5', {
+                display: "none",
+                opacity: 0
+            })
+            .to('.img6', {
+                display: "block",
+                opacity: 1
+            })
+        ScrollTrigger.create({
+            trigger: ".pic",
+            start: "top top",
+            pin: true,
+            scrub: true,
+            animation: imageChange
         });
     }, [])
 
@@ -89,9 +144,18 @@ const Scroll = () => {
                 Pin 2
             </div>
             <div className="helper grey panel">
+                Pin 3
+            </div>
+            <div className="pic">
                 <img className='img' src={image_1} alt="" />
+                <img className='img2' src={image_2} alt="" />
+                <img className='img3' src={image_3} alt="" />
+                <img className='img4' src={image_4} alt="" />
+                <img className='img5' src={image_5} alt="" />
+                <img className='img6' src={image_6} alt="" />
             </div>
             <div className="helper"></div>
+
 
         </div>
 
