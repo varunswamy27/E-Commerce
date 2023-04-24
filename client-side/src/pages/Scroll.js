@@ -53,7 +53,7 @@ const Scroll = () => {
             scrollTrigger: {
                 trigger: el,
                 start: "top top",
-                scrub: 1
+                scrub: 0.5
             }
         })
         gsap.to(name, {
@@ -126,6 +126,22 @@ const Scroll = () => {
             scrub: true,
             animation: imageChange
         });
+        gsap.to(".pImg", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".parallax",
+                scrub: true
+            },
+        });
+        gsap.to(".pContent", {
+            yPercent: -100,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".parallax",
+                scrub: true
+            },
+        });
     }, [])
 
     return (
@@ -153,6 +169,10 @@ const Scroll = () => {
                 <img className='img4' src={image_4} alt="" />
                 <img className='img5' src={image_5} alt="" />
                 <img className='img6' src={image_6} alt="" />
+            </div>
+            <div className="parallax">
+                <img className='pImg' src={image_1} alt="" />
+                <p className='pContent'>Parallax Section</p>
             </div>
             <div className="helper"></div>
 

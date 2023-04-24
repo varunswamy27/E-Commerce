@@ -8,6 +8,7 @@ import axios from "axios";
 // USER URL
 const signInUrl = "http://localhost:3000/signup";
 const signUpUrl = "http://localhost:3000/signin";
+const fetchUserUrl = "http://localhost:3000/user";
 
 // CATEGORY URL
 const fetchCategoryUrl = "http://localhost:3000/category";
@@ -52,6 +53,7 @@ export const updateProduct = (id, updatedPro) => axios.patch(`${updateProductUrl
 // USER API
 export const signIn = (formData) => axios.post(signInUrl, formData);
 export const signUp = (formData) => axios.post(signUpUrl, formData);
+export const fetchUser = () => axios.get(fetchUserUrl);
 
 
 

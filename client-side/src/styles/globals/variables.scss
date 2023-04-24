@@ -18,7 +18,7 @@ $browser-prefixes: false !default;
   //extras
   --container_width: 100%;
   --transition: ease all 300ms;
-  --nav_height: 40;
+  // --nav_height: 40;
 
   @media (min-width: 768px) and (max-width: 991px) {
     --container_width: 750px;

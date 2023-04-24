@@ -22,12 +22,12 @@ function RouterComponent() {
   const [isLogin, setIsLogin] = useState(JSON.parse(localStorage.getItem('profile')))
 
 
-
+console.log(pathLocation)
   return (
     <div>
       <BrowserRouter>
         <IsAuthorized pathLocation={pathLocation} />
-        {/* {isLogin?.token ? <Navbar /> : null} */}
+        {isLogin?.token ? <Navbar /> : null}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
           <Route path="/" element={<Home />} />
@@ -35,7 +35,7 @@ function RouterComponent() {
           <Route path="/product" element={<Product />} />
           <Route path="/product/product-single/:id" element={<ProductSingle />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/scroll" element={<Scroll/>} />
+          <Route path="/scroll" element={<Scroll />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NoPage />} />
         </Routes>

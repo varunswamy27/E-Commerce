@@ -3,6 +3,7 @@ import styles from '../styles/sections/CommanModel.module.scss';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategoryData, createCategory, removeCategory, modifyCategory } from '../action/categoryAction';
+import { getUserData } from '../action/userAction';
 
 
 const UserComponent = () => {
@@ -11,6 +12,7 @@ const UserComponent = () => {
 
 
   const fetchedCategory = useSelector((state) => state.fetchAllCategory);
+  const fetchedUser = useSelector((state) => state.fetchAllUser);
   const fetchedCategoryInput = useSelector((state) => state.fetchAllCategory);
   const createdCategory = useSelector((state) => state.createNewCategory)
   const deletedCategory = useSelector((state) => state.removeSelectedCategory);
@@ -22,8 +24,10 @@ const UserComponent = () => {
 
   useEffect(() => {
     dispatch(getCategoryData())
+    dispatch(getUserData());
   }, [createdCategory, deletedCategory, currentId, dispatch])
 
+  console.log(fetchedUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
