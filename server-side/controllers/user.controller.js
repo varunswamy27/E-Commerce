@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 
 
 // FETCH ALL USERS
-export const getUser = async (req, res) => {
-  const userDetails = await UserInfo.find({}).populate("userRole")
+export const getUser = (req, res) => {
+  UserInfo.find({}).populate("userRole", "_id")
     .then((data) => {
       if (data) {
         return res.status(200).json({
@@ -34,7 +34,7 @@ export const getUser = async (req, res) => {
 
 // CREATE A NEW USER/SIGNUP
 export const createUser = async (req, res) => {
-  const { firstName, lastName, email, password, phoneNumber } = req.body;
+  const { firstName, lastName, email, password, phoneNumber, userRole } = req.body;
   if (!firstName || !lastName || !email || !password || !phoneNumber) {
     return res.status(400).json({
       message: "Enter all fields",
@@ -57,6 +57,7 @@ export const createUser = async (req, res) => {
         email: email,
         password: hashedPassword,
         phoneNumber: phoneNumber,
+        userRole: userRole
       };
       const result = await UserInfo.create(userData);
       return res.status(200).json({
@@ -110,9 +111,52 @@ export const loginUser = async (req, res) => {
 }
 
 
+// Delete User
+export const deleteUser = async (req, res) => {
+  try {
+    const removeUser = await UserInfo.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: "User Removed",
+      status: true,
+      data: removeUser
+    })
+  } catch (error) {
+    return res.status(400).json({
+      message: "Cannot Remove User",
+      status: false,
+      data: error
+    })
+  }
+}
+
+
+// Update User
+export const updateUser = (req, res) => {
+  UserInfo.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data) => {
+    if (!req.body) {
+      return res.status(400).json({
+        message: "Enter User To Be Updated",
+        status: false,
+      })
+    }
+    if (err) {
+      return res.status(400).json({
+        message: "Problem Updating",
+        status: false,
+      })
+    }
+    return res.status(200).json({
+      message: "Updated User",
+      status: true,
+      data: data,
+    })
+  })
+}
+
+
 // USERROLE FETCH
-export const getRoles = async (req, res) => {
-  const userRoleDetails = await UserRole.find({})
+export const getRoles = (req, res) => {
+  UserRole.find({})
     .then((data) => {
       if (data) {
         return res.status(200).json({

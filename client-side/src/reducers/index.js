@@ -3,7 +3,7 @@ import changeTheNumber from "./counterReducer";
 import { createNewCategory, fetchAllCategory, removeSelectedCategory, modifySelectedCategory } from "./categoryReducer";
 import { fetchAllSubCategory, createNewSubCategory, modifySelectedSubCategory, fetchAllSubCategoryByCategory } from "./subCategoryReducer";
 import { fetchAllProduct, createNewProduct, removeSelectedProduct, modifySelectedProduct, fetchOnlyOneProduct } from "./productReducer";
-import { fetchAllUser } from "./userReducer";
+import { fetchAllUser, createNewUser, removeSelectedUser, modifySelectedUser, fetchAllUserRole } from "./userReducer";
 import { authReducer } from "./authReducer";
 
 const rootReducer = combineReducers({
@@ -22,7 +22,11 @@ const rootReducer = combineReducers({
     removeSelectedProduct,
     modifySelectedProduct,
     authReducer,
-    fetchAllUser
+    fetchAllUser,
+    createNewUser,
+    removeSelectedUser,
+    modifySelectedUser,
+    fetchAllUserRole
 })
 
 export default rootReducer;

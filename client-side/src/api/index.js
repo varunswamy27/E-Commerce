@@ -1,5 +1,5 @@
 import axios from "axios";
- 
+
 // LIVE URL
 // https://go-gadgets.onrender.com
 
@@ -9,6 +9,11 @@ import axios from "axios";
 const signInUrl = "http://localhost:3000/signup";
 const signUpUrl = "http://localhost:3000/signin";
 const fetchUserUrl = "http://localhost:3000/user";
+const createUserUrl = "http://localhost:3000/signin";
+const deleteUserUrl = "http://localhost:3000/delete-user";
+const updateUserUrl = "http://localhost:3000/update-user";
+const fetchUserRoleUrl = "http://localhost:3000/role";
+
 
 // CATEGORY URL
 const fetchCategoryUrl = "http://localhost:3000/category";
@@ -54,6 +59,11 @@ export const updateProduct = (id, updatedPro) => axios.patch(`${updateProductUrl
 export const signIn = (formData) => axios.post(signInUrl, formData);
 export const signUp = (formData) => axios.post(signUpUrl, formData);
 export const fetchUser = () => axios.get(fetchUserUrl);
+export const addUser = (user) => axios.post(createUserUrl, user);
+export const deleteUser = (id) => axios.delete(`${deleteUserUrl}/${id}`);
+export const updateUser = (id, updatedUser) => axios.patch(`${updateUserUrl}/${id}`, updatedUser);
+export const fetchUserRole = () => axios.get(fetchUserRoleUrl);
+
 
 
 

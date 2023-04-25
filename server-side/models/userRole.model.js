@@ -4,13 +4,10 @@ const { Schema } = mongoose;
 
 const roleSchema = new Schema({
     admin: {
-        type: String,
-        default : "admin",
-        required: true,
+        type: Boolean,
     },
     superAdmin: {
         type: Boolean,
-        required: true,
     },
 });
 

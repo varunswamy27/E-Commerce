@@ -28,7 +28,9 @@ const userSchema = new Schema({
     default: false,
   },
   userRole: { type: Schema.Types.ObjectId, ref: "UserRole" }
-});
+}, {
+  timestamps: true
+})
 
 const UserInfo = mongoose.model("UserInfo", userSchema);
 
