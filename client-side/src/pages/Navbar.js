@@ -41,7 +41,6 @@ const Navbar = () => {
     }
   }, [])
 
-  console.log(height);
 
   return (
     <nav ref={ref} className={scrollPosition > 0 ? styles.scroll : null}>

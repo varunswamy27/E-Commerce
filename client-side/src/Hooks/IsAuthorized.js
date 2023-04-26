@@ -12,8 +12,6 @@ const IsAuthorized = ({ pathLocation }) => {
     const navigate = useNavigate();
     const Admin = "6447adc7f24f8b311abee1c2";
 
-    console.log(user?.data?.userRole)
-
 
     useEffect(() => {
         if (!user && window.location.href.indexOf('auth') === -1) {
@@ -22,13 +20,11 @@ const IsAuthorized = ({ pathLocation }) => {
         if (user && pathLocation === '/auth') {
             navigate('/');
         }
-    }, [pathLocation]);
-
-    useEffect(() => {
         if (user?.data?.userRole === undefined && pathLocation === '/admin') {
             navigate('/');
         }
     }, [pathLocation]);
+
 
 
     return (

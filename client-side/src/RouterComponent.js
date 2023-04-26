@@ -21,8 +21,6 @@ function RouterComponent() {
   const [pathLocation, setPathLocation] = useState(window.location.pathname);
   const [isLogin, setIsLogin] = useState(JSON.parse(localStorage.getItem('profile')))
 
-
-console.log(pathLocation)
   return (
     <div>
       <BrowserRouter>
