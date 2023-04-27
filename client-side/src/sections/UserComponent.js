@@ -16,7 +16,7 @@ const UserComponent = () => {
   const createdUser = useSelector((state) => state.createNewUser);
   const deletedUser = useSelector((state) => state.removeSelectedUser);
   const updatedUser = useSelector((state) => state.modifySelectedUser);
-  const populatedUser = currentId ? fetchedUserInput.data?.find((p) => p._id === currentId) : null
+  const populatedUser = currentId ? fetchedUserInput.data?.find((p) => p._id === currentId) : null;
 
   const dispatch = useDispatch();
 

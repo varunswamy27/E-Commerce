@@ -14,6 +14,7 @@ import Admin from "./pages/Admin";
 import IsAuthorized from "./Hooks/IsAuthorized";
 import Loader from './Hooks/Loader';
 import Scroll from "./pages/Scroll";
+import Cart from "./pages/Cart";
 
 
 function RouterComponent() {
@@ -35,6 +36,7 @@ function RouterComponent() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/scroll" element={<Scroll />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

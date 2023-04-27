@@ -71,6 +71,9 @@ const Navbar = () => {
             <Link to="/auth">
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
+            <Link to="/cart">
+              <p className={`${styles.link_name} text_xs`}>Cart</p>
+            </Link>
             {/* <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0).toUpperCase() : null}</p> */}
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
