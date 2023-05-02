@@ -5,6 +5,7 @@ import { fetchAllSubCategory, createNewSubCategory, modifySelectedSubCategory, f
 import { fetchAllProduct, createNewProduct, removeSelectedProduct, modifySelectedProduct, fetchOnlyOneProduct } from "./productReducer";
 import { fetchAllUser, createNewUser, removeSelectedUser, modifySelectedUser, fetchAllUserRole } from "./userReducer";
 import { authReducer } from "./authReducer";
+import { cartReducer } from "./cartReducer";
 
 const rootReducer = combineReducers({
     changeTheNumber,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
     createNewUser,
     removeSelectedUser,
     modifySelectedUser,
-    fetchAllUserRole
+    fetchAllUserRole,
+    cartReducer
 })
 
 export default rootReducer;

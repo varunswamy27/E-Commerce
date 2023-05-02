@@ -5,7 +5,7 @@ import ScrollPosition from "../Hooks/ScrollPosition";
 import { useState, useRef, useEffect } from "react";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../action/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -14,13 +14,16 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const scrollPosition = ScrollPosition();
   const [isActive, setActive] = useState(false);
+  const [cartLength, setCartLength] = useState(JSON.parse(localStorage?.getItem('cartItems'))?.length)
   const [height, setHeight] = useState(0)
   const ref = useRef(null)
   const navRef = useRef();
   const btnRef = useRef();
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const cartState = useSelector(state => state.cartReducer);
   const dispatch = useDispatch();
+
 
 
   useEffect(() => {
@@ -72,9 +75,8 @@ const Navbar = () => {
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
             <Link to="/cart">
-              <p className={`${styles.link_name} text_xs`}>Cart</p>
+              <p className={`${styles.link_name} text_xs`}>Cart {cartState?.cartItems?.length}</p>
             </Link>
-            {/* <p className={`${styles.link_name} text_xs`}>{user ? user.result.firstName.charAt(0).toUpperCase() : null}</p> */}
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
               :

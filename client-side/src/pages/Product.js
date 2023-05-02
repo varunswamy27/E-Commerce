@@ -8,6 +8,7 @@ import { getProductData } from "../action/productAction";
 import { getSubCategoryDataByCategory } from "../action/subCategoryAction";
 import Footer from "../components/Footer";
 import { BiArrowBack } from 'react-icons/bi';
+import { addToCart } from "../action/cartAction";
 
 
 const Product = () => {
@@ -49,7 +50,6 @@ const Product = () => {
       setFilteredProductPrice(filterdProduct?.filter(item => item.productPrice <= e.target.value));
     }
   }
-  // console.log(filterdProductPrice);
 
 
   return (
@@ -65,14 +65,14 @@ const Product = () => {
                   <p onClick={() => { setCategoryId(null); setSubCategoryId(null); setFilterdProduct(null) }} className={`${styles.cat_title} text_xxs`}>All</p>
                 }
                 {subCategoryId ?
-                  <select onChange={(e) => filterPrice(e)} className={`${styles.cat_title} text_xxs`} name="" id="he">
+                  <sitemect onChange={(e) => filterPrice(e)} className={`${styles.cat_title} text_xxs`} name="" id="he">
                     <option className={`${styles.cat_title} text_xxs`} disabled>Filter By Price</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'1000'} >Below 1000</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'5000'}>Below 5000</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'10000'}>Below 10000</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'20000'}>Below 20000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'1000'} >Bitemow 1000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'5000'}>Bitemow 5000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'10000'}>Bitemow 10000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'20000'}>Bitemow 20000</option>
                     <option className={`${styles.cat_title} text_xxs`} value={'30000'}>Over 20000</option>
-                  </select>
+                  </sitemect>
                   : null}
                 {categoryId ? <p onClick={() => { setCategoryId(null); setSubCategoryId(null) }} className={`${styles.cat_title} text_xxs`}><BiArrowBack style={{ marginRight: 5 }} />Go Back</p> : null}
                 {!categoryId ?
@@ -94,44 +94,46 @@ const Product = () => {
               <div className={styles.product_wrap}>
                 {!filterdProduct ?
                   <>
-                    {fetchedProduct?.data?.map((el, id) => {
+                    {fetchedProduct?.data?.map((item, id) => {
                       return (
-                        <Link key={id + Math.random()} to={`/product/product-single/${el._id}`}>
-                          <div className={styles.product_box}>
-                            <div className={styles.product_img}>
-                              <div className={styles.overlay}>
-                                <p className={styles.view}>View</p>
-                              </div>
-                              <img src={el.productPicture} alt="" />
+                        // <Link key={id + Math.random()} to={`/product/product-single/${item._id}`}>
+                        <div className={styles.product_box}>
+                          <div className={styles.product_img}>
+                            <div className={styles.overlay}>
+                              <p className={styles.view}>View</p>
                             </div>
-                            <div className={styles.product_info}>
-                              <div className={`${styles.tag}`}>Best Seller</div>
-                              <p className={`${styles.brand} text_xxs`}>{el.subCategoryId.subCategoryName}</p>
-                              <p className={`${styles.title} text_sm`}>{el.productName}</p>
-                              <p className={`${styles.price} text_xxs`}>{`₹${el.productPrice}`}</p>
-                            </div>
+                            <img src={item.productPicture} alt="" />
                           </div>
-                        </Link>
+                          <div className={styles.product_info}>
+                            <div className={`${styles.tag}`}>Best Sitemler</div>
+                            <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
+                            <p className={`${styles.title} text_sm`}>{item.productName}</p>
+                            <p className={`${styles.price} text_xxs`}>{`₹${item.productPrice}`}</p>
+                            <button onClick={() => dispatch(addToCart(item.productName, item.productPrice))}>Add to Cart</button>
+                          </div>
+                        </div>
+                        // </Link>
                       )
                     })}
                   </>
                   :
                   <>
-                    {filterdProduct?.map((el, id) => {
+                    {filterdProduct?.map((item, id) => {
                       return (
-                        <Link key={id + Math.random()} to={`/product/product-single/${el._id}`}>
-                          <div className={styles.product_box}>
-                            <div className={styles.product_img}>
-                              <img src={el.productPicture} alt="" />
-                            </div>
-                            <div className={styles.product_info}>
-                              <div className={`${styles.tag}`}>Best Seller</div>
-                              <p className={`${styles.brand} text_xxs`}>{el.subCategoryId.subCategoryName}</p>
-                              <p className={`${styles.title} text_sm`}>{el.productName}</p>
-                              <p className={`${styles.price} text_xxs`}>{el.productPrice}</p>
-                            </div>
+                        // <Link key={id + Math.random()} to={`/product/product-single/${item._id}`}>
+                        <div className={styles.product_box}>
+                          <div className={styles.product_img}>
+                            <img src={item.productPicture} alt="" />
                           </div>
-                        </Link>
+                          <div className={styles.product_info}>
+                            <div className={`${styles.tag}`}>Best Sitemler</div>
+                            <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
+                            <p className={`${styles.title} text_sm`}>{item.productName}</p>
+                            <p className={`${styles.price} text_xxs`}>{item.productPrice}</p>
+                            <button onClick={() => { dispatch(addToCart(item)) }}>Add to Cart</button>
+                          </div>
+                        </div>
+                        // </Link>
                       )
                     })}
                     {filterdProduct.length === 0 &&
