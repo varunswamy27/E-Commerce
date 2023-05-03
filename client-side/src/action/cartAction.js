@@ -1,6 +1,6 @@
 
 
-export const addToCart = (name, price) => (dispatch,getState) => {
+export const addToCart = (name, price) => (dispatch, getState) => {
     var cartItem = {
         name,
         price

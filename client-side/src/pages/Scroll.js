@@ -119,12 +119,42 @@ const Scroll = () => {
                 display: "block",
                 opacity: 1
             })
+
+        const dynamicProgress = gsap.timeline({
+            paused: true,
+            defaults: {
+                ease: "none"
+            }
+        });
+
+        dynamicProgress
+            .to("#dynamic-progress", {
+                value: 25
+            })
+            .addLabel("chapter-1")
+            .to("#dynamic-progress", {
+                value: 50
+            })
+            .addLabel("chapter-2")
+            .to("#dynamic-progress", {
+                value: 75
+            })
+            .addLabel("chapter-3")
+            .to("#dynamic-progress", {
+                value: 100
+            })
+            .addLabel("chapter-4");
         ScrollTrigger.create({
             trigger: ".pic",
             start: "top top",
             pin: true,
             scrub: true,
-            animation: imageChange
+            animation: imageChange,
+            // onUpdate: self => console.log("progress:", self.progress * 100)
+            onUpdate({ progress }) {
+                dynamicProgress.progress(progress);
+                console.log('Progress:', progress * 60)
+            }
         });
         gsap.to(".pImg", {
             yPercent: 20,

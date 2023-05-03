@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const scrollPosition = ScrollPosition();
   const [isActive, setActive] = useState(false);
-  const [cartLength, setCartLength] = useState(JSON.parse(localStorage?.getItem('cartItems'))?.length)
+  const [cartLength, setCartLength] = useState(JSON.parse(localStorage?.getItem('cartItems'))?.length || [])
   const [height, setHeight] = useState(0)
   const ref = useRef(null)
   const navRef = useRef();
@@ -43,6 +43,11 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handler)
     }
   }, [])
+
+  useEffect(() => {
+    setCartLength(JSON.parse(localStorage?.getItem('cartItems'))?.length);
+  })
+
 
 
   return (
@@ -75,7 +80,7 @@ const Navbar = () => {
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
             <Link to="/cart">
-              <p className={`${styles.link_name} text_xs`}>Cart {cartState?.cartItems?.length}</p>
+              <p className={`${styles.link_name} text_xs`}>Cart {cartLength}</p>
             </Link>
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
