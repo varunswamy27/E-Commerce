@@ -1,0 +1,89 @@
+@import '../helpers/helpers.scss';
+
+.cart_main {
+    .cart {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            tr {
+                border-bottom: 5px solid whitesmoke;
+
+                &:first-child {
+                    border-bottom: none;
+                }
+
+                .price {
+                    color: gray;
+                }
+
+                td {
+                    padding: 20px 0;
+                    font-family: Spectral_Light;
+
+                    .cartimg {
+                        width: 80px;
+                        height: 100px;
+                        background-color: lavender;
+                    }
+                }
+
+                th {
+                    background-color: var(--color_primary);
+                    text-align: left;
+                    padding: 20px 0;
+                    color: var(--color_white);
+                    font-family: Spectral_Medium;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+    .checkout {
+        width: 40%;
+        border: 1px solid lightgray;
+        padding: 20px;
+        margin-left: auto;
+
+        .title {
+            font-family: Spectral_Medium;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .amounts {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 8px 0;
+
+            p {
+                width: 50%;
+                font-family: Spectral_Light;
+                color: gray;
+            }
+
+            span {
+                color: black;
+                font-family: Spectral_Bold;
+            }
+        }
+    }
+
+    .btnBox {
+        display: flex;
+        justify-content: flex-end;
+
+        .checkoutBtn {
+            margin-top: 20px;
+            width: 40%;
+            padding: 20px;
+            background-color: var(--color_primary);
+            color: var(--color_white);
+            border: none;
+            font-family: Spectral_Medium;
+            border-radius: 5px;
+        }
+    }
+}

@@ -26,7 +26,7 @@ function RouterComponent() {
     <div>
       <BrowserRouter>
         <IsAuthorized pathLocation={pathLocation} />
-        {/* {isLogin?.token ? <Navbar /> : null} */}
+        {isLogin?.token ? <Navbar /> : null}
         <Routes>
           <Route path="/auth" element={<LoginSignup />} />
           <Route path="/" element={<Home />} />

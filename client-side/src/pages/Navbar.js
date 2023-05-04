@@ -80,7 +80,7 @@ const Navbar = () => {
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>
             <Link to="/cart">
-              <p className={`${styles.link_name} text_xs`}>Cart {cartLength}</p>
+              <p className={`${styles.link_name} text_xs`}>Cart <span className={styles.cartLength}>{cartLength === undefined ? `0` : cartLength}</span></p>
             </Link>
             <button ref={btnRef} onClick={() => { setActive(!isActive) }} className={styles.hamburger}>{isActive ?
               <AiOutlineClose />
