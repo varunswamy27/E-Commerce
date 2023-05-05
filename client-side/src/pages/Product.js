@@ -109,7 +109,7 @@ const Product = () => {
                             <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
                             <p className={`${styles.title} text_sm`}>{item.productName}</p>
                             <p className={`${styles.price} text_xxs`}>{`₹${item.productPrice}`}</p>
-                            <button onClick={() => dispatch(addToCart(item.productName, item.productPrice))}>Add to Cart</button>
+                            <button onClick={() => dispatch(addToCart(item.productName, item.productPrice, item.productPicture, item._id))}>Add to Cart</button>
                           </div>
                         </div>
                         // </Link>

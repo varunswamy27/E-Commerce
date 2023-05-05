@@ -26,6 +26,9 @@
                         height: 100px;
                         background-color: lavender;
                     }
+                    select{
+                        padding: 10px;
+                    }
                 }
 
                 th {
@@ -67,6 +70,7 @@
             span {
                 color: black;
                 font-family: Spectral_Bold;
+                opacity: 0.9;
             }
         }
     }
