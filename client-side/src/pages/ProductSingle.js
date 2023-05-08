@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useLocation } from 'react-router-dom'
 import CommanBanner from "../components/CommanBanner";
 import styles from "../styles/pages/ProductSingle.module.scss";
-import productimg from "../img/product/prod-1.jpg";
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ProductTab from "../sections/ProductTab";
 import Footer from "../components/Footer";
 import { getOneProductData } from "../action/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { incNumber, decNumber } from "../action/counterAction";
+import { addToCart } from "../action/cartAction";
 
 const ProductSingle = () => {
   const myState = useSelector((state) => state.changeTheNumber);
@@ -72,13 +72,13 @@ const ProductSingle = () => {
                 />
                 <div
                   className={styles.counter}
-                  onClick={() => dispatch(incNumber(5))}
+                  onClick={() => dispatch(incNumber(1))}
                 >
                   <AiOutlinePlus />
                 </div>
               </div>
               <div className={styles.btn_wrap}>
-                <button className={styles.cart}>Add to Cart</button>
+                <button className={styles.cart} onClick={() => dispatch(addToCart(fetchedOneProduct?.data?.productName, fetchedOneProduct?.data?.productPrice, fetchedOneProduct?.data?.productPicture, fetchedOneProduct?.data?._id, myState))}>Add to Cart</button>
                 <button className={styles.buy}>Buy now</button>
               </div>
             </div>

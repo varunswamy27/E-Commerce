@@ -22,8 +22,8 @@ const Product = () => {
   const fetchedSubCategoryByCategory = useSelector((state) => state.fetchAllSubCategoryByCategory);
   const fetchedProduct = useSelector((state) => state.fetchAllProduct);
 
-
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(getCategoryData());
@@ -96,23 +96,23 @@ const Product = () => {
                   <>
                     {fetchedProduct?.data?.map((item, id) => {
                       return (
-                        // <Link key={id + Math.random()} to={`/product/product-single/${item._id}`}> 
-                        <div className={styles.product_box}>
-                          <div className={styles.product_img}>
-                            <div className={styles.overlay}>
-                              <p className={styles.view}>View</p>
+                        <Link key={id + Math.random()} to={`/product/product-single/${item._id}`}>
+                          <div className={styles.product_box}>
+                            <div className={styles.product_img}>
+                              <div className={styles.overlay}>
+                                <p className={styles.view}>View</p>
+                              </div>
+                              <img src={item.productPicture} alt="" />
                             </div>
-                            <img src={item.productPicture} alt="" />
+                            <div className={styles.product_info}>
+                              <div className={`${styles.tag}`}>Best Seller</div>
+                              <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
+                              <p className={`${styles.title} text_sm`}>{item.productName}</p>
+                              <p className={`${styles.price} text_xxs`}>{`₹${item.productPrice}`}</p>
+                              {/* <button onClick={() => dispatch(addToCart(item.productName, item.productPrice, item.productPicture, item._id))}>Add to Cart</button> */}
+                            </div>
                           </div>
-                          <div className={styles.product_info}>
-                            <div className={`${styles.tag}`}>Best Seller</div>
-                            <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
-                            <p className={`${styles.title} text_sm`}>{item.productName}</p>
-                            <p className={`${styles.price} text_xxs`}>{`₹${item.productPrice}`}</p>
-                            <button onClick={() => dispatch(addToCart(item.productName, item.productPrice, item.productPicture, item._id))}>Add to Cart</button>
-                          </div>
-                        </div>
-                        // </Link>
+                        </Link>
                       )
                     })}
                   </>
@@ -120,20 +120,20 @@ const Product = () => {
                   <>
                     {filterdProduct?.map((item, id) => {
                       return (
-                        // <Link key={id + Math.random()} to={`/product/product-single/${item._id}`}>
-                        <div className={styles.product_box}>
-                          <div className={styles.product_img}>
-                            <img src={item.productPicture} alt="" />
+                        <Link key={id + Math.random()} to={`/product/product-single/${item._id}`}>
+                          <div className={styles.product_box}>
+                            <div className={styles.product_img}>
+                              <img src={item.productPicture} alt="" />
+                            </div>
+                            <div className={styles.product_info}>
+                              <div className={`${styles.tag}`}>Best Sitemler</div>
+                              <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
+                              <p className={`${styles.title} text_sm`}>{item.productName}</p>
+                              <p className={`${styles.price} text_xxs`}>{item.productPrice}</p>
+                              <button onClick={() => { dispatch(addToCart(item)) }}>Add to Cart</button>
+                            </div>
                           </div>
-                          <div className={styles.product_info}>
-                            <div className={`${styles.tag}`}>Best Sitemler</div>
-                            <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
-                            <p className={`${styles.title} text_sm`}>{item.productName}</p>
-                            <p className={`${styles.price} text_xxs`}>{item.productPrice}</p>
-                            <button onClick={() => { dispatch(addToCart(item)) }}>Add to Cart</button>
-                          </div>
-                        </div>
-                        // </Link>
+                        </Link>
                       )
                     })}
                     {filterdProduct.length === 0 &&

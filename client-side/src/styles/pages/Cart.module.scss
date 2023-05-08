@@ -29,6 +29,23 @@
                     select{
                         padding: 10px;
                     }
+                    .quantity{
+                        display: flex;
+                        align-items: center;
+                        span{
+                            font-family: Spectral_Light;
+                            color: gray;
+                            padding: 0 5px;
+                        }
+                        .icon{
+                            opacity: 0.6;
+                            transition: 0.1s ease-in;
+                            &:hover{
+                                cursor: pointer;
+                                opacity: 0.8;
+                            }
+                        }
+                    }
                 }
 
                 th {

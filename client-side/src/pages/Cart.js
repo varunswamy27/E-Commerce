@@ -1,43 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '../styles/pages/Cart.module.scss';
 import CommanBanner from '../components/CommanBanner';
+import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
+import { addToCart, deleteFromCart } from "../action/cartAction";
 
 const Cart = () => {
 
-    const [cartProducts, setCartProducts] = useState(JSON.parse(localStorage.getItem('cartItems')));
-    const [removedItem, setRemovedItem] = useState();
-    const [quanPrice, setQuanPrice] = useState(0);
-    const [trValues, setTrValues] = useState([]);
+    const dispatch = useDispatch();
 
-    let totalPrice = 0;
+    const cartState = useSelector((state) => state.cartReducer);
+    const cartItems = cartState.cartItems;
+    let totalPrice = cartItems.reduce((x, item) => x + item.price, 0);
+    console.log(totalPrice);
+
     let deliveryPrice = 50;
-    let quantityPrice = 0;
-
-    const demo = (event) => {
-        // const tdValues = Array.from(event.currentTarget.parentNode.children).map(td => td.textContent);
-        // setTrValues(tdValues);
-    }
-
-    useEffect(() => {
-        setCartProducts(JSON.parse(localStorage.getItem('cartItems')));
-    }, [removedItem])
-
-    const removeCart = (item) => {
-        setRemovedItem(cartProducts.findIndex(el => el.productId == item.productId))
-        if (removedItem !== -1) {
-            cartProducts.splice(removedItem, 1);
-            localStorage.setItem('cartItems', JSON.stringify(cartProducts));
-        }
-        // const productIndex = cartProducts.findIndex(el => el.productId == item.productId);
-        // if (productIndex !== -1) {
-        //     cartProducts.splice(productIndex, 1);
-        //     localStorage.setItem('cartItems', JSON.stringify(cartProducts));
-        // }
-    }
-
-    console.log(cartProducts)
 
 
     return (
@@ -45,8 +24,8 @@ const Cart = () => {
             <CommanBanner title="My Cart" />
             <div className={`${styles.cart}`}>
                 <div className='container'>
-                    {cartProducts?.length === 0 || null ?
-                        <p>Your Cart is Empty</p>
+                    {cartItems?.length === 0 || null ?
+                        <p className='section_spacing'>Your Cart is Empty</p>
                         :
                         <div className='section_spacing'>
 
@@ -61,23 +40,27 @@ const Cart = () => {
                                         <th></th>
                                     </tr>
 
-                                    {cartProducts?.map((item, id) => {
-                                        const value = item.price;
-                                        totalPrice = value + totalPrice
+                                    {cartItems?.map((item, id) => {
                                         return (
-                                            <tr key={id} onClick={(e) => { demo(item) }}>
+                                            <tr key={id}>
                                                 <td className='text_sm'><img className={styles.cartimg} src={item.productImage} alt="" /></td>
                                                 <td className='text_sm'>{item.name}</td>
                                                 <td className={`${styles.price} text_sm`}>₹{item.price}</td>
                                                 <td>
-                                                    <select onChange={(e) => { setQuanPrice(e.target.value) }} name="" id="">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                    </select>
+                                                    <div className={styles.quantity}>
+                                                        <AiOutlineMinusSquare
+                                                            className={styles.icon}
+                                                            onClick={() => { dispatch(addToCart(item.name, item.price, item.productImage, item.productId, item.quantity - 1)) }}
+                                                        />
+                                                        <span className='text_sm'>{item.quantity}</span>
+                                                        <AiOutlinePlusSquare
+                                                            className={styles.icon} 
+                                                            onClick={() => { dispatch(addToCart(item.name, item.price, item.productImage, item.productId, item.quantity + 1)) }}
+                                                        />
+                                                    </div>
                                                 </td>
-                                                <td className={`${styles.price} text_sm`}>₹{totalPrice * quanPrice}</td>
-                                                <td onClick={(e) => removeCart(item)}>✖</td>
+                                                <td className={`${styles.price} text_sm`}>₹{item.price * item.quantity}</td>
+                                                <td className='removeItem' onClick={() => dispatch(deleteFromCart(item))}>✖</td>
                                             </tr>
                                         )
                                     })}
@@ -102,7 +85,7 @@ const Cart = () => {
                         </div>
                         <div className={styles.amounts}>
                             <p className='text_xs'>TOTAL</p>
-                            <p className='text_xs'><span>₹{totalPrice + deliveryPrice}</span></p>
+                            <p className='text_xs'><span>₹{totalPrice}</span></p>
                         </div>
                     </div>
                     <div className={styles.btnBox}>

@@ -145,6 +145,10 @@ picture {
   }
 }
 
+.removeItem {
+  cursor: pointer;
+}
+
 .stroke_text_animate {
   .strokes {
     &:nth-child(2) {
