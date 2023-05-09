@@ -65,14 +65,14 @@ const Product = () => {
                   <p onClick={() => { setCategoryId(null); setSubCategoryId(null); setFilterdProduct(null) }} className={`${styles.cat_title} text_xxs`}>All</p>
                 }
                 {subCategoryId ?
-                  <sitemect onChange={(e) => filterPrice(e)} className={`${styles.cat_title} text_xxs`} name="" id="he">
+                  <select onChange={(e) => filterPrice(e)} className={`${styles.cat_title} text_xxs`} name="" id="he">
                     <option className={`${styles.cat_title} text_xxs`} disabled>Filter By Price</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'1000'} >Bitemow 1000</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'5000'}>Bitemow 5000</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'10000'}>Bitemow 10000</option>
-                    <option className={`${styles.cat_title} text_xxs`} value={'20000'}>Bitemow 20000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'1000'} >Below 1000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'5000'}>Below 5000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'10000'}>Below 10000</option>
+                    <option className={`${styles.cat_title} text_xxs`} value={'20000'}>Below 20000</option>
                     <option className={`${styles.cat_title} text_xxs`} value={'30000'}>Over 20000</option>
-                  </sitemect>
+                  </select>
                   : null}
                 {categoryId ? <p onClick={() => { setCategoryId(null); setSubCategoryId(null) }} className={`${styles.cat_title} text_xxs`}><BiArrowBack style={{ marginRight: 5 }} />Go Back</p> : null}
                 {!categoryId ?
@@ -130,7 +130,6 @@ const Product = () => {
                               <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
                               <p className={`${styles.title} text_sm`}>{item.productName}</p>
                               <p className={`${styles.price} text_xxs`}>{item.productPrice}</p>
-                              <button onClick={() => { dispatch(addToCart(item)) }}>Add to Cart</button>
                             </div>
                           </div>
                         </Link>

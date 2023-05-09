@@ -14,6 +14,8 @@ export const addToCart = (name, price, productImage, productId, quantity) => (di
     else {
         if (cartItem.quantity < 1) {
             dispatch({ type: 'DELETE_FROM_CART', payload: cartItem });
+            const cartItems = getState().cartReducer.cartItems;
+            localStorage.setItem('cartItems', JSON.stringify(cartItems))
         }
         else {
             dispatch({ type: 'ADD_TO_CART', payload: cartItem });
