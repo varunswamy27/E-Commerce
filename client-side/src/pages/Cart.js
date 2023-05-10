@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../styles/pages/Cart.module.scss';
 import CommanBanner from '../components/CommanBanner';
 import { AiOutlineMinusSquare, AiOutlinePlusSquare, AiOutlineShoppingCart } from 'react-icons/ai';
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../components/Footer';
 import { addToCart, deleteFromCart } from "../action/cartAction";

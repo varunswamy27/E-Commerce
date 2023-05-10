@@ -2,6 +2,13 @@ import UserInfo from "../models/user.model";
 import UserRole from "../models/userRole.model";
 import bycrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: "varunswamy",
+  api_key: "378884917647229",
+  api_secret: "CbWoVU5UIRemsIqdJUf4euD7G98"
+});
 
 
 // FETCH ALL USERS
@@ -34,45 +41,50 @@ export const getUser = (req, res) => {
 
 // CREATE A NEW USER/SIGNUP
 export const createUser = async (req, res) => {
-  const { firstName, lastName, email, password, phoneNumber, userRole } = req.body;
-  if (!firstName || !lastName || !email || !password || !phoneNumber) {
-    return res.status(400).json({
-      message: "Enter all fields",
-      status: false,
-    })
-  }
-  try {
-    const existingUser = await UserInfo.findOne({ email })
-    if (existingUser) {
-      return res.status(400).json({
-        message: "User Email Already Exist",
-        status: false,
-      })
-    }
-    else {
-      const hashedPassword = await bycrypt.hash(password, 5);
-      let userData = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: hashedPassword,
-        phoneNumber: phoneNumber,
-        userRole: userRole
-      };
-      const result = await UserInfo.create(userData);
-      return res.status(200).json({
-        message: "SignUp Successful",
-        result,
-        status: true,
-      });
-    }
-  }
-  catch (error) {
-    return res.status(500).json({
-      message: "Something Went Wrong",
-      status: false,
-    })
-  }
+  const file = req.files.photo;
+  cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
+    console.log(result);
+  })
+  // const { firstName, lastName, email, password, phoneNumber, userRole, profileImage } = req.body;
+  // if (!firstName || !lastName || !email || !password || !phoneNumber) {
+  //   return res.status(400).json({
+  //     message: "Enter all fields",
+  //     status: false,
+  //   })
+  // }
+  // try {
+  //   const existingUser = await UserInfo.findOne({ email })
+  //   if (existingUser) {
+  //     return res.status(400).json({
+  //       message: "User Email Already Exist",
+  //       status: false,
+  //     })
+  //   }
+  //   else {
+  //     const hashedPassword = await bycrypt.hash(password, 5);
+  //     let userData = {
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       email: email,
+  //       password: hashedPassword,
+  //       phoneNumber: phoneNumber,
+  //       userRole: userRole,
+  //       profileImage: profileImage
+  //     };
+  //     const result = await UserInfo.create(userData);
+  //     return res.status(200).json({
+  //       message: "SignUp Successful",
+  //       result,
+  //       status: true,
+  //     });
+  //   }
+  // }
+  // catch (error) {
+  //   return res.status(500).json({
+  //     message: "Something Went Wrong",
+  //     status: false,
+  //   })
+  // }
 };
 
 

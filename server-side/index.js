@@ -4,11 +4,15 @@ import bodyParser, { json } from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.router";
 import dotenv from "dotenv";
+import fileUpload from "express-fileupload";
 
 dotenv.config({ path: "./.env" });
 
 const app = express();
 
+app.use(fileUpload({
+  useTempFiles: true
+}))
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/public', express.static('public'));
