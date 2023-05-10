@@ -6,7 +6,7 @@ import { getUserData, createUser, removeUser, modifyUser, getUserRoleData } from
 
 
 const UserComponent = () => {
-  const [userData, setUserData] = useState({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "", userRole: "" })
+  const [userData, setUserData] = useState({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "", userRole: "", profileImage: "" })
   const [currentId, setCurrentId] = useState(null);
 
 
@@ -99,6 +99,15 @@ const UserComponent = () => {
         <div className={styles.input_box}>
           <label htmlFor="">User PhoneNumber:</label>
           <input onChange={(e) => setUserData({ ...userData, phoneNumber: e.target.value })} value={userData.phoneNumber} type="text" name='phoneNumber' placeholder='Enter PhoneNumber' />
+          {userData.phoneNumber === " " ?
+            <p className={styles.fielderror}>Enter PhoneNumber Field</p>
+            :
+            null
+          }
+        </div>
+        <div className={styles.input_box}>
+          <label htmlFor="">User Image:</label>
+          <input onChange={(e) => setUserData({ ...userData, profileImage: e.target.files[0] })} type="file" id='photo' name='photo' placeholder='Enter profileImage' />
           {userData.phoneNumber === " " ?
             <p className={styles.fielderror}>Enter PhoneNumber Field</p>
             :
