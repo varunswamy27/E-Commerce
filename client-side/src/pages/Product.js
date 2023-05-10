@@ -126,7 +126,7 @@ const Product = () => {
                               <img src={item.productPicture} alt="" />
                             </div>
                             <div className={styles.product_info}>
-                              <div className={`${styles.tag}`}>Best Sitemler</div>
+                              <div className={`${styles.tag}`}>Best Seller</div>
                               <p className={`${styles.brand} text_xxs`}>{item.subCategoryId.subCategoryName}</p>
                               <p className={`${styles.title} text_sm`}>{item.productName}</p>
                               <p className={`${styles.price} text_xxs`}>{item.productPrice}</p>
@@ -136,7 +136,7 @@ const Product = () => {
                       )
                     })}
                     {filterdProduct.length === 0 &&
-                      <p>No Products Avaiable</p>
+                      <p className="nullProducts text_lg">No Products Avaiable</p>
                     }
                   </>
                 }
