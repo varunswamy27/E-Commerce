@@ -48,7 +48,7 @@ const Navbar = () => {
     setCartLength(JSON.parse(localStorage?.getItem('cartItems'))?.length);
   })
 
-
+  console.log(user)
 
   return (
     <nav ref={ref} className={scrollPosition > 0 ? styles.scroll : null}>
@@ -75,7 +75,13 @@ const Navbar = () => {
             <Link to="/contact">
               <p className={`${styles.link_name} text_xs`}>Contact</p>
             </Link>
-            <p className={`${styles.userChar} text_xs`}>{`${user?.data?.firstName.charAt(0)}`}</p>
+            {user?.data?.profileImage ?
+              <div className={styles.profilePic}>
+                <img src={user?.data?.profileImage} alt="" />
+              </div>
+              :
+              <p className={`${styles.userChar} text_xs`}>{`${user?.data?.firstName.charAt(0)}`}</p>
+            }
             <Link to="/auth">
               <p className={`${styles.logout} text_xs`} onClick={() => dispatch(logout())}>{user ? 'Logout' : null}</p>
             </Link>

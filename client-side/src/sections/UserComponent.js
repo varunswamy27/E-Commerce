@@ -6,7 +6,8 @@ import { getUserData, createUser, removeUser, modifyUser, getUserRoleData } from
 
 
 const UserComponent = () => {
-  const [userData, setUserData] = useState({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "", userRole: "", profileImage: "" })
+  const [userData, setUserData] = useState({ firstName: "", lastName: "", email: "", password: "", phoneNumber: "", userRole: "" })
+  const [profilePic, setProfilePic] = useState('');
   const [currentId, setCurrentId] = useState(null);
 
 
@@ -25,15 +26,22 @@ const UserComponent = () => {
     dispatch(getUserRoleData());
   }, [createdUser, deletedUser, currentId, dispatch])
 
-  console.log(fetchedUserRole)
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('photo', profilePic);
+    formData.append('firstName', userData.firstName);
+    formData.append('lastName', userData.lastName);
+    formData.append('email', userData.email);
+    formData.append('password', userData.password);
+    formData.append('phoneNumber', userData.phoneNumber);
+    formData.append('subCategoryId', userData.userRole);
     if (currentId) {
       dispatch(modifyUser(currentId, userData));
     }
     else {
-      dispatch(createUser(userData))
+      dispatch(createUser(formData))
     }
   }
 
@@ -47,6 +55,7 @@ const UserComponent = () => {
         password: populatedUser.password,
         phoneNumber: populatedUser.phoneNumber,
         userRole: populatedUser.userRole,
+        profileImage: populatedUser.profileImage
       })
     }
     else {
@@ -107,7 +116,7 @@ const UserComponent = () => {
         </div>
         <div className={styles.input_box}>
           <label htmlFor="">User Image:</label>
-          <input onChange={(e) => setUserData({ ...userData, profileImage: e.target.files[0] })} type="file" id='photo' name='photo' placeholder='Enter profileImage' />
+          <input onChange={(e) => setProfilePic(e.target.files[0])} type="file" id='photo' name='photo' placeholder='Enter profileImage' />
           {userData.phoneNumber === " " ?
             <p className={styles.fielderror}>Enter PhoneNumber Field</p>
             :

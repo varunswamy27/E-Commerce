@@ -38,54 +38,57 @@ export const getUser = (req, res) => {
     })
 };
 
+// const file = req.files.photo;
+// cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
+// console.log(result);
+// })
+
 
 // CREATE A NEW USER/SIGNUP
 export const createUser = async (req, res) => {
-  const file = req.files.photo;
-  cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-    console.log(result);
-    const { firstName, lastName, email, password, phoneNumber, userRole, profileImage } = req.body;
-    if (!firstName || !lastName || !email || !password || !phoneNumber) {
+  const { firstName, lastName, email, password, phoneNumber, userRole, profileImage } = req.body;
+  if (!firstName || !lastName || !email || !password || !phoneNumber) {
+    return res.status(400).json({
+      message: "Enter all fields",
+      status: false,
+    })
+  }
+  try {
+    const existingUser = await UserInfo.findOne({ email: email })
+    console.log(existingUser);
+    if (existingUser) {
       return res.status(400).json({
-        message: "Enter all fields",
+        message: "User Email Already Exist",
         status: false,
       })
     }
-    try {
-      const existingUser = UserInfo.findOne({ email })
-      if (existingUser) {
-        return res.status(400).json({
-          message: "User Email Already Exist",
-          status: false,
-        })
-      }
-      else {
-        const hashedPassword = bycrypt.hash(password, 5);
-        let userData = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: hashedPassword,
-          phoneNumber: phoneNumber,
-          userRole: userRole,
-          profileImage: result.url
-        };
-        const result = UserInfo.create(userData);
-        return res.status(200).json({
-          message: "SignUp Successful",
-          result,
-          status: true,
-        });
-      }
+    else {
+      const file = req.files.photo;
+      const imagePath = await cloudinary.uploader.upload(file.tempFilePath)
+      const hashedPassword = await bycrypt.hash(password, 5);
+      let userData = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: hashedPassword,
+        phoneNumber: phoneNumber,
+        userRole: userRole,
+        profileImage: imagePath.url
+      };
+      const result = UserInfo.create(userData);
+      return res.status(200).json({
+        message: "SignUp Successful",
+        result,
+        status: true,
+      });
     }
-    catch (error) {
-      return res.status(500).json({
-        message: "Something Went Wrong",
-        status: false,
-      })
-    }
-  })
- 
+  }
+  catch (error) {
+    return res.status(500).json({
+      message: "Something Went Wrong",
+      status: false,
+    })
+  }
 };
 
 
