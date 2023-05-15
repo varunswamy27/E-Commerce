@@ -38,11 +38,6 @@ export const getUser = (req, res) => {
     })
 };
 
-// const file = req.files.photo;
-// cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-// console.log(result);
-// })
-
 
 // CREATE A NEW USER/SIGNUP
 export const createUser = async (req, res) => {
