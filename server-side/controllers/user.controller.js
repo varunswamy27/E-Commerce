@@ -91,7 +91,7 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const existingUser = await UserInfo.findOne({ email })
+    const existingUser = await UserInfo.findOne({ email });
     if (!existingUser) {
       return res.status(404).json({
         message: "User Doesn't Exist",
@@ -107,6 +107,7 @@ export const loginUser = async (req, res) => {
       })
     }
     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test')
+    console.log(token, "Token")
     return res.status(200).json({
       message: "Login Successful",
       data: existingUser,

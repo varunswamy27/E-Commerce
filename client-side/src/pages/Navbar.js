@@ -14,13 +14,13 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const scrollPosition = ScrollPosition();
   const [isActive, setActive] = useState(false);
-  const [cartLength, setCartLength] = useState(JSON.parse(localStorage?.getItem('cartItems'))?.length || [])
-  const [height, setHeight] = useState(0)
-  const ref = useRef(null)
+  const [cartLength, setCartLength] = useState(JSON.parse(localStorage?.getItem('cartItems'))?.length || []);
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
   const navRef = useRef();
   const btnRef = useRef();
   const navigate = useNavigate();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const cartState = useSelector(state => state.cartReducer);
   const dispatch = useDispatch();
 
@@ -48,7 +48,6 @@ const Navbar = () => {
     setCartLength(JSON.parse(localStorage?.getItem('cartItems'))?.length);
   })
 
-  console.log(user)
 
   return (
     <nav ref={ref} className={scrollPosition > 0 ? styles.scroll : null}>

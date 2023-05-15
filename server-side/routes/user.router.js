@@ -3,7 +3,7 @@ import { createUser, createUserRole, deleteUser, getRoles, getUser, loginUser, u
 import { createCategory, deleteCategory, getCategory, updateCategory } from "../controllers/category.controller";
 import { createSubCategory, fetchSubCategory, fetchSubCategoryByCategory, updateSubCategory } from "../controllers/subCategory.controller";
 import { createProduct, deleteProduct, filterPriceProduct, getOneProduct, getProduct, sortProductAsc, sortProductDes, updateProduct } from "../controllers/product.controller";
-import { auth, isAdmin, isAuthorized, verifyToken } from "../middleware/auth";
+import { auth, isAuthorized, verifyToken } from "../middleware/auth";
 
 
 const router = express.Router();

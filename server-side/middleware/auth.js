@@ -31,9 +31,9 @@ export const isAuthorized = (req, res, next) => {
 }
 
 export const verifyToken = (req, res, next) => {
-	console.log(req.headers.authorization,"Works")
+	console.log(req.headers,"Works")
 	try {
-		const token = req.headers.authorization.split(" ")[1];
+		const token = req.headers.Authorization.split(" ")[1];
 		const decoded = jwt.verify(token, 'test');
 		req.userData = decoded;
 		next();
@@ -62,12 +62,3 @@ export const verifyToken = (req, res, next) => {
 //     }
 // }
 
-
-// export const isAdmin = async (req, res, next) => {
-//     req.user = JSON.parse(localStorage.getItem('profile'));
-//     if(user?.result?.isAdmin === false){
-//         return res.status(401).json({
-//             message: "Isnt Admin"
-//         })
-//     }
-// }

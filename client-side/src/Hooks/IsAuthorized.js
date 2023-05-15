@@ -8,9 +8,9 @@ const IsAuthorized = ({ pathLocation }) => {
 
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [isLogin, setIsLogin] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const Admin = "6447adc7f24f8b311abee1c2";
 
 
     useEffect(() => {
@@ -18,9 +18,6 @@ const IsAuthorized = ({ pathLocation }) => {
             navigate('/auth');
         }
         if (user && pathLocation === '/auth') {
-            navigate('/');
-        }
-        if (user?.data?.userRole === undefined && pathLocation === '/admin') {
             navigate('/');
         }
     }, [pathLocation]);
