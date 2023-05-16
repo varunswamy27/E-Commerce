@@ -65,6 +65,9 @@
         border: 1px solid lightgray;
         padding: 20px;
         margin-left: auto;
+        @include sm-down{
+            width: 100%;
+        }
 
         .title {
             font-family: Spectral_Medium;
@@ -105,6 +108,10 @@
             border: none;
             font-family: Spectral_Medium;
             border-radius: 5px;
+            margin-bottom: 40px;
+            @include sm-down{
+                width: 100%;
+            }
         }
     }
 }

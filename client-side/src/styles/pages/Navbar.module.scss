@@ -45,7 +45,13 @@ nav {
         .link_name {
           margin: 0% 15px;
           font-family: Spectral_Light;
-
+        }
+        .cart_name{
+          margin: 0% 15px;
+          font-family: Spectral_Light;
+          @include sm-down{
+            margin: 0% 5px;
+          }
           .cartLength {
             padding: 0px 10px;
             border-radius: 20px;
@@ -59,6 +65,9 @@ nav {
           border: 1px solid white;
           padding: 5px 10px;
           border-radius: 5px;
+          @include sm-down{
+            display: none;
+          }
         }
         .profilePic{
           width: 40px;
@@ -67,6 +76,9 @@ nav {
           border-radius: 50%;
           overflow: hidden;
           margin: 0% 15px;
+          @include sm-down{
+            margin: 0% 5px;
+          }
           img{
             width: 100%;
             height: 100%;
@@ -80,6 +92,9 @@ nav {
           height: 40px;
           @extend %f_r_aj_center;
           border-radius: 50%;
+          @include sm-down{
+            margin: 0% 5px;
+          }
         }
 
         .hamburger {
@@ -143,7 +158,18 @@ nav {
       .link_name {
         margin-bottom: 20px;
         font-family: Spectral_Semibold;
-        
+      }
+      .logout {
+        font-family: Spectral_Semibold;
+        border: 1px solid black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline;
+        &:hover{
+          background-color: tomato;
+          color: white;
+          border: 1px solid var(--color_primary);
+        }
       }
     }
   }
@@ -191,6 +217,13 @@ nav {
       .link_name {
         margin: 0% 15px;
         font-family: Spectral_Light;
+      }
+      .cart_name{
+        margin: 0% 15px;
+        font-family: Spectral_Light;
+        @include sm-down{
+          margin: 0% 5px;
+        }
         .cartLength {
           padding: 0px 10px;
           border-radius: 20px;
@@ -205,6 +238,9 @@ nav {
         padding: 5px 10px;
         border-radius: 5px;
         color: var(--color_primary);
+        @include sm-down{
+          display: none;
+        }
       }
       .profilePic{
         width: 40px;
@@ -213,6 +249,9 @@ nav {
         border-radius: 50%;
         overflow: hidden;
         margin: 0% 15px;
+        @include sm-down{
+          margin: 0% 5px;
+        }
         img{
           width: 100%;
           height: 100%;
@@ -227,6 +266,9 @@ nav {
         height: 40px;
         @extend %f_r_aj_center;
         border-radius: 50%;
+        @include sm-down{
+          margin: 0% 5px;
+        }
       }
 
       .hamburger {
