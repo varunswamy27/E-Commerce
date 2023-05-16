@@ -3,37 +3,40 @@ import axios from "axios";
 // LIVE URL
 // https://go-gadgets.onrender.com
 
+// LocalHost
+// http://localhost:3000
+
 // URL
 
 // USER URL
-const signInUrl = "http://localhost:3000/signup";
-const signUpUrl = "http://localhost:3000/signin";
-const fetchUserUrl = "http://localhost:3000/user";
-const createUserUrl = "http://localhost:3000/signin";
-const deleteUserUrl = "http://localhost:3000/delete-user";
-const updateUserUrl = "http://localhost:3000/update-user";
-const fetchUserRoleUrl = "http://localhost:3000/role";
+const signInUrl = "https://go-gadgets.onrender.com/signup";
+const signUpUrl = "https://go-gadgets.onrender.com/signin";
+const fetchUserUrl = "https://go-gadgets.onrender.com/user";
+const createUserUrl = "https://go-gadgets.onrender.com/signin";
+const deleteUserUrl = "https://go-gadgets.onrender.com/delete-user";
+const updateUserUrl = "https://go-gadgets.onrender.com/update-user";
+const fetchUserRoleUrl = "https://go-gadgets.onrender.com/role";
 
 
 // CATEGORY URL
-const fetchCategoryUrl = "http://localhost:3000/category";
-const createCategoryUrl = "http://localhost:3000/add-category"
-const deleteCategoryUrl = "http://localhost:3000/delete-category";
-const updateCategoryUrl = "http://localhost:3000/update-category";
+const fetchCategoryUrl = "https://go-gadgets.onrender.com/category";
+const createCategoryUrl = "https://go-gadgets.onrender.com/add-category"
+const deleteCategoryUrl = "https://go-gadgets.onrender.com/delete-category";
+const updateCategoryUrl = "https://go-gadgets.onrender.com/update-category";
 
 // SUBCATEGORY URL
-const fetchSubCategoryUrl = "http://localhost:3000/sub-category";
-const fetchSubCategoryByCategoryUrl = "http://localhost:3000/filterd-subcategory";
-const createSubCategoryUrl = "http://localhost:3000/add-sub-category"
-const deleteSubCategoryUrl = "http://localhost:3000/delete-category";
-const updateSubCategoryUrl = "http://localhost:3000/update-subcategory";
+const fetchSubCategoryUrl = "https://go-gadgets.onrender.com/sub-category";
+const fetchSubCategoryByCategoryUrl = "https://go-gadgets.onrender.com/filterd-subcategory";
+const createSubCategoryUrl = "https://go-gadgets.onrender.com/add-sub-category"
+const deleteSubCategoryUrl = "https://go-gadgets.onrender.com/delete-category";
+const updateSubCategoryUrl = "https://go-gadgets.onrender.com/update-subcategory";
 
 // PRODUCT URL
-const fetchProductUrl = "http://localhost:3000/product";
-const fetchOneProductUrl = "http://localhost:3000/single-product";
-const createProductUrl = "http://localhost:3000/add-product"
-const deleteProductUrl = "http://localhost:3000/delete-product";
-const updateProductUrl = "http://localhost:3000/update-product";
+const fetchProductUrl = "https://go-gadgets.onrender.com/product";
+const fetchOneProductUrl = "https://go-gadgets.onrender.com/single-product";
+const createProductUrl = "https://go-gadgets.onrender.com/add-product"
+const deleteProductUrl = "https://go-gadgets.onrender.com/delete-product";
+const updateProductUrl = "https://go-gadgets.onrender.com/update-product";
 
 
 // CATEGORY API

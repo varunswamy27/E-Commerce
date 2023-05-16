@@ -10,7 +10,7 @@ const ProductListingSec = () => {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/product')
+    axios.get('https://go-gadgets.onrender.com/product')
       .then(function (response) {
         // handle success
         console.log(response.data.data);
