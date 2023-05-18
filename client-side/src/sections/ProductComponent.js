@@ -70,7 +70,6 @@ const ProductComponent = () => {
   }, [populatedProduct])
 
 
-  console.log(fetchedSubCategory)
 
   return (
     <section className={styles.comman_model_main_section}>
@@ -78,7 +77,7 @@ const ProductComponent = () => {
       <div className={styles.add_card}>
         <div className={styles.input_box}>
           <label htmlFor="">Product Name:</label>
-          <input onChange={(e) => setProductData({ ...productData, productName: e.target.value })} value={productData.productName} type="text" name='productName' placeholder='Enter Product' />
+          <input onChange={(e) => setProductData({ ...productData, productName: e.target.value })} value={productData.productName} type="text" name='productName' placeholder='Enter Product Name' />
           {productData.productName === " " ?
             <p className={styles.fielderror}>Enter Product Field</p>
             :
@@ -112,15 +111,6 @@ const ProductComponent = () => {
             null
           }
         </div>
-        {/* <div className={styles.input_box}>
-          <label htmlFor="">Product Picture:</label>
-          <input onChange={(e) => setProductData({ ...productData, productPicture: e.target.value })} value={productData.productPicture} type="text" name='productPicture' placeholder='Enter Product Picture' />
-          {productData.productPicture === " " ?
-            <p className={styles.fielderror}>Enter Product Picture Field</p>
-            :
-            null
-          }
-        </div> */}
         <div className={styles.input_box}>
           <label htmlFor="public">Product Picture:</label>
           <input onChange={(e) => setProductImage(e.target.files[0])} type="file" id='file' name='public' placeholder='Enter Product Picture' />
@@ -132,7 +122,6 @@ const ProductComponent = () => {
         </div>
         <div className={styles.input_box}>
           <label htmlFor="">Category</label>
-          {/* <input onChange={(e) => setProductData({ ...productData, categoryId: cat })} value={productData.categoryId} type="text" name='categoryId' placeholder='Enter Category Id' /> */}
           <select onChange={(e) => setProductData({ ...productData, categoryId: e.target.value })}>
             <option selected={false} disabled="disabled">Select a Category</option>
             {fetchedCategory?.data?.map((item, id) => {
@@ -149,7 +138,6 @@ const ProductComponent = () => {
         </div>
         <div className={styles.input_box}>
           <label htmlFor="">Sub-Category Id:</label>
-          {/* <input onChange={(e) => setProductData({ ...productData, subCategoryId: e.target.value })} value={productData.subCategoryId} type="text" name='subCategoryId' placeholder='Enter Sub-Category Id' /> */}
           <select onChange={(e) => setProductData({ ...productData, subCategoryId: e.target.value })}>
             <option selected={false} disabled="disabled">Select a Sub-Category</option>
             {fetchedSubCategory?.data?.map((item, id) => {

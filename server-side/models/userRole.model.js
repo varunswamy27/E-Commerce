@@ -3,11 +3,8 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const roleSchema = new Schema({
-    admin: {
-        type: Boolean,
-    },
-    superAdmin: {
-        type: Boolean,
+    role: {
+        type: String,
     },
 });
 

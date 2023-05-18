@@ -36,7 +36,7 @@ const UserComponent = () => {
     formData.append('email', userData.email);
     formData.append('password', userData.password);
     formData.append('phoneNumber', userData.phoneNumber);
-    formData.append('subCategoryId', userData.userRole);
+    formData.append('userRole', userData.userRole);
     if (currentId) {
       dispatch(modifyUser(currentId, userData));
     }
@@ -64,6 +64,8 @@ const UserComponent = () => {
   }, [populatedUser])
 
 
+  // console.log(fetchedUserRole?.data?.map(item=> item.role))
+    console.log(fetchedUser)
 
   return (
     <section className={styles.comman_model_main_section}>
@@ -125,7 +127,7 @@ const UserComponent = () => {
         </div>
         <div className={styles.input_box}>
           <label htmlFor="">User Role</label>
-          <select onChange={(e) => setUserData({ ...userData, userRole: e.target.value })}>
+          <select name='userRole' onChange={(e) => setUserData({ ...userData, userRole: e.target.value })}>
             <option selected={false} disabled="disabled">Select a Role</option>
             {fetchedUserRole?.data?.map((item, id) => {
               return (

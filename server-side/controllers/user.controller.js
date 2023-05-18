@@ -13,7 +13,7 @@ cloudinary.config({
 
 // FETCH ALL USERS
 export const getUser = (req, res) => {
-  UserInfo.find({}).populate("userRole", "_id")
+  UserInfo.find({}).populate("userRole", "_id role")
     .then((data) => {
       if (data) {
         return res.status(200).json({
@@ -91,7 +91,7 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const existingUser = await UserInfo.findOne({ email });
+    const existingUser = await UserInfo.findOne({ email }).populate("userRole", "_id role")
     if (!existingUser) {
       return res.status(404).json({
         message: "User Doesn't Exist",

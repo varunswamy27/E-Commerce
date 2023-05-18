@@ -13,7 +13,6 @@ const ProductListingSec = () => {
     axios.get('https://go-gadgets.onrender.com/product')
       .then(function (response) {
         // handle success
-        console.log(response.data.data);
         setProductData(response.data.data.slice(0,8));
       })
       .catch(function (error) {

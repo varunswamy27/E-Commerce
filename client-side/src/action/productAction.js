@@ -25,9 +25,9 @@ export const getOneProductData = (id) => async (dispatch) => {
     }
 }
 
-export const createProduct = (categories) => async (dispatch) => {
+export const createProduct = (formData) => async (dispatch) => {
     try {
-        const { data } = await api.addProduct(categories)
+        const { data } = await api.addProduct(formData)
         dispatch({
             type: 'CREATE_PRODUCT',
             payload: data

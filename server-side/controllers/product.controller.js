@@ -142,7 +142,6 @@ export const getOneProduct = async (req, res) => {
 export const createProduct = async (req, res) => {
     const uploadImages = multer({ storage: storage }).single('public');
     uploadImages(req, res, async function (err) {
-
         const { productName, productDescription, productShortDescription, productPrice, categoryId, subCategoryId } = req.body;
         if (!productName) {
             return res.status(422).json({
@@ -168,12 +167,6 @@ export const createProduct = async (req, res) => {
                 status: false,
             })
         }
-        // if (!productPicture) {
-        //     return res.status(422).json({
-        //         message: "Enter SubCategory Description",
-        //         status: false,
-        //     })
-        // }
         const productData = {
             productName: productName,
             productDescription: productDescription,
@@ -192,11 +185,11 @@ export const createProduct = async (req, res) => {
                     return res.status(400).json({
                         message: "Product Already Exists",
                         status: false,
-                        data: productData,
+                        data: duplicateProduct,
                     })
                 }
                 else {
-                    const insertProduct = Product.create(productData)
+                    Product.create(productData)
                     return res.status(200).json({
                         message: "Product Successfully Created",
                         status: true,
@@ -208,7 +201,7 @@ export const createProduct = async (req, res) => {
                 return res.status(422).json({
                     message: "Failed To Create Product",
                     status: false,
-                    data: data,
+                    data: err,
                 })
             })
     });

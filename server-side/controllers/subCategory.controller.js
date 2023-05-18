@@ -112,3 +112,22 @@ export const updateSubCategory = (req, res) => {
         })
     })
 }
+
+// Delete SubCategory
+export const deleteSubCategory = async (req, res) => {
+    try {
+        const removeSubCategory = await SubCategory.findByIdAndDelete(req.params.id);
+        const removeProduct = await Product.deleteMany({ "subCategoryId": req.params.id })
+        res.status(200).json({
+            message: "SubCategory Deleted",
+            status: true,
+            data: { removeSubCategory, removeProduct }
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: "Cannot Delete SubCategory",
+            status: false,
+            data: error
+        })
+    }
+}

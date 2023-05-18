@@ -1,7 +1,7 @@
 import express from "express";
 import { createUser, createUserRole, deleteUser, getRoles, getUser, loginUser, updateUser } from "../controllers/user.controller";
 import { createCategory, deleteCategory, getCategory, updateCategory } from "../controllers/category.controller";
-import { createSubCategory, fetchSubCategory, fetchSubCategoryByCategory, updateSubCategory } from "../controllers/subCategory.controller";
+import { createSubCategory, deleteSubCategory, fetchSubCategory, fetchSubCategoryByCategory, updateSubCategory } from "../controllers/subCategory.controller";
 import { createProduct, deleteProduct, filterPriceProduct, getOneProduct, getProduct, sortProductAsc, sortProductDes, updateProduct } from "../controllers/product.controller";
 import { auth, isAuthorized, verifyToken } from "../middleware/auth";
 
@@ -36,6 +36,8 @@ router.get('/sub-category', fetchSubCategory);
 router.get('/filterd-subcategory/:id', fetchSubCategoryByCategory)
 router.post('/add-sub-category', createSubCategory);
 router.patch('/update-subcategory/:id', updateSubCategory);
+router.delete('/delete-subcategory/:id', deleteSubCategory);
+
 
 // Product API
 
